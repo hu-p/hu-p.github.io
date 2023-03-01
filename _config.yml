@@ -105,4 +105,4 @@ deployer:
   type: git
   repo:
   github: https://github.com/hu-p/hu-p.github.io
-  branch: main
+  branch: gh-pages
