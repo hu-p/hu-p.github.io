@@ -8,8 +8,11 @@ subtitle: ''
 description: ''
 keywords:
 author: '渊不语'
-language: en
 timezone: ''
+
+# 指定语言，会影响主题显示的语言，按需修改
+language: zh-CN
+# language: en
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -99,7 +102,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-# theme: landscape
+# 指定主题
 theme: fluid
 
 # Deployment
