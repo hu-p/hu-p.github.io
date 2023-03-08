@@ -1,7 +1,6 @@
 ---
-title:react知识记录
+title: react知识记录
 ---
-
 # react知识记录
 
 ## 一、图片导入问题
@@ -46,8 +45,6 @@ title:react知识记录
   <img src='img/logo.png' alt="" />
 ```
 
-
-
 ## 二、css屏幕宽超出问题
 
 ```
@@ -66,8 +63,6 @@ title:react知识记录
 }
 ```
 
-
-
 ### 三、react导入antd问题
 
 ```
@@ -78,8 +73,6 @@ import 'antd/dist/antd.min.css'
 */
 ```
 
-
-
 ## 四、两盒子重叠
 
 ```
@@ -88,8 +81,6 @@ import 'antd/dist/antd.min.css'
 效果：
    一个大盒子中包裹多个排列有序的子盒子(诸如使用display:flex命令)，此时需要添加一个盒子，会和其中的和重叠，故而此盒子设置position: absolute，其父盒子设置position: relative;即可实现
 ```
-
-
 
 ## 五、react中样式局部和全局
 
@@ -126,11 +117,10 @@ import styles from './xxxx.css'
 <div clssName={`${style['yangshi2']} ${style['yangshi3']}`}
 ```
 
-
-
 ## 六、Modal内嵌套一个form表单
 
 ### 一、form表单
+
 ```react
 // 极度重要:挂载form
  const [form] = Form.useForm();
@@ -210,7 +200,9 @@ form.resetFields();
 8.获取光标方法：
 form.getFieldInstance('name').focus();
 ```
+
 ### 二、form表单示例
+
 ```react
 // 示例
 import React, { useEffect, useState } from 'react';
@@ -308,8 +300,6 @@ const addModel = (props) => {
 export default addModel
 ```
 
-
-
 ## 七、props,useContext基础使用
 
 ### 一、props双向传值
@@ -331,8 +321,6 @@ function demo(props) {
     const { isModalVisible, setIsModalVisible,editList} = props
 }
 ```
-
-
 
 ### 二、useContext的使用
 
@@ -359,11 +347,9 @@ import { useContext} from 'react';
   <Context.Provider value={[data, setData,dictList]}>
           <Froms />
  </Context.Provider>
-      
+    
  const [data,SetData,dictList] = useContext(Context);
 ```
-
-
 
 ## 八、表格操作
 
@@ -655,8 +641,6 @@ function Forms(props) {
 export default Forms
 ```
 
-
-
 ## 九、useEffect
 
 ```react
@@ -671,7 +655,7 @@ function Welcome(props) {
  [props.name]
  );
 上面例子中，useEffect()的第二个参数是一个数组，指定了第一个参数（副效应函数）的依赖项（props.name）。只有该变量发生变化时，副效应函数才会执行。如果第二个参数是一个空数组，就表明副效应参数没有任何依赖项。因此，副效应函数这时只会在组件加载进入 DOM 后执行一次，后面组件重新渲染，就不会再次执行。这很合理，由于副效应不依赖任何变量，所以那些变量无论怎么变，副效应函数的执行结果都不会改变，所以运行一次就够了
-    
+  
 return (
     <div>讲解useEffect</div>
 )
@@ -739,8 +723,6 @@ function App() {
 }
 ```
 
-
-
 ## 十、useState设置取值问题
 
 ```react
@@ -755,10 +737,3 @@ const [dictList, setDictList] = useState([])
   },[]);
 
 ```
-
-
-
-
-
-
-

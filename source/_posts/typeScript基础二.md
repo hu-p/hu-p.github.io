@@ -1,28 +1,27 @@
 ---
-title:typescript介绍
+title: typescript介绍
 ---
-
 # typescript介绍
 
 ## 什么是typescript?
 
 > TypeScript简称TS
->  TS和JS之间的关系其实就是Less/Sass和CSS之间的关系
->  就像Less/Sass是对CSS进行扩展一样, TS也是对JS进行扩展
->  就像Less/Sass最终会转换成CSS一样, 我们编写好的TS代码最终也会换成JS
->  TypeScript是JavaScript的超集，因为它扩展了JavaScript，有JavaScript没有的东西。
->  硬要以父子类关系来说的话，TypeScript是JavaScript子类，继承的基础上去扩展。
+> TS和JS之间的关系其实就是Less/Sass和CSS之间的关系
+> 就像Less/Sass是对CSS进行扩展一样, TS也是对JS进行扩展
+> 就像Less/Sass最终会转换成CSS一样, 我们编写好的TS代码最终也会换成JS
+> TypeScript是JavaScript的超集，因为它扩展了JavaScript，有JavaScript没有的东西。
+> 硬要以父子类关系来说的话，TypeScript是JavaScript子类，继承的基础上去扩展。
 
 ## 为什么需要TypeScript?
 
 > 简单来说就是因为JavaScript是弱类型, 很多错误只有在运行时才会被发现
->  而TypeScript提供了一套静态检测机制, 可以帮助我们在编译时就发现错误
+> 而TypeScript提供了一套静态检测机制, 可以帮助我们在编译时就发现错误
 
 ## TypeScript特点
 
 > 支持最新的JavaScript新特特性
->  支持代码静态检查
->  支持诸如C,C++,Java,Go等后端语言中的特性 (枚举、泛型、类型转换、命名空间、声明文件、类、接口等)
+> 支持代码静态检查
+> 支持诸如C,C++,Java,Go等后端语言中的特性 (枚举、泛型、类型转换、命名空间、声明文件、类、接口等)
 
 # 搭建typescript学习环境
 
@@ -107,11 +106,11 @@ big = null
 big= undefined
 ```
 
-如果你在tsconfig.json指定了`"strictNullChecks":true` ，`null` 和 `undefined` 只能赋值给 `void` 和它们各自的类型。
+如果你在tsconfig.json指定了 `"strictNullChecks":true` ，`null` 和 `undefined` 只能赋值给 `void` 和它们各自的类型。
 
 ### number和bigint
 
-虽然`number`和`bigint`都表示数字，但是这两个类型不兼容。
+虽然 `number`和 `bigint`都表示数字，但是这两个类型不兼容。
 
 ```js
 let big: bigint =  100n;
@@ -296,7 +295,7 @@ result.split(' ');
 
 众所周知，数组一般由同种类型的值组成，但有时我们需要在单个变量中存储不同类型的值，这时候我们就可以使用元组。在 JavaScript 中是没有元组的，元组是 TypeScript 中特有的类型，其工作方式类似于数组。
 
-元组最重要的特性是可以限制`数组元素的个数和类型`，它特别适合用来实现多值返回。
+元组最重要的特性是可以限制 `数组元素的个数和类型`，它特别适合用来实现多值返回。
 
 元祖用于保存定长、定数据类型的数据
 
@@ -309,7 +308,7 @@ x = ['hello', 10,10]; // Error
 x = [10, 'hello']; // Error
 ```
 
-注意，元组类型只能表示一个已知元素数量和类型的数组，长度已指定，越界访问会提示错误。<u>**如果一个数组中可能有多种类型，数量和类型都不确定，那就直接`any[]`**</u>，也可以使用剩余元素`[number, ...string[]]` 表示带有一个 `number` 元素和任意数量`string` 类型元素的元组类型
+注意，元组类型只能表示一个已知元素数量和类型的数组，长度已指定，越界访问会提示错误。`<u>`**如果一个数组中可能有多种类型，数量和类型都不确定，那就直接 `any[]`**`</u>`，也可以使用剩余元素 `[number, ...string[]]` 表示带有一个 `number` 元素和任意数量 `string` 类型元素的元组类型
 
 ### 元祖类型的解构赋值
 
@@ -379,7 +378,7 @@ console.log(xyz.length); // 3
 
 ### 元组类型的剩余元素
 
-元组类型里最后一个元素可以是剩余元素，形式为 `...X`，这里 `X` 是数组类型。**剩余元素代表元组类型是开放的，可以有零个或多个额外的元素。** 例如，`[number, ...string[]]` 表示带有一个 `number` 元素和任意数量`string` 类型元素的元组类型。为了能更好的理解，我们来举个具体的例子：
+元组类型里最后一个元素可以是剩余元素，形式为 `...X`，这里 `X` 是数组类型。**剩余元素代表元组类型是开放的，可以有零个或多个额外的元素。** 例如，`[number, ...string[]]` 表示带有一个 `number` 元素和任意数量 `string` 类型元素的元组类型。为了能更好的理解，我们来举个具体的例子：
 
 ```js
 type RestTupleType = [number, ...string[]];
@@ -418,9 +417,9 @@ let a: void;
 let b: number = a; // Error
 ```
 
-你只能为它赋予`null`和`undefined`（在`strictNullChecks`未指定为true时）。声明一个`void`类型的变量没有什么大用，我们一般也只有在函数没有返回值时去声明。
+你只能为它赋予 `null`和 `undefined`（在 `strictNullChecks`未指定为true时）。声明一个 `void`类型的变量没有什么大用，我们一般也只有在函数没有返回值时去声明。
 
-值得注意的是，方法没有返回值将得到`undefined`，但是我们需要定义成`void`类型，而不是`undefined`类型。否则将报错:
+值得注意的是，方法没有返回值将得到 `undefined`，但是我们需要定义成 `void`类型，而不是 `undefined`类型。否则将报错:
 
 ```js
 function fun(): undefined {
@@ -450,9 +449,9 @@ function loopForever(): never { // OK
 }
 ```
 
-`never`类型同`null`和`undefined`一样，也是任何类型的子类型，也可以赋值给任何类型。
+`never`类型同 `null`和 `undefined`一样，也是任何类型的子类型，也可以赋值给任何类型。
 
-但是没有类型是`never`的子类型或可以赋值给`never`类型（除了`never`本身之外），即使`any`也不可以赋值给`never`
+但是没有类型是 `never`的子类型或可以赋值给 `never`类型（除了 `never`本身之外），即使 `any`也不可以赋值给 `never`
 
 ```js
 let ne: never;
@@ -489,7 +488,7 @@ function controlFlowAnalysisWithNever(foo: Foo) {
 type Foo = string | number | boolean;
 ```
 
-然而他忘记同时修改 `controlFlowAnalysisWithNever` 方法中的控制流程，这时候 else 分支的 foo 类型会被收窄为 `boolean` 类型，导致无法赋值给 never 类型，这时就会产生一个编译错误。通过这个方式，我们可以确保`controlFlowAnalysisWithNever` 方法总是穷尽了 Foo 的所有可能类型。 通过这个示例，我们可以得出一个结论：**使用 never 避免出现新增了联合类型没有对应的实现，目的就是写出类型绝对安全的代码。**
+然而他忘记同时修改 `controlFlowAnalysisWithNever` 方法中的控制流程，这时候 else 分支的 foo 类型会被收窄为 `boolean` 类型，导致无法赋值给 never 类型，这时就会产生一个编译错误。通过这个方式，我们可以确保 `controlFlowAnalysisWithNever` 方法总是穷尽了 Foo 的所有可能类型。 通过这个示例，我们可以得出一个结论：**使用 never 避免出现新增了联合类型没有对应的实现，目的就是写出类型绝对安全的代码。**
 
 ## any
 
@@ -552,7 +551,7 @@ something.setName('Tom');
 
 ## unknown
 
-`unknown`与`any`一样，所有类型都可以分配给`unknown`:
+`unknown`与 `any`一样，所有类型都可以分配给 `unknown`:
 
 ```js
 let notSure: unknown = 4;
@@ -560,7 +559,7 @@ notSure = "maybe a string instead"; // OK
 notSure = false; // OK
 ```
 
-`unknown`与`any`的最大区别是： 任何类型的值可以赋值给`any`，同时`any`类型的值也可以赋值给任何类型。`unknown` 任何类型的值都可以赋值给它，但它只能赋值给`unknown`和`any`
+`unknown`与 `any`的最大区别是： 任何类型的值可以赋值给 `any`，同时 `any`类型的值也可以赋值给任何类型。`unknown` 任何类型的值都可以赋值给它，但它只能赋值给 `unknown`和 `any`
 
 ```ts
 let notSure: unknown = 4;
@@ -573,7 +572,7 @@ let notSure: unknown = 4;
 let uncertain: number = notSure; // Error
 ```
 
-如果不缩小类型，就无法对`unknown`类型执行任何操作：
+如果不缩小类型，就无法对 `unknown`类型执行任何操作：
 
 ```js
 function getDog() {
@@ -584,7 +583,7 @@ const dog: unknown = {hello: getDog};
 dog.hello(); // Error
 ```
 
-这种机制起到了很强的预防性，更安全，这就要求我们必须缩小类型，我们可以使用`typeof`、`类型断言`等方式来缩小未知范围：
+这种机制起到了很强的预防性，更安全，这就要求我们必须缩小类型，我们可以使用 `typeof`、`类型断言`等方式来缩小未知范围：
 
 ```js
 function getDogName() {
@@ -604,7 +603,7 @@ const upName = (dogName as string).toLowerCase(); // OK
 
 ## Number、String、Boolean、Symbol
 
-首先，我们来回顾一下初学 TypeScript 时，很容易和原始类型 number、string、boolean、symbol 混淆的首字母大写的 Number、String、Boolean、Symbol 类型，后者是相应原始类型的`包装对象`，姑且把它们称之为对象类型。
+首先，我们来回顾一下初学 TypeScript 时，很容易和原始类型 number、string、boolean、symbol 混淆的首字母大写的 Number、String、Boolean、Symbol 类型，后者是相应原始类型的 `包装对象`，姑且把它们称之为对象类型。
 
 从类型兼容性上看，原始类型兼容对应的对象类型，反过来对象类型不兼容对应的原始类型。
 
@@ -728,7 +727,7 @@ ObjectLiteral = upperCaseObject;
 }
 ```
 
-我们把 TypeScript 这种基于赋值表达式推断类型的能力称之为`类型推断`。
+我们把 TypeScript 这种基于赋值表达式推断类型的能力称之为 `类型推断`。
 
 在 TypeScript 中，具有初始化值的变量、有默认值的函数参数、函数返回的类型都可以根据上下文推断出来。比如我们能根据 return 语句推断函数返回的类型，如下代码所示：
 
@@ -1308,7 +1307,7 @@ const sayHello = (name: string | undefined) => {
 };
 ```
 
-例如，这里 `name` 的类型是 `string | undefined` 意味着可以将 `string` 或 `undefined` 的值传递给`sayHello` 函数。
+例如，这里 `name` 的类型是 `string | undefined` 意味着可以将 `string` 或 `undefined` 的值传递给 `sayHello` 函数。
 
 ```js
 sayHello("semlinker"); 
@@ -1339,7 +1338,7 @@ let greet = (message: Message) => {
 
 # 交叉类型
 
-交叉类型是将多个类型合并为一个类型。 这让我们可以把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性，使用`&`定义交叉类型。
+交叉类型是将多个类型合并为一个类型。 这让我们可以把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性，使用 `&`定义交叉类型。
 
 ```js
 {
@@ -1571,7 +1570,7 @@ let tom: Person = {
 
 ## 鸭式辨型法
 
-所谓的**鸭式辨型法**就是`像鸭子一样走路并且嘎嘎叫的就叫鸭子`，即具有鸭子特征的认为它就是鸭子，也就是通过制定规则来判定对象是否实现这个接口。
+所谓的**鸭式辨型法**就是 `像鸭子一样走路并且嘎嘎叫的就叫鸭子`，即具有鸭子特征的认为它就是鸭子，也就是通过制定规则来判定对象是否实现这个接口。
 
 ### 例子
 
@@ -1596,7 +1595,7 @@ function printLabel(labeledObj: LabeledValue) {
 printLabel({ size: 10, label: "Size 10 Object" }); // Error
 ```
 
-上面代码，在参数里写对象就相当于是直接给`labeledObj`赋值，这个对象有严格的类型定义，所以不能多参或少参。而当你在外面将该对象用另一个变量`myObj`接收，`myObj`不会经过额外属性检查，但会根据类型推论为`let myObj: { size: number; label: string } = { size: 10, label: "Size 10 Object" };`，然后将这个`myObj`再赋值给`labeledObj`，此时根据类型的兼容性，两种类型对象，参照**鸭式辨型法**，因为都具有`label`属性，所以被认定为两个相同，故而可以用此法来绕开多余的类型检查。
+上面代码，在参数里写对象就相当于是直接给 `labeledObj`赋值，这个对象有严格的类型定义，所以不能多参或少参。而当你在外面将该对象用另一个变量 `myObj`接收，`myObj`不会经过额外属性检查，但会根据类型推论为 `let myObj: { size: number; label: string } = { size: 10, label: "Size 10 Object" };`，然后将这个 `myObj`再赋值给 `labeledObj`，此时根据类型的兼容性，两种类型对象，参照**鸭式辨型法**，因为都具有 `label`属性，所以被认定为两个相同，故而可以用此法来绕开多余的类型检查。
 
 ## 绕开额外属性检查的方式
 
@@ -1957,7 +1956,7 @@ let K3: keyof symbol; // let K1: "valueOf"
 
 #### keyof 的作用
 
-JavaScript 是一种高度动态的语言。有时在静态类型系统中捕获某些操作的语义可能会很棘手。以一个简单的`prop` 函数为例：
+JavaScript 是一种高度动态的语言。有时在静态类型系统中捕获某些操作的语义可能会很棘手。以一个简单的 `prop` 函数为例：
 
 ```js
 function prop(obj, key) {
@@ -2841,7 +2840,4 @@ async function changePage(state: State, newPage: string) {
 
 在 `changePage` 函数中，会根据不同的情形设置不同的请求状态，而不同的请求状态会包含不同的信息。这样 `renderPage` 函数就可以根据统一的 `state` 属性值来进行相应的处理。因此，通过使用可辨识联合类型，让请求的每种状态都是有效的状态，不会出现无效状态的问题。
 
-
-
 转载[2021 typescript史上最强学习入门文章(2w字)](https://juejin.cn/post/7018805943710253086)
-

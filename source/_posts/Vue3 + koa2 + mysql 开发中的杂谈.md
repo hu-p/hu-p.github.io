@@ -1,7 +1,6 @@
 ---
-title:Vue3 + koa2 + mysql 开发中的杂谈
+title: Vue3 + koa2 + mysql 开发中的杂谈
 ---
-
 # Vue3 + koa2 + mysql 开发中的杂谈
 
 ## 一、Vue3开发
@@ -128,7 +127,7 @@ const axios = inject('axios')
          //      Authorization: localStorage.elementToken,
          //      },
         // };
-        
+      
       //自定义的上传文件，例如图片时，在拿到文件后，需要将其实例化
        //实例表单
      // let formdata = new FormData();
@@ -321,8 +320,6 @@ fileList.get('/download/:name', async (ctx) => {
 })
 ```
 
-
-
 ## 二、Koa2开发
 
 ### 1、调用其三方接口，请求其他数据
@@ -385,22 +382,25 @@ otherapi.get('/wallhaven/:name', async (ctx, next) => {
 ### 2、async、await、Promise之间的联系
 
 async 函数
+
 1. 函数的返回值为 promise 对象
 2. promise 对象的结果由 async 函数执行的返回值决定
 
 await 表达式
+
 1. await 右侧的表达式一般为 promise 对象, 但也可以是其它的值
 2. 如果表达式是 promise 对象, await 返回的是 promise 成功的值
 3. 如果表达式是其它值, 直接将此值作为 await 的返回值
 
  注意
+
 1. await 必须写在 async 函数中, 但 async 函数中可以没有 await
 2. 如果 await 的 promise 失败了, 就会抛出异常, 需要通过 try...catch 捕获处理
 
 ```js
 //异步操作一般使用，该命令运行在async中
 //let dd = await new Promise((resolve, reject) => {  }
-      
+    
 <script>
 function fn1() {
          return Promise.resolve(1) 
@@ -627,8 +627,6 @@ app.listen(port, () => {
 })
 ```
 
-
-
 ## 三、Mysql搭建，navicat中操作
 
 #### 1、mysql存储emoji表情，数据添加外键
@@ -679,7 +677,7 @@ let pool =mysql.createPool(config);
 此处的p就是插入操作中的数组[myusername, name, textpage, htmlpage, desc]
 function queryback(sql,p){
     return new Promise((resolve,reject)=>{
-        
+      
         pool.getConnection((err,connection)=>{
             if(err){
                 reject(err)
@@ -744,4 +742,3 @@ on d.pagename = c.pagename
 where d.username = 'test' 
 ORDER BY a.writetime DESC
 ```
-

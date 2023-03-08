@@ -1,7 +1,6 @@
 ---
-title:Spring Boot入门之拦截器及文件上传
+title: Spring Boot入门之拦截器及文件上传
 ---
-
 # Spring Boot入门之拦截器及文件上传
 
 ---
@@ -92,8 +91,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 ```
 
-
-
 **2.创建一个配置文件config/AdminWebConfig.java**
 
 ```java
@@ -122,20 +119,14 @@ public class AdminWebConfig implements WebMvcConfigurer {
 }
 ```
 
-
-
 ***重点***：
 
 拦截器分为三个阶段，目标方法执行之前、目标方法执行之后、页面渲染以后，拦截器中addPathPatterns("/**")，括号中表示的是可拦截所有的页面，excludePathPatterns("/")为放行的页面；@Slf4j是用作日志输出的，一般会在项目每个类的开头加入该注解
 
-
-
 ## 二、上传文件
 
-
-
 ```html
-// method="post" enctype="multipart/form-data"为固定搭配        
+// method="post" enctype="multipart/form-data"为固定搭配      
 <form role="form" th:action="@{/upload}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                                 <label for="exampleInputEmail1">邮箱</label>
@@ -161,10 +152,6 @@ public class AdminWebConfig implements WebMvcConfigurer {
                             <button type="submit" class="btn btn-primary">提交</button>
                         </form>
 ```
-
-
-
-
 
 ```java
 package com.atguigu.admin.controller;
@@ -228,12 +215,9 @@ public class FormTestController {
 }
 ```
 
-
-
 ```properties
 //限制上传文件的大小
 
 spring.servlet.multipart.max-file-size=10MB
 spring.servlet.multipart.max-request-size=100MB
 ```
-

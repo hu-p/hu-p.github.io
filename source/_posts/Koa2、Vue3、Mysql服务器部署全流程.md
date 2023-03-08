@@ -1,6 +1,6 @@
 
 ---
-title:Koa2、Vue3、Mysql服务器部署全流程
+title: Koa2、Vue3、Mysql服务器部署全流程
 ---
 # Koa2、Vue3、Mysql服务器部署全流程
 

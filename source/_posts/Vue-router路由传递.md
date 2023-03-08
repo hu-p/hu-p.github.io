@@ -1,5 +1,5 @@
 ---
-title:Vue-router路由传递
+title: Vue-router路由传递
 ---
 # Vue-router路由传递
 
@@ -18,11 +18,9 @@ export default {
 </script>
 
 <style>
-    
+  
 </style>
 ```
-
-
 
 ## 二、主目录下main.js中使用router
 
@@ -32,8 +30,6 @@ import Router from 'vue-router'
 
 Vue.use(Router);                  //使用Router路由功能
 ```
-
-
 
 ## 三、在src中建立router文件夹，且在router文件夹下建立一个index.js文件
 
@@ -77,8 +73,6 @@ export default new Router({         //将其暴露出去，且实例Roter
 })
 ```
 
-
-
 ## 四、在main.js中导入写好的路由
 
 ```javascript
@@ -86,11 +80,9 @@ export default new Router({         //将其暴露出去，且实例Roter
 import roter from './router'
 
 new Vue({
-    router             
+    router           
 })
 ```
-
-
 
 ## 五、路由的使用
 
@@ -101,4 +93,3 @@ new Vue({
 //链接可跳转
 <router-link to="/renyi">跳转</router-link>   //此处的renyi为路由文件中的路由路径
 ```
-

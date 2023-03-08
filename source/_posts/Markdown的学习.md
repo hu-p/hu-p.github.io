@@ -1,5 +1,5 @@
 ---
-title:Markdown的学习
+title: Markdown的学习
 ---
 
 #                                     Markdown的学习

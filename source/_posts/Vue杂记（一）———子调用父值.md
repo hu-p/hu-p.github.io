@@ -1,7 +1,6 @@
 ---
-title:Vue杂记（一）———子调用父值
+title: Vue杂记（一）———子调用父值
 ---
-
 # Vue杂记（一）———子调用父值
 
 ## 一、在Vue中展示本地pdf文档
@@ -25,8 +24,6 @@ export default {
   }
 }
 ```
-
-
 
 ### 2、pdf文件展示全部页面
 
@@ -71,11 +68,9 @@ export default {
 </script>
 ```
 
-
-
 ### 3、接收父组件传入的路径，然后在子组件中展示出来
 
-```vue 
+```vue
 //父组件
 <template>
   <el-container style="height:660px;border: 1px solid #eee">
@@ -131,7 +126,7 @@ export default {
 
      <el-main >
     <el-container >
-        <test :count="count"></test>    
+        <test :count="count"></test>  
       //此处为向子组件绑定的值，:count中的:为v-bind的缩写，而count为任意的命名，"count"中的count为 data()中的值
       </el-container>
     </el-main>
@@ -239,7 +234,7 @@ export default {
    } ,
   methods: { 
       pdfTask(count) {            //由于无法将props的数据传入导script主体/script中，即以函数形式运行pdf.createLoadingTask方式
-      var self = this             
+      var self = this           
       var loadingTask = pdf.createLoadingTask(count)    //解析该路径下的所有pdf页面
       loadingTask.promise.then(pdf => {
       self.src = loadingTask
@@ -250,8 +245,6 @@ export default {
 };
 </script>
 ```
-
-
 
 ## 二、杂记之传值监听
 
@@ -290,8 +283,6 @@ export default {
 </script>
 ```
 
-
-
 ### 2、如需使data接收到props中的数据 ，详见[**pros**](https://cn.vuejs.org/v2/guide/components-props.html)
 
 所有的 prop 都使得其父子 prop 之间形成了一个**单向下行绑定**：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。
@@ -310,7 +301,6 @@ export default {
      }
    }
    ```
-
 2. **这个 prop 以一种原始的值传入且需要进行转换。**在这种情况下，最好使用这个 prop 的值来定义一个计算属性：
 
    ```
@@ -321,44 +311,29 @@ export default {
      }
    }
    ```
-
-1. 注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变变更这个对象或数组本身**将会**影响到父组件的状态。
-
-
+3. 注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变变更这个对象或数组本身**将会**影响到父组件的状态。
 
 ### 3、监听机制 详见[监听](https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7-vs-%E4%BE%A6%E5%90%AC%E5%B1%9E%E6%80%A7)
 
-#### **计算属性computed :** 
+#### **计算属性computed :**
 
 1. 支持缓存，只有依赖数据发生改变，才会重新进行计算
-
 2. 不支持异步，当computed内有异步操作时无效，无法监听数据的变化
-
 3. computed 属性值会默认走缓存，计算属性是基于它们的响应式依赖进行缓存的，也就是基于data中声明过或者父组件传递的props     中的数据通过计算得到的值
-
 4. 如果一个属性是由其他属性计算而来的，这个属性依赖其他属性，是一个多对一或者一对一，一般用computed
-
 5. 如果computed属性属性值是函数，那么默认会走get方法；函数的返回值就是属性的属性值；在computed中的，属性都有一个get和 一个set方法，当数据变化时，调用set方法。
-
-
 
 #### **侦听属性watch：**
 
 1. 不支持缓存，数据变，直接会触发相应的操作；
-
 2. watch支持异步；
-
 3. 监听的函数接收两个参数，第一个参数是最新的值；第二个参数是输入之前的值；
-
 4. 当一个属性发生变化时，需要执行对应的操作；一对多；
-
 5. 监听数据必须是data中声明过或者父组件传递过来的props中的数据，当数据变化时，触发其他操作，函数有两个参数，
 
    .  immediate：组件加载立即触发回调函数执行，
 
    .  deep: 深度监听，为了发现**对象内部值**的变化，复杂类型的数据时使用，例如数组中的对象内容的改变，注意监听数组的变动不需要  这么做。注意：deep无法监听到数组的变动和对象的新增，参考vue数组变异,只有以响应式的方式触发才会被监听到。
-
-
 
 ## 三、for循环 详见[for](https://cn.vuejs.org/v2/guide/list.html)
 
@@ -410,4 +385,3 @@ export default {
 }
 </script>
 ```
-

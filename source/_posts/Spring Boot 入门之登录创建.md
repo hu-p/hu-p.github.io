@@ -1,27 +1,21 @@
 ---
-title:Spring Boot 入门之登录创建
+title: Spring Boot 入门之登录创建
 ---
-
 # Spring Boot 入门之登录创建
 
 ---
 
 ## 一、在IDEA中创建一个springboot项目
 
-
-
 ### 1.使用Spring Initializr创建项目
 
 ### 2.选定Developer Tools中的Spring Boot DevTools、Lombok、Spring Configuration Processor；选定Web中的Spring Web；选定Template Engine中的Thymeleaf
 
 - spring-boot-devtools 模块能够实现热部署，添加类  添加方法  修改配置文件  修改页面等 都能实现热部署
-
 - Lombok 是一种 Java™ 实用工具，可用来帮助开发人员消除 Java 的冗长，尤其是对于简单的 Java 对象（POJO）。它通过注解实现这一目的;在写入的文件中添加@Data就可，如下图：
 
   ![image-20210306163122698](C:\Users\hupeng\AppData\Roaming\Typora\typora-user-images\image-20210306163122698.png)
-
 - spring默认使用yml中的配置，但有时候要用传统的xml或properties配置，就需要使用spring-boot-configuration-processor了
-
 - 建立Web项目，所以挑选Spring web
 - Thymeleaf可以包内使用，而jsp不支持打包使用
 - ![image-20210306163350506](C:\Users\hupeng\AppData\Roaming\Typora\typora-user-images\image-20210306163350506.png)
@@ -95,8 +89,6 @@ public class IndexController {
 }
 ```
 
-
-
 ```java
 package com.example.firstwell.bean;
 
@@ -108,17 +100,11 @@ public class User {
 }
 ```
 
-
-
 ```yaml
 server.port=8888  //改变端口
 ```
 
-
-
 个性化设置：在resources中加入banner.jpg或者搜索spring boot banner 在线
-
-
 
 [学习自B站雷神](https://www.bilibili.com/video/BV19K4y1L7MT?p=44)
 

@@ -1,5 +1,5 @@
 ---
-title:Grid+Element+document实现简单的瀑布流
+title: Grid+Element+document实现简单的瀑布流
 ---
 # Grid+Element+document实现简单的瀑布流
 

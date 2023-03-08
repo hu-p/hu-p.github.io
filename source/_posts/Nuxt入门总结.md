@@ -1,5 +1,5 @@
 ---
-title:Nuxt入门总结
+title: Nuxt入门总结
 ---
 
 # Nuxt入门总结

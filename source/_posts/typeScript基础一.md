@@ -1,7 +1,6 @@
 ---
-title:TypeScript学习指南
+title: TypeScript学习指南
 ---
-
 # TypeScript学习指南
 
 ## 前言
@@ -10,7 +9,7 @@ title:TypeScript学习指南
 
 > 整理不易 如果觉得本文有帮助 记得**点赞三连**哦 十分感谢！
 
-------
+---
 
 ### 1 ts 安装和编译
 
@@ -30,7 +29,7 @@ tsc --init
 
 我们就先按照自动生成的 tsconfig 配置项去使用 里面的配置咱们可以先不去管他 后续熟练了再去配置
 
-- 第四步 在项目下新建一个`index.ts` 直接写入
+- 第四步 在项目下新建一个 `index.ts` 直接写入
 
 ```ts
 const a: string = "hello";
@@ -51,7 +50,7 @@ tsc index.ts
 ts-node index.ts
 ```
 
-可以看到我们打印的`hello`已经输出了
+可以看到我们打印的 `hello`已经输出了
 
 那可能 还有的小伙伴会发现 我们每次改动都要手动去执行编译 这样很麻烦 其实我们可以加一个参数来实现每次文件变动 ts 帮我们**自动编译成 js** 的效果
 
@@ -148,7 +147,7 @@ const flag: [string, number] = ["hello", 1];
 
 ##### 2.7 Symbol
 
-我们在使用 Symbol 的时候，必须添加 es6 的编译辅助库 需要在 tsconfig.json 的 `libs` 字段加上`ES2015` Symbol 的值是唯一不变的
+我们在使用 Symbol 的时候，必须添加 es6 的编译辅助库 需要在 tsconfig.json 的 `libs` 字段加上 `ES2015` Symbol 的值是唯一不变的
 
 ```ts
 const sym1 = Symbol("hello");
@@ -176,7 +175,7 @@ let n: null = null;
 
 ##### 2.10 Unknown 类型
 
-`unknown` 和 `any` 的主要区别是 `unknown` 类型会更加严格 在对 `unknown` 类型的值执行大多数操作之前 我们必须进行某种形式的检查 而在对 `any` 类型的值执行操作之前 我们不必进行任何检查 所有类型都可以被归为 `unknown` 但`unknown`类型只能被赋值给 `any` 类型和 `unknown` 类型本身 而 `any` 啥都能分配和被分配
+`unknown` 和 `any` 的主要区别是 `unknown` 类型会更加严格 在对 `unknown` 类型的值执行大多数操作之前 我们必须进行某种形式的检查 而在对 `any` 类型的值执行操作之前 我们不必进行任何检查 所有类型都可以被归为 `unknown` 但 `unknown`类型只能被赋值给 `any` 类型和 `unknown` 类型本身 而 `any` 啥都能分配和被分配
 
 ```ts
 let value: unknown;
@@ -205,7 +204,7 @@ function hello(name: string): void {}
 
 ##### 2.12 never 类型
 
-`never` 一般表示用户无法达到的类型 例如`never` 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型
+`never` 一般表示用户无法达到的类型 例如 `never` 类型是那些总是会抛出异常或根本就不会有返回值的函数表达式或箭头函数表达式的返回值类型
 
 ```ts
 function neverReach(): never {
@@ -217,7 +216,7 @@ function neverReach(): never {
 
 ##### 2.13 BigInt 大数类型
 
-使用 `BigInt` 可以安全地存储和操作大整数 我们在使用 `BigInt` 的时候 必须添加 `ESNext` 的编译辅助库 需要在 tsconfig.json 的 `libs` 字段加上`ESNext` 要使用`1n`需要 `"target": "ESNext"` `number` 和 `BigInt` 类型不一样 不兼容
+使用 `BigInt` 可以安全地存储和操作大整数 我们在使用 `BigInt` 的时候 必须添加 `ESNext` 的编译辅助库 需要在 tsconfig.json 的 `libs` 字段加上 `ESNext` 要使用 `1n`需要 `"target": "ESNext"` `number` 和 `BigInt` 类型不一样 不兼容
 
 ```ts
 const max1 = Number.MAX_SAFE_INTEGER; // 2**53-1
@@ -931,7 +930,7 @@ console.log(a.name);
 
 其实这样的用法一般出现在 当我们需要把一个类作为参数的时候 我们需要对传入的类的构造函数类型进行约束 所以需要使用 new 关键字代表是类的构造函数类型 用以和普通函数进行区分
 
-------
+---
 
 > 思考：接口和类型别名的区别 这个题目是经典的 **ts 面试题**
 
@@ -1098,7 +1097,7 @@ function loggingIdentity<T extends Lengthwise>(arg: T): T {
 }
 ```
 
-> 注意：我们在泛型里面使用`extends`关键字代表的是泛型约束 需要和类的继承区分开
+> 注意：我们在泛型里面使用 `extends`关键字代表的是泛型约束 需要和类的继承区分开
 
 ##### 6.3 泛型接口
 
@@ -1382,7 +1381,7 @@ type TodoBase = {
 
 1. Record<K,T> 构造一个类型，该类型具有一组属性 K，每个属性的类型为 T。可用于将一个类型的属性映射为另一个类型。Record 后面的泛型就是对象键和值的类型。
 
-简单理解：K 对应对应的 key，T 对应对象的 value，返回的就是一个声明好的对象 但是 K 对应的泛型约束是`keyof any` 也就意味着只能传入 `string|number|symbol`
+简单理解：K 对应对应的 key，T 对应对象的 value，返回的就是一个声明好的对象 但是 K 对应的泛型约束是 `keyof any` 也就意味着只能传入 `string|number|symbol`
 
 ```ts
 // type Record<K extends keyof any, T> = {
@@ -1820,7 +1819,5 @@ declare const $: (selector: string) => {
 3.还没有再找 lib/index.d.js
 
 4.还找不到就认为没有类型声明了
-
-
 
 转载：[最全的TypeScript学习指南](https://juejin.cn/post/7031787942691471396#heading-59)
