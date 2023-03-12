@@ -349,12 +349,21 @@ navbar:
   # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
   menu:
     - { key: "home", link: "/", icon: "iconfont icon-home-fill" }
-    # - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
-    # - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
-    # - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
-    # - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    # - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
-    - { key: "tools", link: "/tools/html/sqlChange.html", icon: "iconfont icon-link-fill" }
+    - { key: "archive", link: "/archives/", icon: "iconfont icon-archive-fill" }
+    - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
+    - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
+    - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "tools", 
+        icon: "iconfont icon-briefcase",
+        submenu: 
+        [
+        { key: '工具', link: '/html/sqlChange.html' },
+        { key: 'Hexo文档', link: 'https://hexo.io/zh-cn/docs/' },
+        { key: 'fluid配置指南', link: 'https://hexo.fluid-dev.com/docs/guide/' },
+        { key: 'fluid图标用法', link: 'https://hexo.fluid-dev.com/docs/icon/' }
+        ]
+      }
 
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
@@ -437,12 +446,14 @@ footer:
   # 展示网站的 PV、UV 统计数
   # Display website PV and UV statistics
   statistics:
-    enable: false
+    enable: true
 
     # 统计数据来源，使用 leancloud 需要设置 `web_analytics: leancloud` 中的参数；使用 busuanzi 不需要额外设置，但是有时不稳定，另外本地运行时 busuanzi 显示统计数据很大属于正常现象，部署后会正常
     # Data source. If use leancloud, you need to set the parameter in `web_analytics: leancloud`
     # Options: busuanzi | leancloud
     source: "busuanzi"
+    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    uv_format: "总访客数 {} 人"
 
   # 国内大陆服务器的备案信息
   # For Chinese mainland website policy, other areas keep disable
@@ -465,7 +476,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /img/default.png
+  banner_img: /img/moon.png
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
