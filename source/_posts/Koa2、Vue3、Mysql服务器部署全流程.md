@@ -1,6 +1,8 @@
-
 ---
 title: Koa2、Vue3、Mysql服务器部署全流程
+categories: koa
+tags: 
+  koa
 ---
 # Koa2、Vue3、Mysql服务器部署全流程
 
@@ -8,18 +10,16 @@ title: Koa2、Vue3、Mysql服务器部署全流程
 
 连接服务器
 
- ```
+```
 快捷连接指令 ssh root@服务器IP地址
 重启服务器 reboot
- ```
-
-
+```
 
 ## 一、Mysql服务器端安装
 
 [参考mysql安装、配置流程](https://blog.csdn.net/wyg1973017714/article/details/106482176)
 
-<u>**重点：使用服务端的服务时，在服务器防火墙中打开相应的端口，mysql对应的端口为3306**</u>
+`<u>`**重点：使用服务端的服务时，在服务器防火墙中打开相应的端口，mysql对应的端口为3306**`</u>`
 
 ### 1、首先获取rpm源
 
@@ -51,9 +51,8 @@ yum install mysql-community-server
 rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
 ```
 
-
-
 ### 2、启动MySQL
+
 首先设置MySQL开机自启动，通过如下命令
 
 ```
@@ -67,6 +66,7 @@ systemctl start mysqld.service
 ```
 
 ### 3、登录MySQL
+
 初次登录时需要登录密码，通过以下命令查看初始密码
 
 ```
@@ -88,7 +88,7 @@ alter user 'root'@'localhost' identified by '密码';
 
 通过以上密码可将登录密码初始化为root，identified by 后面的引号中包含的字符就是设置的登陆密码
 
-<u>**高版本mysql修改密码的坑、常见操作，如下：**</u>
+`<u>`**高版本mysql修改密码的坑、常见操作，如下：**`</u>`
 
 ```
 若修改时出现错误，可能是版本过高，例如：将 validate_password_policy修改 validate_password.policy，余者类似
@@ -121,9 +121,8 @@ select * from 表名 查看数据表中的数据
 source /root/probe.sql (/root/probe.sql即sql文件在服务器上的位置)
 ```
 
-
-
 ### 4、添加远程用户，赋予全部权限
+
 首先需要创建一个新的用户，使用如下命令：
 
 ```
@@ -142,9 +141,7 @@ grant all privileges on *.* to 'root'@'%' with grant option;
 flush privileges;
 ```
 
-**<u>注释：完成到此处时，其实navicat中就可以直接成功连接啦，但是由于mysql对于新旧版本密码算法不同，会出现步骤5中的错误，故而需要将密码重新修改或者在创建远程用户时就将以对应的形式设置好</u>**
-
-
+**`<u>`注释：完成到此处时，其实navicat中就可以直接成功连接啦，但是由于mysql对于新旧版本密码算法不同，会出现步骤5中的错误，故而需要将密码重新修改或者在创建远程用户时就将以对应的形式设置好`</u>`**
 
 ### 5、navicat远程连接
 
@@ -166,8 +163,6 @@ alter user 'xxx'@'%' IDENTIFIED WITH mysql_native_password BY 'xxxxxx'
 flush privileges;
 ```
 
-
-
 ## 二、Node服务配置
 
 ### 1、获取最新的node包(node服务中包括node、npm)
@@ -178,18 +173,14 @@ flush privileges;
 
 原因：
 
-- `/usr`：系统级的目录，可以理解为`C:/Windows/`
-
-- `/usr/lib`理解为`C:/Windows/System32`              
-
-- `                        /usr/local`：用户级的程序目录，可以理解为`C:/Progrem Files/`。用户自己编译的软件默认会安装到这个目录下。                  
-
-- `/opt`：用户级的程序目录，可以理解为`D:/Software`，opt有可选的意思，这里可以用于放置第三方大型软件（或游    戏），当你不需要时，直接`rm -rf`掉即可。在硬盘容量不够时，也可将/opt单独挂载到其他磁盘上使用。
+- `/usr`：系统级的目录，可以理解为 `C:/Windows/`
+- `/usr/lib`理解为 `C:/Windows/System32`
+- `                        /usr/local`：用户级的程序目录，可以理解为 `C:/Progrem Files/`。用户自己编译的软件默认会安装到这个目录下。
+- `/opt`：用户级的程序目录，可以理解为 `D:/Software`，opt有可选的意思，这里可以用于放置第三方大型软件（或游    戏），当你不需要时，直接 `rm -rf`掉即可。在硬盘容量不够时，也可将/opt单独挂载到其他磁盘上使用。
 
 源码放哪里？
 
 - `/usr/src`：系统级的源码目录。
-
 - `/usr/local/src`：用户级的源码目录
 
 #### 1、在liunx上从node官网下载node的压缩包
@@ -267,21 +258,19 @@ npm use taobao
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
 
-
-
 ## 三、Koa2项目上传
 
-**<u>此处也要在防火墙中开启服务端端口</u>**
+**`<u>`此处也要在防火墙中开启服务端端口`</u>`**
 
 在云端运行koa2项目与在本地运行时几乎没有差异，服务器端有node环境，可直接运行koa2项目，当navicat可以远程连接mysql数据库，而koa项目不行连接时，参看上文Mysql
 
-**<u>在上传前可将node_modules先删除，然后通过xftp上传文档(上传后的路径可以任意选择，建议在/root下)，然后进入koa2项目中，</u>**
+**`<u>`在上传前可将node_modules先删除，然后通过xftp上传文档(上传后的路径可以任意选择，建议在/root下)，然后进入koa2项目中，`</u>`**
 
-**<u>使用```npm install```下载node_modules,然后通过```node app.js```运行项目即可</u>**
+**`<u>`使用 ``npm install``下载node_modules,然后通过 ``node app.js``运行项目即可`</u>`**
 
 缺点：打开后，该终端页面就无法继续操作，且退出终端后项目也停止运行
 
-<u>**为解决node单一运行的缺点，故而安装pm2**</u>
+`<u>`**为解决node单一运行的缺点，故而安装pm2**`</u>`
 
 ```
 //安装
@@ -318,8 +307,6 @@ pm2 monit
 -- arg1 arg2 arg3
 其他参数
 ```
-
-
 
 ## 四、Nginx安装
 
@@ -377,8 +364,6 @@ ps -ef|grep nginx
 vim nginx.conf
 ```
 
-
-
 ## 五、Vue3项目上传
 
 ### 1、项目打包
@@ -391,7 +376,7 @@ npm run build      生成dist文件夹
 
 ### 2、dist文件夹的位置
 
-**<u>dist文件夹可以有两种方式</u>**
+**`<u>`dist文件夹可以有两种方式`</u>`**
 
 1. 将dist文件夹导入/usr/local/nginx/下，与原本的nginx中的html文件夹同级 (目前使用的)
 
@@ -413,7 +398,7 @@ npm run build      生成dist文件夹
    }
      此时就会覆盖掉server root 中的路径
    假如此时声明 location /app {
-   
+
    }
    那么此时所有的操作就是基于路径/usr/share/app
    ```
@@ -460,7 +445,4 @@ location / {
   }
 ```
 
-
-
 ## 注意：上传服务器时，需要将ip与域名更改成服务器的域名，可能一个空格和/就会报错
-

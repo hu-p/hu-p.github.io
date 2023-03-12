@@ -1,9 +1,10 @@
 ---
 title: Nvm版本管理
 date: 2023-03-07 22:03:30
-tags:
+category: ["环境配置"]
+tags: ["nvm"]
+category_bar: true
 ---
-
 # Nvm学习
 
 ## 一.安装
