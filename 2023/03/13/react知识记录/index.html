@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="react知识记录一、图片导入问题12345678910111213141516171819202122232425262728293031323334353637一、background-image.login-logo &amp;#123;  position: absolute;  left: 42px;  top: 32px;  width: 56px;  height: 46px;  &#x2F;&#x2F; 图片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react知识记录">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/03/13/react%E7%9F%A5%E8%AF%86%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="react知识记录一、图片导入问题12345678910111213141516171819202122232425262728293031323334353637一、background-image.login-logo &amp;#123;  position: absolute;  left: 42px;  top: 32px;  width: 56px;  height: 46px;  &#x2F;&#x2F; 图片">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-13T02:59:18.032Z">
+<meta property="article:modified_time" content="2023-03-13T02:59:18.032Z">
+<meta property="article:author" content="渊不语">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>react知识记录 - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="react知识记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-13 02:59" pubdate>
+          2023年3月13日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          156 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">react知识记录</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="react知识记录"><a href="#react知识记录" class="headerlink" title="react知识记录"></a>react知识记录</h1><h2 id="一、图片导入问题"><a href="#一、图片导入问题" class="headerlink" title="一、图片导入问题"></a>一、图片导入问题</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs css">一、<span class="hljs-attribute">background-image</span><br><span class="hljs-selector-class">.login-logo</span> &#123;<br>  <span class="hljs-attribute">position</span>: absolute;<br>  <span class="hljs-attribute">left</span>: <span class="hljs-number">42px</span>;<br>  <span class="hljs-attribute">top</span>: <span class="hljs-number">32px</span>;<br>  <span class="hljs-attribute">width</span>: <span class="hljs-number">56px</span>;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">46px</span>;<br>  // 图片颜色 路径 不重复 居中<br>  <span class="hljs-attribute">background</span>: <span class="hljs-number">#ecf2fb</span> <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;../login/logo.png&quot;</span>) no-repeat center;<br>  // 图片大小<br>  <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span> <span class="hljs-number">100%</span>;<br>&#125;<br><br>二、&lt;<span class="hljs-selector-tag">img</span> <span class="hljs-attribute">src</span>=&#123;&#125; alt=&#x27;&#x27;&gt;<br>// 常规方式图片显示不出来<br>&lt;<span class="hljs-selector-tag">div</span> className=&quot;bigPic&quot;&gt;<br>　　&lt;<span class="hljs-selector-tag">img</span> <span class="hljs-attribute">src</span>=&#123;require(&#x27;../../images/bg<span class="hljs-selector-class">.png</span>&#x27;)&#125; alt=&quot;&quot; /&gt;<br>&lt;/<span class="hljs-selector-tag">div</span>&gt;<br><br>解决方法一、<br>　　再导入的图片后加<span class="hljs-selector-class">.default</span>即可<br>　　&lt;<span class="hljs-selector-tag">img</span> <span class="hljs-attribute">src</span>=&#123;require(&#x27;../../images/bg<span class="hljs-selector-class">.png</span>&#x27;)<span class="hljs-selector-class">.default</span>&#125; alt=&quot;&quot; /&gt;<br><br>解决方法二、<br>　　import imgUrl <span class="hljs-selector-tag">from</span> &#x27;../../images/bg<span class="hljs-selector-class">.png</span>&#x27;;<br>　　&lt;<span class="hljs-selector-tag">img</span> <span class="hljs-attribute">src</span>=&#123;imgUrl&#125; alt=&quot;&quot; /&gt;<br> <br>原因：<br>　　首先 webpack 支持 CommonJS、AMD 和 ES6模块打包。当我们用 单文件写组件时，在 script 标签内使用的是 ES6 的语法且使用 export default 进行默认导出。然而，require 是 CommonJS 的模块导入方式，不支持模块的默认导出，因此导入的结果其实是一个含 default 属性的对象，因此需要使用 <span class="hljs-selector-class">.default</span> 来获取实际的组件。<br>　　当然我们也可以使用 ES6 的 import 语句，如果使用 import，需要给定一个变量名，所有 import 语句必须统一放在模块的开头。<br>　　相反，如果  文件中使用 CommonJS 或 AMD 模块化语法，使用 module<span class="hljs-selector-class">.exports</span> 对象进行导出，那么使用 require 导入时就不需要使用 <span class="hljs-selector-class">.default</span> 来获取。<br>　　<br><br>推荐方法：<br>// 通过这种方式，您实际上并没有像导入模块那样导入图像文件，而是让服务器静态地为浏览器提供服务。<br>// 此处应当为<span class="hljs-attribute">src</span>=&#123;&#125;形式，引入值，但是位于静态资源public中，路径为public/<span class="hljs-selector-tag">img</span>/logo<span class="hljs-selector-class">.png</span>，故可直接使用<span class="hljs-selector-tag">img</span>/logo<span class="hljs-selector-class">.png</span>形式 <br>  &lt;<span class="hljs-selector-tag">img</span> <span class="hljs-attribute">src</span>=&#x27;<span class="hljs-selector-tag">img</span>/logo<span class="hljs-selector-class">.png</span>&#x27; alt=&quot;&quot; /&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二、css屏幕宽超出问题"><a href="#二、css屏幕宽超出问题" class="headerlink" title="二、css屏幕宽超出问题"></a>二、css屏幕宽超出问题</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">/* 宽度小于1500 */</span><br><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">1500px</span>) &#123;<br>    <span class="hljs-selector-class">.login-section-layout</span> &#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">75vw</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/* 宽度大于1500 */</span><br><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">1500px</span>) &#123;<br>    <span class="hljs-selector-class">.login-section-layout</span> &#123;<br>        <span class="hljs-attribute">width</span>: <span class="hljs-number">65vw</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、react导入antd问题"><a href="#三、react导入antd问题" class="headerlink" title="三、react导入antd问题"></a>三、react导入antd问题</h3><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">import</span> <span class="hljs-string">&#x27;antd/dist/antd.min.css&#x27;</span><br>/* <span class="hljs-string">Failed</span> <span class="hljs-string">to</span> <span class="hljs-string">parse</span> <span class="hljs-string">source</span> <span class="hljs-string">map</span>: <span class="hljs-string">&#x27;webpack://antd/./components/config-provider/style/index.less&#x27;</span><span class="hljs-string">URL</span> <span class="hljs-string">is</span> <span class="hljs-string">not</span> <span class="hljs-string">supported</span> <br>此问题为<span class="hljs-string">react-script</span> 升级到<span class="hljs-string">5</span>.<span class="hljs-string">0</span>.<span class="hljs-string">0</span>之后出现此问题，也就是说从<span class="hljs-string">14</span>号开始，所有通过<span class="hljs-string">npx</span> <span class="hljs-built_in">create-react-app</span> 创建的项目，<br> 引入<span class="hljs-string">antd</span>.<span class="hljs-string">css</span> 之后都会看到这个警告， 将<span class="hljs-string">import</span> <span class="hljs-string">&#x27;antd/dist/antd.css&#x27;</span>改为<span class="hljs-string">import</span> <span class="hljs-string">&#x27;antd/dist/antd.min.css&#x27;</span><br>*/<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、两盒子重叠"><a href="#四、两盒子重叠" class="headerlink" title="四、两盒子重叠"></a>四、两盒子重叠</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">// 在父盒子中设置<span class="hljs-attribute">position</span>: relative;<br>// 在子盒子中设置<span class="hljs-attribute">position</span>: absolute;<br>效果：<br>   一个大盒子中包裹多个排列有序的子盒子(诸如使用<span class="hljs-attribute">display</span>:flex命令)，此时需要添加一个盒子，会和其中的和重叠，故而此盒子设置position: absolute，其父盒子设置position: relative;即可实现<br></code></pre></td></tr></table></figure>
+
+<h2 id="五、react中样式局部和全局"><a href="#五、react中样式局部和全局" class="headerlink" title="五、react中样式局部和全局"></a>五、react中样式局部和全局</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs css">在vue中可以设置 &lt;style scoped=&#x27;lang&#x27; less&gt; 设置less和局部显示<br>vue使用/deep/<span class="hljs-selector-class">.className</span>实现穿透<br><br>react使用:<span class="hljs-built_in">global</span>(.className)实现穿透<br>在react中css默认为全局有效，故令文件名为XX.module.css或XX.module.less可实现局部有效，这种方式为模块化，实现方式是修改类选择器名和id选择器名，故局部有效是针对于类选择器和id选择器，诸如（img,footer）等元素选择器会失效，故使用时需留意<br>当在react中需要穿透时，则使用:<span class="hljs-built_in">global</span>(.className),:<span class="hljs-built_in">global</span>(.className)在.css文件和.module.css等文件中都有效<br><br>//导入 .css等样式文件时<br>import <span class="hljs-string">&#x27;./xxxx.css&#x27;</span><br><br>// 类选择器单一样式<br>&lt;div className=<span class="hljs-string">&#x27;yangshi1&#x27;</span>&gt;<br>// 类选择器多个样式<br>&lt;div className=<span class="hljs-string">&#x27;yangshi2 yangshi3&#x27;</span>&gt;<br><br>//导入 .module.css等样式文件时<br>import styles from <span class="hljs-string">&#x27;./xxxx.css&#x27;</span><br><br>// 类选择器单一样式<br>&lt;div className=&#123;style<span class="hljs-selector-class">.yangshi1</span>&#125;&gt;<br>或<br>// 因为在&#123;&#125;不识别—，识别_,故在此使用style<span class="hljs-selector-attr">[yangshi1]</span>，而不是点语法<br>&lt;<span class="hljs-selector-tag">div</span> className=&#123;style<span class="hljs-selector-attr">[yangshi1]</span>&#125;&gt;<br>或<br>//使用模板字符串，一般是使用与有多个样式导入一个类选择器<br>&lt;<span class="hljs-selector-tag">div</span> clssName=&#123;`$&#123;style<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;yangshi1&#x27;</span>]</span>&#125;`&#125;<br><br>// 类选择器多个样式<br>//使用模板字符串<br>&lt;<span class="hljs-selector-tag">div</span> clssName=&#123;`$&#123;style<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;yangshi2&#x27;</span>]</span>&#125; $&#123;style<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;yangshi3&#x27;</span>]</span>&#125;`&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="六、Modal内嵌套一个form表单"><a href="#六、Modal内嵌套一个form表单" class="headerlink" title="六、Modal内嵌套一个form表单"></a>六、Modal内嵌套一个form表单</h2><h3 id="一、form表单"><a href="#一、form表单" class="headerlink" title="一、form表单"></a>一、form表单</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><code class="hljs react">// 极度重要:挂载form<br> const [form] = Form.useForm();<br>// 配置项form : form=&#123;form&#125; <br>//表单定义默认值form.setFieldsValue需放在useEffect副作用中<br><br>Form表单的一个常规写法：<br>1.通过 Form.useForm 对表单数据域进行交互。<br>const [form] = Form.useForm(); <br>//这里用form要使用在钩子函数里，可以配合react的hook使用，<br>如果使用react生命周期开发的话可以给form表单添加ref来获取表单数据或者修改数据，（this.formRef = React.createRef();）<br>获取表单数据：this.formRef.current.getFieldsValue()。this.formRef.current.validateFields().then().catch()<br><br><br>const layout = &#123;<br>    labelCol: &#123; span: 8 &#125;,<br>    wrapperCol: &#123; span: 16 &#125;,<br>&#125;;<br><br>const validateMessages = &#123;<br>    required: &#x27;$&#123;label&#125; is required!&#x27;,<br>    types: &#123;<br>        email: &#x27;$&#123;label&#125; is not a valid email!&#x27;,<br>        number: &#x27;$&#123;label&#125; is not a valid number!&#x27;,<br>    &#125;,<br>    number: &#123;<br>        range: &#x27;$&#123;label&#125; must be between $&#123;min&#125; and $&#123;max&#125;&#x27;,<br>    &#125;,<br>&#125;;<br><br><br>&lt;Form form=&#123;form&#125; &#123;...layout&#125; name=&quot;nest-messages&quot; onFinish=&#123;onFinish.bind(this)&#125; validateMessages=&#123;validateMessages&#125; className=&quot;login-form&quot;<br>initialValues=&#123;&#123; name: &#x27;ming&#x27;, password: &#x27;123456&#x27; &#125;&#125;<br>&gt;<br><br>    &lt;Form.Item name=&#x27;name&#x27; label=&quot;用户名&quot; rules=&#123;[&#123; required: true &#125;]&#125;&gt;<br>        &lt;Input placeholder=&quot;用户名&quot; /&gt;<br>    &lt;/Form.Item&gt;<br><br>    &lt;Form.Item name=&#x27;password&#x27; label=&quot;密码&quot; rules=&#123;[&#123; required: true &#125;]&#125;&gt;<br>        &lt;Input placeholder=&quot;用户密码&quot; /&gt;<br>    &lt;/Form.Item&gt;<br><br>    &lt;Form.Item &gt;<br>        &lt;Button type=&quot;primary&quot; htmlType=&quot;submit&quot; className=&quot;login-form-button&quot;&gt;<br>            登录<br>        &lt;/Button&gt;<br>        &lt;Button &gt;重置表单&lt;/Button&gt;<br>    &lt;/Form.Item&gt;<br>&lt;/Form&gt;<br><br>2.获取对应字段名的值。用法：<br>form.getFieldValue(&#x27;name&#x27;)；<br>form.getFieldValue(&#x27;password&#x27;)<br><br>3.设置表单的值，更新对应的值，用法：<br>form.setFieldsValue(&#123;<br>    name: &#x27;ming&#x27;,<br>    password: &#x27;111222&#x27;<br>&#125;);<br><br>4.获取Form全部字段名对应的值，会按照对应结构返回。用法：<br>form.getFieldsValue()<br><br>5.触发表单验证。用法：<br>form.validateFields().then(value =&gt; &#123; <br><br>// 验证通过后进入 const &#123; name,password&#125; = value; console.log(name, password);  <br><br>&#125;).catch(err =&gt; &#123; // 验证不通过时进入 console.log(err); &#125;);<br>6.提交表单，与点击 submit 按钮效果相同，会走 onFinish 方法。用法：<br>&lt;Button onClick=&#123;() =&gt; form.submit()&#125;&gt; 提交 &lt;/Button&gt; // 与下面效果一样 &lt;Button htmlType=&quot;submit&quot;&gt; 提交 &lt;/Button&gt;<br><br>7.重置一组字段到 initialValues。用法:<br>form.resetFields();<br><br>8.获取光标方法：<br>form.getFieldInstance(&#x27;name&#x27;).focus();<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、form表单示例"><a href="#二、form表单示例" class="headerlink" title="二、form表单示例"></a>二、form表单示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs react">// 示例<br>import React, &#123; useEffect, useState &#125; from &#x27;react&#x27;;<br>import &#123; Modal, Form, Input, InputNumber, Button, Radio, Row, Col &#125; from &#x27;antd&#x27;;<br>import styles from &#x27;../index.module.less&#x27;;<br><br>const addModel = (props) =&gt; &#123;<br>    //传过来的add或edit<br>    const &#123; isModalVisible, setIsModalVisible,editList&#125; = props<br>    // 判断开启与否<br>    const [AddVisible, setAddVisible] = useState(false);<br><br>    //表单数据交互<br>    const [form] = Form.useForm();<br><br>    //副作用,代替生命周期钩子<br>    useEffect(() =&gt; &#123;<br>        if (isModalVisible == &#x27;add&#x27; || isModalVisible == &#x27;edit&#x27;) &#123;<br>            setAddVisible(true)<br>        &#125;<br>        if (isModalVisible == &#x27;edit&#x27;) &#123;<br>            //表单定义需放在useEffect副作用中<br>            form.setFieldsValue(&#123;<br>               ...editList<br>            &#125;)<br>        &#125;<br>    &#125;);   //不加[]每个周期都有效<br><br>    //确定<br>    const handleOk = () =&gt; &#123;<br>        setIsModalVisible(&#x27;view&#x27;)<br>        // 启动表单提交<br>        form.submit()<br>        form.validateFields().then(value =&gt; &#123; <br>            // 验证通过后进入 const &#123; name,password&#125; = value; console.log(name, password);  <br>            console.log(&#x27;成功&#x27;,value);<br>              setAddVisible(false)<br>            &#125;).catch(err =&gt; &#123; <br>            //   验证不通过时进入 <br>              console.log(&#x27;失败&#x27;,err); <br>            &#125;);<br>    &#125;;<br><br>    //取消<br>    const handleCancel = () =&gt; &#123;<br>        setIsModalVisible(&#x27;view&#x27;)<br>        setAddVisible(false)<br>    &#125;;<br><br>    //表单提交<br>    const onFinish = (values) =&gt; &#123;<br>        console.log(&#x27;提交&#x27;, values);<br>    &#125;<br><br>    return (<br>        &lt;Modal title=&#123;isModalVisible == &#x27;add&#x27; ? &#x27;新建门店信息&#x27; : (isModalVisible == &#x27;edit&#x27; ? &#x27;编辑门店信息&#x27; : &#x27;详情&#x27;)&#125;<br>            visible=&#123;AddVisible&#125; onOk=&#123;handleOk&#125; onCancel=&#123;handleCancel&#125; width=&#123;800&#125;&gt;<br>            &lt;Form<br>                form=&#123;form&#125;    //挂载form<br>                layout=&quot;vertical&quot;<br>                name=&quot;nest-messages&quot;<br>                onFinish=&#123;onFinish&#125;<br>            &gt;<br>                &lt;Row className=&#123;styles[&#x27;add-title-message&#x27;]&#125;&gt;<br>                    &lt;Col span=&#123;24&#125;&gt;<br>                        基础信息<br>                    &lt;/Col&gt;<br>                &lt;/Row&gt;<br>                &lt;Row &gt;<br>                    &lt;Col span=&#123;12&#125;&gt;<br>                        &lt;Form.Item<br>                            name=&#x27;org_no&#x27;<br>                            label=&quot;门店编号&quot;<br>                            rules=&#123;[&#123; required: true, message: &#x27;请输入门店编号&#x27; &#125;]&#125;<br>                            className=&#123;styles[&#x27;add-message-input&#x27;]&#125;<br>                        &gt;<br>                            &lt;Input style=&#123;&#123;width:&quot;100%&quot;&#125;&#125;/&gt;<br>                        &lt;/Form.Item&gt;<br>                    &lt;/Col&gt;<br>                    &lt;Col span=&#123;12&#125;&gt;<br>                        &lt;Form.Item<br>                            name=&#x27;org_name&#x27;<br>                            label=&quot;门店名称&quot;<br>                            rules=&#123;[&#123; required: true, message: &#x27;请输入门店名称&#x27; &#125;]&#125;<br>                            className=&#123;styles[&#x27;add-message-input&#x27;]&#125;<br>                        &gt;<br>                            &lt;Input /&gt;<br>                        &lt;/Form.Item&gt;<br>                    &lt;/Col&gt;<br>                &lt;/Row&gt;<br>            &lt;/Form&gt;<br>        &lt;/Modal&gt;<br>    );<br>&#125;;<br>export default addModel<br></code></pre></td></tr></table></figure>
+
+<h2 id="七、props-useContext基础使用"><a href="#七、props-useContext基础使用" class="headerlink" title="七、props,useContext基础使用"></a>七、props,useContext基础使用</h2><h3 id="一、props双向传值"><a href="#一、props双向传值" class="headerlink" title="一、props双向传值"></a>一、props双向传值</h3><p>props传值与常规一样，父传子接，子传父是使用父传函数给子，传多个值时分开写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs react">// 父传<br>&lt;AddModel<br>        isModalVisible=&#123;isModalVisible&#125;<br>        setIsModalVisible=&#123;setIsModalVisible&#125;<br>        editList=&#123;isModalVisible == &#x27;edit&#x27; ? editList : &#x27;&#x27;&#125;<br>      &gt;<br>      &lt;/AddModel&gt;<br><br>//子接<br>function demo(props) &#123;<br>     //从父传过来的值<br>    const &#123; isModalVisible, setIsModalVisible,editList&#125; = props<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、useContext的使用"><a href="#二、useContext的使用" class="headerlink" title="二、useContext的使用"></a>二、useContext的使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs react">//公共文件CountContext.jsx<br>import  &#123;createContext&#125; from &quot;react&quot;;<br>const Context = createContext();<br>export default Context<br><br>//父组件中<br>import Context from &#x27;./CountContext&#x27;<br>//传值可传值或函数，传函数可以起到子传父值效果<br> &lt;Context.Provider value=&#123;setData&#125;&gt;<br>            &lt;Search /&gt;<br> &lt;/Context.Provider&gt;<br><br> //子组件中<br>import &#123; useContext&#125; from &#x27;react&#x27;;<br> import Context from &#x27;./CountContext&#x27;<br>// setData为接到的值<br> const setData = useContext(Context)<br> <br> //传多个值时，可以使用数组，在接受时使用数组接收<br>  &lt;Context.Provider value=&#123;[data, setData,dictList]&#125;&gt;<br>          &lt;Froms /&gt;<br> &lt;/Context.Provider&gt;<br>    <br> const [data,SetData,dictList] = useContext(Context);<br></code></pre></td></tr></table></figure>
+
+<h2 id="八、表格操作"><a href="#八、表格操作" class="headerlink" title="八、表格操作"></a>八、表格操作</h2><p><a target="_blank" rel="noopener" href="https://ant.design/docs/react/introduce-cn">antd</a>    或  [antdPro](<a target="_blank" rel="noopener" href="https://procomponents.ant.design/components/">ProComponents - 模板组件 (ant.design)</a>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs react">//antdPro封装了复杂表格的切换<br><br>//表格中Colums中存放列标题及配置，可写成一个对象，然后导入到表格中<br>//不推荐，极度缺乏灵活性，因为是如果放在函数外，当Colums中想使用函数中的数据时，是无法获取到的<br>const columns = [<br>  &#123;<br>    title: &#x27;品牌编号&#x27;,<br>    dataIndex: &#x27;brand_no&#x27;,<br>    key: &#x27;brand_no&#x27;,<br>    align: &#x27;center&#x27; as &#x27;center&#x27;,<br>    width: 100,<br>    sorter: (a: any, b: any) =&gt; a.brand_no - b.brand_no,<br>  &#125;,<br>      &#123;<br>    title: &#x27;品牌编号&#x27;,<br>    dataIndex: &#x27;brand_no&#x27;,<br>    key: &#x27;brand_no&#x27;,<br>    align: &#x27;center&#x27; as &#x27;center&#x27;,<br>    width: 100,<br>    sorter: (a: any, b: any) =&gt; a.brand_no - b.brand_no,<br>  &#125;,<br>//推荐使用<br>&lt;Column title=&#x27;联系人&#x27;<br>            dataIndex=&#x27;contact&#x27;<br>            key=&#x27;contact&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27;/&gt;)<br><br><br>//table配置<br>&lt;Table<br>          rowKey=&quot;id&quot;<br>          //rowSelection配值项，为一个对象，详细的配置写在rowSelection1中，详情参看官网<br>          rowSelection=&#123;rowSelection1&#125;  <br>          // columns=&#123;columns&#125;       //列标题默认操作<br>          dataSource=&#123;dataList&#125;   //数据<br>          scroll=&#123;&#123; y: &#x27;calc(100vh - 486px)&#x27;, x: 800 &#125;&#125;//滚动条<br>          pagination=&#123;pagination&#125;   //分页<br>          onRow=&#123;(record) =&gt; (&#123;   //onRow行属性，点击当前行任意位置，调用该函数<br>             onClick: () =&gt; &#123;<br>                 //当前行的数据<br>               console.log(&#x27;调用&#x27;, record)<br>            &#125;,<br>           &#125;)&#125;<br>        &gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br></pre></td><td class="code"><pre><code class="hljs react">import styles from &#x27;../index.module.less&#x27;;<br>import React, &#123; useContext, useState, useEffect &#125; from &#x27;react&#x27;;<br>import &#123;<br>  Button,<br>  Table,<br>  ConfigProvider,<br>  Modal,<br>  Dropdown,<br>  Menu,<br>&#125; from &#x27;antd&#x27;;<br><br>const &#123; Column, ColumnGroup &#125; = Table;<br><br>import zhCN from &#x27;antd/es/locale/zh_CN&#x27;;<br>import request from &#x27;@/utils/request&#x27;;<br>import &#123;<br>  MoreOutlined,<br>  ExclamationCircleOutlined,<br>&#125; from &#x27;@ant-design/icons&#x27;;<br><br>import AddModel from &#x27;./AddEdit&#x27;;<br><br>import Context from &#x27;./CountContext&#x27;<br><br>const &#123; confirm &#125; = Modal;<br><br>function delte(params) &#123;<br>  confirm(&#123;<br>    centered: true,<br>    title: &#x27;确定要删除当前项吗？&#x27;,<br>    icon: &lt;ExclamationCircleOutlined /&gt;,<br>    onOk() &#123;<br>      console.log(&#x27;OK&#x27;);<br>    &#125;,<br>    onCancel() &#123;<br>      console.log(&#x27;Cancel&#x27;);<br>    &#125;,<br>  &#125;);<br>&#125;<br><br>function Forms(props) &#123;<br>  const count = useContext(Context)<br>  let dataList = []<br>  let total = 0<br>  if (count.flag) &#123;<br>    dataList = count.rows<br>  &#125;<br><br>  const [selectedRowKeys, setSelectedRowKeys] = useState([])<br>  const [loading, setLoading] = useState(false)<br>  const [isModalVisible, setIsModalVisible] = useState(&#x27;&#x27;);<br>    //编辑时携带的数据<br>  const [editList, setEditList] = useState(&#x27;&#x27;);<br><br>  const start = () =&gt; &#123;<br>    setLoading(true);<br>    setSelectedRowKeys([])<br>    setLoading(false);<br>  &#125;;<br><br>  const onAdd = () =&gt; &#123;<br>    console.log(&#x27;添加addBtn&#x27;);<br>    setIsModalVisible(&#x27;add&#x27;)<br>  &#125;<br><br>  const onLeadingOut = () =&gt; &#123;<br>    console.log(&#x27;导出事件&#x27;);<br>  &#125;;<br>  const onDelete = () =&gt; &#123;<br>    console.log(&#x27;删除事件&#x27;);<br>  &#125;;<br>  const onSetting = () =&gt; &#123;<br>    console.log(&#x27;设置按钮&#x27;);<br>  &#125;;<br>  const pagination = &#123;<br>    pageSizeOptions: [10, 25, 50, 100, 200],<br>    total: total,<br>    showTotal: (total) =&gt; `共 $&#123;total&#125; 条数据`,<br>    showQuickJumper: true,<br>    showSizeChanger: true,<br>    showLessItems: true,<br>  &#125;;<br><br>  const onSelectChange = (selectedRowKeys, selectedRows) =&gt; &#123;<br>    setSelectedRowKeys(selectedRowKeys);<br>    console.log(&#x27;kanakn&#x27;, selectedRows);<br>  &#125;;<br><br>  const onSelectCallback = (a, b, c, d) =&gt; &#123;<br>    console.log(1, a);<br>    console.log(2, b);<br>    console.log(3, c);<br>    console.log(4, d);<br>  &#125;<br><br>  //行选中时的配置<br>  const rowSelection = &#123;<br>    selectedRowKeys,<br>    onChange: onSelectChange,    //选中项发生变化时的回调<br>    onSelect: onSelectCallback,   //用户手动选择/取消选择某行的回调<br>  &#125;;<br><br>  useEffect(() =&gt; &#123;<br>    console.log(&#x27;selectedRowKeys&#x27;, selectedRowKeys);<br>  &#125;);   //不加[]每个周期都有效<br><br>  return (<br>    &lt;div style=&#123;&#123; width: &#x27;100%&#x27;, height: &#x27;100%&#x27; &#125;&#125;&gt;<br>      &#123;/* 功能按钮 */&#125;<br>      &lt;div&gt;<br>        &lt;Button<br>          htmlType=&quot;button&quot;<br>          className=&#123;styles.leadingOut&#125;<br>          onClick=&#123;onAdd&#125;<br>        &gt;<br>          新建<br>        &lt;/Button&gt;<br>        &lt;Button<br>          htmlType=&quot;button&quot;<br>          className=&#123;styles.leadingOut&#125;<br>          onClick=&#123;onLeadingOut&#125;<br>        &gt;<br>          导出<br>        &lt;/Button&gt;<br>        &lt;Button danger className=&#123;styles.delete&#125; onClick=&#123;onDelete&#125;&gt;<br>          删除<br>        &lt;/Button&gt;<br>        &lt;img<br>          src=&#123;require(&#x27;../../../../../../public/img/iconSetting.png&#x27;)&#125;<br>          alt=&quot;&quot;<br>          className=&#123;styles.set&#125;<br>          onClick=&#123;onSetting&#125;<br>          style=&#123;&#123; cursor: &#x27;pointer&#x27; &#125;&#125;<br>        /&gt;<br>      &lt;/div&gt;<br>      &#123;/* 选中行 */&#125;<br>      &lt;div<br>        className=&#123;styles.hang&#125;<br>        style=&#123;&#123; backgroundColor: &#x27;#e6f5ff&#x27;, borderColor: &#x27;#acdbff&#x27; &#125;&#125;<br>      &gt;<br>        &lt;p&gt;<br>          已选择&lt;span&gt;&#123;selectedRowKeys.length&#125;&lt;/span&gt;项&#123;&#x27; &#x27;&#125;<br>          &lt;span className=&#123;styles.clear&#125; onClick=&#123;start&#125;&gt;<br>            清空<br>          &lt;/span&gt;<br>        &lt;/p&gt;<br>      &lt;/div&gt;<br>      &lt;ConfigProvider locale=&#123;zhCN&#125;&gt;<br>        &lt;Table<br>          rowKey=&quot;id&quot;<br>          rowSelection=&#123;rowSelection&#125;<br>          // columns=&#123;columns&#125;       //列标题默认操作<br>          dataSource=&#123;dataList&#125;   //数据<br>          scroll=&#123;&#123; y: &#x27;calc(100vh - 486px)&#x27;, x: 800 &#125;&#125;//滚动条<br>          pagination=&#123;pagination&#125;   //分页<br>          // onRow=&#123;(record) =&gt; (&#123;<br>          //   onClick: () =&gt; &#123;<br>          //     console.log(&#x27;调用&#x27;, record)<br>          //     //  dataValueChange = record<br>          //   &#125;,<br>          // &#125;)&#125;<br>        &gt;<br>          &lt;Column title=&quot;操作&quot; dataIndex=&quot;operate&quot;<br>            key=&quot;operate&quot; align=&#x27;center&#x27; width=&#x27;80&#x27;<br>            render=&#123;(_, record) =&gt; (<br>              &lt;Dropdown<br>                overlay=&#123;<br>                  &lt;Menu&gt;<br>                    &lt;Menu.Item key=&#123;1&#125;&gt;<br>                      &lt;div style=&#123;&#123; color: &#x27;red&#x27; &#125;&#125; onClick=&#123;() =&gt; &#123; <br>                        setIsModalVisible(&#x27;edit&#x27;) <br>                        setEditList(record)<br>                        &#125;&#125;&gt;<br>                        编辑<br>                      &lt;/div&gt;<br>                    &lt;/Menu.Item&gt;<br>                    &lt;Menu.Item key=&#123;2&#125;&gt;<br>                      &lt;div style=&#123;&#123; color: &#x27;red&#x27; &#125;&#125; onClick=&#123;delte&#125;&gt;<br>                        删除<br>                      &lt;/div&gt;<br>                    &lt;/Menu.Item&gt;<br>                  &lt;/Menu&gt;<br>                &#125;<br>                placement=&quot;bottomCenter&quot;<br>              &gt;<br>                &lt;MoreOutlined className=&#123;styles.operate&#125; /&gt;<br>              &lt;/Dropdown&gt;<br>            )&#125; /&gt;<br>          &lt;Column title=&#x27;门店编号&#x27;<br>            dataIndex=&#x27;org_no&#x27;<br>            key=&#x27;org_no&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27;<br>            sorter=&#123;(a, b) =&gt; a.brand_no - b.brand_no&#125; /&gt;<br>             &lt;Column title=&#x27;门店名称&#x27;<br>            dataIndex=&#x27;org_name&#x27;<br>            key=&#x27;org_name&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27;/&gt;<br>             &lt;Column title=&#x27;门店类型&#x27;<br>            dataIndex=&#x27;shop_type&#x27;<br>            key=&#x27;shop_type&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27;/&gt;<br>             &lt;Column title=&#x27;门店地址&#x27;<br>            dataIndex=&#x27;address&#x27;<br>            key=&#x27;address&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27; /&gt;<br>             &lt;Column title=&#x27;联系方式&#x27;<br>            dataIndex=&#x27;tel_no&#x27;<br>            key=&#x27;tel_no&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27;/&gt;<br>             &lt;Column title=&#x27;联系人&#x27;<br>            dataIndex=&#x27;contact&#x27;<br>            key=&#x27;contact&#x27;<br>            align=&#x27;center&#x27;<br>            width=&#x27;100&#x27;/&gt;<br>        &lt;/Table&gt;<br><br>      &lt;/ConfigProvider&gt;<br>      &#123;/* 添加或编辑 */&#125;<br>      &lt;AddModel<br>        isModalVisible=&#123;isModalVisible&#125;<br>        setIsModalVisible=&#123;setIsModalVisible&#125;<br>        editList=&#123;isModalVisible == &#x27;edit&#x27; ? editList : &#x27;&#x27;&#125;<br>      &gt;<br>      &lt;/AddModel&gt;<br>    &lt;/div&gt;<br>  )<br>&#125;<br>export default Forms<br></code></pre></td></tr></table></figure>
+
+<h2 id="九、useEffect"><a href="#九、useEffect" class="headerlink" title="九、useEffect"></a>九、useEffect</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs react">function Welcome(props) &#123;<br> //useEffect有两个参数<br> //参数一:一个常见的钩子函数<br> //参数二：当其为[],表示只执行一次<br>  useEffect(() =&gt; &#123;<br>    console.log(`Hello, $&#123;props.name&#125;`);<br>  &#125;<br>  , <br> [props.name]<br> );<br>上面例子中，useEffect()的第二个参数是一个数组，指定了第一个参数（副效应函数）的依赖项（props.name）。只有该变量发生变化时，副效应函数才会执行。如果第二个参数是一个空数组，就表明副效应参数没有任何依赖项。因此，副效应函数这时只会在组件加载进入 DOM 后执行一次，后面组件重新渲染，就不会再次执行。这很合理，由于副效应不依赖任何变量，所以那些变量无论怎么变，副效应函数的执行结果都不会改变，所以运行一次就够了<br>  <br>return (<br>    &lt;div&gt;讲解useEffect&lt;/div&gt;<br>)<br>&#125;<br><br><br>useEffect() 第一个函数参数的返回值<br>副效应是随着组件加载而发生的，那么组件卸载时，可能需要清理这些副效应。<br>useEffect()允许返回一个函数，在组件卸载时，执行该函数，清理副效应。如果不需要清理副效应，useEffect()就不用返回任何值。<br><br>useEffect(() =&gt; &#123;<br>  const subscription = props.source.subscribe();<br>  return () =&gt; &#123;<br>    subscription.unsubscribe();<br>  &#125;;<br>&#125;, [props.source]);<br>上面例子中，useEffect()在组件加载时订阅了一个事件，并且返回一个清理函数，在组件卸载时取消订阅。实际使用中，由于副效应函数默认是每次渲染都会执行，所以清理函数不仅会在组件卸载时执行一次，每次副效应函数重新执行之前，也会执行一次，用来清理上一次渲染的副效应。<br></code></pre></td></tr></table></figure>
+
+<h3 id="useEffect注意点"><a href="#useEffect注意点" class="headerlink" title="useEffect注意点"></a>useEffect注意点</h3><blockquote>
+<p>使用useEffect()时，有一点需要注意。如果有多个副效应，应该调用多个useEffect()，而不应该合并写在一起。</p>
+</blockquote>
+<h4 id="错误写法"><a href="#错误写法" class="headerlink" title="错误写法"></a>错误写法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs react">function App() &#123;<br>  const [varA, setVarA] = useState(0);<br>  const [varB, setVarB] = useState(0);<br>  useEffect(() =&gt; &#123;<br>    const timeoutA = setTimeout(() =&gt; setVarA(varA + 1), 1000);<br>    const timeoutB = setTimeout(() =&gt; setVarB(varB + 2), 2000);<br><br>    return () =&gt; &#123;<br>      clearTimeout(timeoutA);<br>      clearTimeout(timeoutB);<br>    &#125;;<br>  &#125;, [varA, varB]);<br><br>  return &lt;span&gt;&#123;varA&#125;, &#123;varB&#125;&lt;/span&gt;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上面的例子是错误的写法，副效应函数里面有两个定时器，它们之间并没有关系，其实是两个不相关的副效应，不应该写在一起。正确的写法是将它们分开写成两个useEffect()。</p>
+<h4 id="正确写法"><a href="#正确写法" class="headerlink" title="正确写法"></a>正确写法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs react">function App() &#123;<br>  const [varA, setVarA] = useState(0);<br>  const [varB, setVarB] = useState(0);<br><br>  useEffect(() =&gt; &#123;<br>    const timeout = setTimeout(() =&gt; setVarA(varA + 1), 1000);<br>    return () =&gt; clearTimeout(timeout);<br>  &#125;, [varA]);<br><br>  useEffect(() =&gt; &#123;<br>    const timeout = setTimeout(() =&gt; setVarB(varB + 2), 2000);<br><br>    return () =&gt; clearTimeout(timeout);<br>  &#125;, [varB]);<br><br>  return &lt;span&gt;&#123;varA&#125;, &#123;varB&#125;&lt;/span&gt;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="十、useState设置取值问题"><a href="#十、useState设置取值问题" class="headerlink" title="十、useState设置取值问题"></a>十、useState设置取值问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs react">const [dictList, setDictList] = useState([])<br><br>  useEffect(() =&gt; &#123;<br>    utils.getDict(&quot;SHOP_TYPE&quot;).then((res) =&gt; &#123;<br>      console.log(&#x27;resReturn&#x27;,res)<br>      setDictList(res)<br>      在此处取不到dictList更新后的数据，但是其实数据已经渲染上去啦<br>    &#125;)<br>  &#125;,[]);<br><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>react知识记录</div>
+      <div>https://github.com/hu-p.github.io/2023/03/13/react知识记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月13日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/13/Vue3%20+%20koa2%20+%20mysql%20%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E6%9D%82%E8%B0%88/" title="Vue3 + koa2 + mysql 开发中的杂谈">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue3 + koa2 + mysql 开发中的杂谈</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/13/Nuxt%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/" title="Nuxt入门总结">
+                        <span class="hidden-mobile">Nuxt入门总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

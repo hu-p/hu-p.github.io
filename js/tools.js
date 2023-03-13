@@ -1,12 +1,12 @@
 $(document).ready(function () {
     let toolsList = [
-        {name:'DDL转换',imgUrl:'/img/sql.png',url:'/html/sqlChange.html'},
+        {name:'DDL转换',imgUrl:'/img/sql.png',url:"/html/sqlChange.html"},
     ]
     let list = toolsList.map((item) => {
         return (`
                   <div class='app-item'>
                     <div class="title-name">
-                        <span class="app-name" onclick="changeSrc(${item.url})">${item.name}</span>
+                        <span class="app-name" onclick="changeSrc('${item.url}')">${item.name}</span>
                     </div>
                     <div className="app-desc">
                         <img src='${item.imgUrl}'/>
