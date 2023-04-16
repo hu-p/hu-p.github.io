@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Vue3 + koa2 + mysql 开发中的杂谈一、Vue3开发1、v-md-editorMarkdown文本编辑插件理由：本插件在使用过程中完美兼容vue3，且功能较丰富，有详细完整的教程 vue3使用一定要安装对应的版本 2、vue3中组件通信1、祖孙通信使用依赖注入provide&#x2F;inject，，兄弟使用mitt库123456789101112131415依赖注入在main.j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3 + koa2 + mysql 开发中的杂谈">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/03/08/Vue3%20+%20koa2%20+%20mysql%20%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E6%9D%82%E8%B0%88/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="Vue3 + koa2 + mysql 开发中的杂谈一、Vue3开发1、v-md-editorMarkdown文本编辑插件理由：本插件在使用过程中完美兼容vue3，且功能较丰富，有详细完整的教程 vue3使用一定要安装对应的版本 2、vue3中组件通信1、祖孙通信使用依赖注入provide&#x2F;inject，，兄弟使用mitt库123456789101112131415依赖注入在main.j">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-08T01:44:05.862Z">
+<meta property="article:modified_time" content="2023-04-16T09:16:10.514Z">
+<meta property="article:author" content="渊不语">
+<meta property="article:tag" content="大前端">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Vue3 + koa2 + mysql 开发中的杂谈 - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue3 + koa2 + mysql 开发中的杂谈"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-08 09:44" pubdate>
+          2023年3月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          134 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue3 + koa2 + mysql 开发中的杂谈</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Vue3-koa2-mysql-开发中的杂谈"><a href="#Vue3-koa2-mysql-开发中的杂谈" class="headerlink" title="Vue3 + koa2 + mysql 开发中的杂谈"></a>Vue3 + koa2 + mysql 开发中的杂谈</h1><h2 id="一、Vue3开发"><a href="#一、Vue3开发" class="headerlink" title="一、Vue3开发"></a>一、Vue3开发</h2><h3 id="1、v-md-editorMarkdown文本编辑插件"><a href="#1、v-md-editorMarkdown文本编辑插件" class="headerlink" title="1、v-md-editorMarkdown文本编辑插件"></a>1、<a target="_blank" rel="noopener" href="https://ckang1229.gitee.io/vue-markdown-editor/zh/examples/preview-demo.html#%E5%BC%95%E5%85%A5">v-md-editor</a>Markdown文本编辑插件</h3><p>理由：本插件在使用过程中完美兼容vue3，且功能较丰富，有详细完整的教程</p>
+<p>vue3使用一定要安装对应的版本</p>
+<h3 id="2、vue3中组件通信"><a href="#2、vue3中组件通信" class="headerlink" title="2、vue3中组件通信"></a>2、vue3中组件通信</h3><h4 id="1、祖孙通信使用依赖注入provide-x2F-inject，，兄弟使用mitt库"><a href="#1、祖孙通信使用依赖注入provide-x2F-inject，，兄弟使用mitt库" class="headerlink" title="1、祖孙通信使用依赖注入provide&#x2F;inject，，兄弟使用mitt库"></a>1、祖孙通信使用依赖注入provide&#x2F;inject，，兄弟使用mitt库</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">依赖注入在main.js中使用<br><span class="hljs-regexp">//</span> 依赖注入的方式，provide不能对象的方式写<br><span class="hljs-regexp">//</span> app.provide(&#123;<br><span class="hljs-regexp">//</span>     <span class="hljs-string">&#x27;axios&#x27;</span>: axios,<br><span class="hljs-regexp">//</span>     BasicUrl: <span class="hljs-string">&#x27;http://localhost:5030/&#x27;</span><br><span class="hljs-regexp">//</span> &#125;)<br>app.provide(<span class="hljs-string">&#x27;axios&#x27;</span>, axios)<br>app.provide(<span class="hljs-string">&#x27;BasicUrl&#x27;</span>, BasicUrl.Url)<br><br>在vue组件中可正常使用<br>const axios = inject(<span class="hljs-string">&#x27;axios&#x27;</span>)<br><br>provide: &#123;<br>   name:value<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、父子使用props"><a href="#2、父子使用props" class="headerlink" title="2、父子使用props"></a>2、父子使用props</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs elixir">provide/inject是祖孙间通信，父子间通信最好用props<br>父组件<br>&lt;upload-components <span class="hljs-symbol">:blogdetail=<span class="hljs-string">&quot;blogdetail&quot;</span>&gt;&lt;/upload-components&gt;</span><br>子组件接收<br>props两种接收方式<br><span class="hljs-number">1</span>、<span class="hljs-symbol">props:</span>[<span class="hljs-string">&quot;blogdetail&quot;</span>]<br><span class="hljs-number">2</span>、<span class="hljs-symbol">props:</span>&#123;<br>      <span class="hljs-symbol">blogdetail:</span>&#123;<br>          <span class="hljs-symbol">type:</span><span class="hljs-title class_">String</span>/<span class="hljs-title class_">Object</span><br>          <span class="hljs-symbol">default:</span><span class="hljs-string">&#x27;&#x27;</span>               //没有输入时的默认值<br>      &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、兄弟使用mitt库"><a href="#3、兄弟使用mitt库" class="headerlink" title="3、兄弟使用mitt库"></a>3、兄弟使用mitt库</h4><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs typescript">vue2<span class="hljs-number">.0</span>时经常用事件总线 $emit 和 $on进行组件间的通信，vue3<span class="hljs-number">.0</span>中这两个方法被移除了，无法使用<span class="hljs-title class_">Vue</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">$bus</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>()<br>vue兄弟组件通信可以引用第三方库mitt库 ！！！也是官方推荐的<br><br>想在<span class="hljs-title class_">Vue3</span>当中使用事件总线当然也非常简单的啦一共分为三个步骤<br><span class="hljs-number">1.</span>安装<br>npm install --save mitt<br><br><span class="hljs-number">2.</span>挂载<br><span class="hljs-comment">//main.js中</span><br><span class="hljs-keyword">import</span> mitt <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;mitt&quot;</span><br><span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>()<span class="hljs-comment">//正常配置</span><br><span class="hljs-comment">//挂载事务总线</span><br><span class="hljs-keyword">const</span> vueEvent = <span class="hljs-keyword">new</span> <span class="hljs-title function_">mitt</span>()<br>app.<span class="hljs-property">config</span>.<span class="hljs-property">globalProperties</span>.<span class="hljs-property">vueEvent</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_">mitt</span>()<br><br><br><span class="hljs-number">3.</span>使用<br><span class="hljs-keyword">import</span> &#123;getCurrentInstance&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br> <span class="hljs-keyword">const</span> vueEvent = <span class="hljs-title function_">getCurrentInstance</span>()?.<span class="hljs-property">appContext</span>.<span class="hljs-property">config</span>.<span class="hljs-property">globalProperties</span>.<span class="hljs-property">vueEvent</span><br><span class="hljs-comment">//发送</span><br>vueEvent.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;handleCurrentNo&#x27;</span>, <span class="hljs-number">1</span>)<br><span class="hljs-comment">//接收</span><br>   <span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      vueEvent.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;handleCurrentNo&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">val: <span class="hljs-built_in">number</span></span>) =&gt;</span> &#123;<br>        state.<span class="hljs-property">currentNo</span> = val<br>      &#125;)<br>    &#125;)<br>    <span class="hljs-title function_">onUnmounted</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      vueEvent.<span class="hljs-title function_">off</span>(<span class="hljs-string">&#x27;handleCurrentNo&#x27;</span>)<br>    &#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="3、axios配置及操作"><a href="#3、axios配置及操作" class="headerlink" title="3、axios配置及操作"></a>3、axios配置及操作</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-comment">//axios.js</span><br><span class="hljs-keyword">import</span> axios from <span class="hljs-string">&quot;axios&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; ElMessage &#125; from <span class="hljs-string">&quot;element-plus&quot;</span>;<br><br>let http = axios.create(&#123;<br>   baseURL:<span class="hljs-string">&#x27;http://localhost:5030/&#x27;</span><br>&#125;)<br><br><span class="hljs-comment">//请求拦截</span><br>http.interceptors.request.use( config =&gt; &#123;<br>   <span class="hljs-keyword">if</span>(localStorage.elementToken)&#123;<br>     config.headers.Authorization = localStorage.elementToken<br>   &#125;<br>   <span class="hljs-keyword">return</span> config<br>&#125;)<br><br><span class="hljs-comment">//响应拦截</span><br>http.interceptors.response.use( res =&gt; &#123;<br>  <span class="hljs-keyword">return</span> res<br>&#125;, err =&gt; &#123;<br>  console.log(err.response);<br>  ElMessage.error(err.response.data.msg)<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> http<br><br><span class="hljs-comment">//在main.js中直接使用provide传出去</span><br><span class="hljs-keyword">import</span> axios from <span class="hljs-string">&#x27;./axios.js&#x27;</span><br>app.provide(<span class="hljs-string">&#x27;axios&#x27;</span>, axios)<br><br><span class="hljs-comment">//然后在组件中直接引用即可</span><br><span class="hljs-keyword">const</span> axios = inject(<span class="hljs-string">&#x27;axios&#x27;</span>)<br>     <span class="hljs-comment">//由于axios配置时设置了拦截，所以例如element自带的文件上传需要在头上加上token令牌</span><br>      <span class="hljs-comment">// let config = &#123;</span><br>         <span class="hljs-comment">//     headers: &#123;</span><br>         <span class="hljs-comment">//      Authorization: localStorage.elementToken,</span><br>         <span class="hljs-comment">//      &#125;,</span><br>        <span class="hljs-comment">// &#125;;</span><br>      <br>      <span class="hljs-comment">//自定义的上传文件，例如图片时，在拿到文件后，需要将其实例化</span><br>       <span class="hljs-comment">//实例表单</span><br>     <span class="hljs-comment">// let formdata = new FormData();</span><br>      <span class="hljs-comment">//添加表单</span><br>     <span class="hljs-comment">// formdata.append(&quot;file&quot;, files[0]);</span><br>     然后直接使用axios上传formdata即可，后端接收文件是<span class="hljs-keyword">const</span> files = ctx.request.files.file<br>axios<br>        .post(<span class="hljs-string">&#x27;访问的url&#x27;</span>，上传的值，config(配置的头文件，一般没有))<br>        .then((res) =&gt; &#123;<br>          console.log(res.data);<br>        &#125;)<br>        .<span class="hljs-keyword">catch</span>((err) =&gt; &#123;<br>          console.log(err);<br>        &#125;);<br>或者<br>axios(&#123;<br>  url:<span class="hljs-string">&#x27;&#x27;</span>,<br>  method:<span class="hljs-string">&#x27;post&#x27;</span>,<br>  data:<span class="hljs-string">&#x27;上传的值&#x27;</span><br>  header:&#123;<span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span>&#125;      <span class="hljs-comment">//配置</span><br>&#125;)<br><br><span class="hljs-comment">//get请求</span><br><span class="hljs-comment">//单纯的接收 XXX/user/test接口传回的值</span><br>vue端：axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;/user/test&#x27;</span>)  <br>koa端：user.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;/test&#x27;</span>,<span class="hljs-keyword">async</span>(ctx) =&gt; &#123;   &#125;)<br><br><span class="hljs-comment">//带参获取值</span><br>vue端：axios.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;/user/test/&#x27;</span> + testvalue)<br>koa端：user.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;/test/:name&#x27;</span>,<span class="hljs-keyword">async</span>(ctx) =&gt; &#123;  <br>           <span class="hljs-keyword">const</span> testvalue = ctx.params.name <br>    &#125;)<br> <br><span class="hljs-comment">//post请求</span><br>vue端：axios.post(<span class="hljs-string">&#x27;/user/test&#x27;</span>,testvalue)    <span class="hljs-comment">//此处的testvalue应为对象</span><br>koa端：user.<span class="hljs-keyword">get</span>(<span class="hljs-string">&#x27;/test&#x27;</span>,<span class="hljs-keyword">async</span>(ctx) =&gt; &#123;  <br>           <span class="hljs-keyword">const</span> testvalue = ctx.requestbody.body.testvalue<br>           或键值对的名字一样时<br>           <span class="hljs-keyword">const</span> &#123;testvalue&#125; = ctx.requestbody.body<br>    &#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="4、常用函数"><a href="#4、常用函数" class="headerlink" title="4、常用函数"></a>4、常用函数</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-comment">//生命周期，页面初始时即加载的服务</span><br>onMounted(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123; &#125;);<br><br><span class="hljs-comment">//计算属性</span><br>const double = computed(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123; &#125;)<br><br><span class="hljs-comment">//需要在 DOM 更新之后再执行一段代码时，可以借助nextTick实现</span><br>nextTick(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;<br>  &#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="5、注意事项"><a href="#5、注意事项" class="headerlink" title="5、注意事项"></a>5、注意事项</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><code class="hljs vue">//使用element表单时的注意<br>&lt;template&gt;<br>  &lt;div class=&quot;datapage_divise animate__animated animate__fadeInDown&quot;&gt;<br>    &lt;div class=&quot;upload_title&quot;&gt;<br>      &lt;!-- 此处model与ref最好区分开，model是输入时的数据，ref是最终的传递的数据，虽然可以<br>      是一样，但是千万不要设置一样，否则输入时极度慢 --&gt;<br>      &lt;el-form<br>        :model=&quot;formtitledata&quot;<br>        :rules=&quot;rules&quot;<br>        ref=&quot;ruleForm&quot;<br>        label-width=&quot;100px&quot;<br>        class=&quot;demo-ruleForm&quot;<br>        size=&quot;mini&quot;<br>      &gt;<br>        &lt;el-form-item label=&quot;链接地址&quot; type=&quot;color:black&quot; prop=&quot;linkpath&quot;&gt;<br>          &lt;el-input type=&quot;text&quot; v-model=&quot;formtitledata.linkpath&quot;&gt;&lt;/el-input&gt;<br>        &lt;/el-form-item&gt;<br>        &lt;el-form-item label=&quot;链接简介&quot; prop=&quot;linkcomments&quot;&gt;<br>          &lt;el-input<br>            type=&quot;textarea&quot;<br>            v-model=&quot;formtitledata.linkcomments&quot;<br>          &gt;&lt;/el-input&gt;<br>        &lt;/el-form-item&gt;<br>        &lt;el-form-item style=&quot;text-align:center&quot;&gt;<br>          &lt;el-button type=&quot;primary&quot; @click=&quot;submitForm&quot;&gt;立即创建&lt;/el-button&gt;<br>          &lt;el-button @click=&quot;resetForm&quot;&gt;重置&lt;/el-button&gt;<br>        &lt;/el-form-item&gt;<br>      &lt;/el-form&gt;<br>    &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>import &#123; defineComponent, reactive, inject, ref, onMounted &#125; from &quot;vue&quot;;<br><br>export default defineComponent(&#123;<br>  name: &quot;datapage&quot;,<br>  setup(props) &#123;<br>    const axios = inject(&quot;axios&quot;);<br>    //引入dayjs是由于mysql生成的日期传到前端格式有杂质，故用dayjs修改<br>    const dayjs = inject(&quot;dayjs&quot;);<br><br>    let formtitledata = reactive(&#123;<br>      linkpath: &quot;&quot;,<br>      linkcomments: &quot;&quot;,<br>    &#125;);<br>    //表单规则<br>    const rules = reactive(&#123;<br>      linkpath: [<br>        &#123; required: true, message: &quot;请输入链接地址&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123; min: 1, max: 30, message: &quot;长度在 3 到 5 个字符&quot;, trigger: &quot;blur&quot; &#125;,<br>      ],<br>      linkcomments: [<br>        &#123; required: true, message: &quot;请填写链接简介&quot;, trigger: &quot;blur&quot; &#125;,<br>      ],<br>    &#125;);<br>    //接收需设置为ref<br>    const ruleForm = ref();<br>    function submitForm() &#123;<br>      ruleForm.value.validate((valid) =&gt; &#123;<br>        if (valid) &#123;<br>          console.log(valid);<br>          axios<br>            .post(&quot;/artical/addlink&quot;, formtitledata)<br>            .then((res) =&gt; &#123;<br>              console.log(res.data);<br>            &#125;)<br>            .catch((error) =&gt; &#123;<br>              console.log(error);<br>            &#125;);<br>        &#125; else &#123;<br>          console.log(&quot;error submit!!&quot;);<br>          return false;<br>        &#125;<br>      &#125;);<br>    &#125;<br>    //重置<br>    function resetForm() &#123;<br>      ruleForm.value.resetFields();<br>    &#125;<br><br>    return &#123;<br>      formtitledata,<br>      ruleForm,<br>      rules,<br>      submitForm,<br>      resetForm,<br>      dayjs<br>    &#125;;<br>  &#125;,<br>&#125;);<br>&lt;/script&gt;<br><br><br>//一组表格中选取一行数据修改思路<br>1、获取到后台的对象的数组<br>2、向数组中的每一个对象添加一个boolean类型的键值对<br>为数组中每一个对象添加&#123;edit:false&#125;键值对<br>let addedit = res.data。arr;<br>        addedit.forEach((element) =&gt; &#123;<br>          element[&quot;edit&quot;] = false;<br>        &#125;);<br>3、通过v-if或v-show实现修改功能，注:v-if和v-show前不需要&#x27;:&#x27;绑定，否则功能无法实现<br><br>//将后端获取的数据存储到本地<br>localStorage和sessionStorage一样都是用来存储客户端临时信息的对象<br>localStorage生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。<br>sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。<br>用法：<br>setItem (key, value) ——  保存数据，以键值对的方式储存信息。<br>getItem (key) ——  获取数据，将键值传入，即可获取到对应的value值。<br>removeItem (key) ——  删除单个数据，根据键值移除对应的信息。<br>clear () ——  删除所有的数据<br>key (index) —— 获取某个索引的key<br>例如：token为已获取到的值<br>localStorage.set(&quot;elementToken&quot;,token)<br><br>//文件下载<br>const downloadU = BasicUrl + &quot;/files/download/&quot; + row.filename;<br>      window.open(downloadU, &quot;myIframe&quot;);<br>通过该指令可直接下载文件，后端会接受到该路径，接收token验证，所以需要需要将/files/download/*加入到koa-jwt白名单中， /^\/files\/download\/*/<br><br>const send = require(&#x27;koa-send&#x27;);<br>//实现下载功能<br>fileList.get(&#x27;/download/:name&#x27;, async (ctx) =&gt; &#123;<br>    const name = ctx.params.name<br>    console.log(&#x27;filename&#x27;, name);<br>    const path = `public/uploads/$&#123;name&#125;`;<br>    console.log(&#x27;fileQueryPath&#x27;, path);<br>    ctx.attachment(path);<br>    await send(ctx, path);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="二、Koa2开发"><a href="#二、Koa2开发" class="headerlink" title="二、Koa2开发"></a>二、Koa2开发</h2><h3 id="1、调用其三方接口，请求其他数据"><a href="#1、调用其三方接口，请求其他数据" class="headerlink" title="1、调用其三方接口，请求其他数据"></a>1、调用其三方接口，请求其他数据</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40816649/article/details/87895301">参考node请求</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//wallhaven.cc/api的图片接口非常友好，有相应的api文档，登陆账号后就可获得密钥</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Router</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-router&#x27;</span>);<br><span class="hljs-keyword">const</span> queryback = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/db/db.js&#x27;</span>)<br><span class="hljs-keyword">const</span> otherapi = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>();<br><br><span class="hljs-keyword">const</span> request = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;request&#x27;</span>)<br>otherapi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/wallhaven/:name&#x27;</span>, <span class="hljs-keyword">async</span> (ctx, next) =&gt; &#123;<br><br>    <span class="hljs-keyword">let</span> pageid = ctx.<span class="hljs-property">params</span>.<span class="hljs-property">name</span><br>        <span class="hljs-comment">//request需要异步执行，</span><br>    <span class="hljs-keyword">let</span> dd = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">//node封装的请求中间件GET请求</span><br>        <span class="hljs-title function_">request</span>(&#123;<br>                <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://wallhaven.cc/api/v1/search&#x27;</span>,<br>                <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>                <span class="hljs-comment">//请求带参数时，get中params中填写的数据对应的为qs中的对象，结果为json</span><br>                <span class="hljs-comment">//post中body填写的数据对应的为form的对象，具体看请求头</span><br>                <span class="hljs-attr">qs</span>:&#123;<br>                   <span class="hljs-string">&#x27;sorting&#x27;</span>:<span class="hljs-string">&#x27;toplist&#x27;</span>,<br>                   <span class="hljs-string">&#x27;topRange&#x27;</span>:<span class="hljs-string">&#x27;1d&#x27;</span>,<br>                   <span class="hljs-string">&#x27;purity&#x27;</span>:<span class="hljs-string">&#x27;100&#x27;</span>,<br>                   <span class="hljs-string">&#x27;page&#x27;</span>:pageid,<br>                &#125;,<br>                <span class="hljs-attr">headers</span>: &#123;<br>                    <span class="hljs-string">&quot;Content-Type&quot;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,<br>                &#125;<br>            &#125;,<br>            <span class="hljs-keyword">function</span> (<span class="hljs-params">error, response, body</span>) &#123;<br>                <span class="hljs-keyword">if</span> (!error &amp;&amp; response.<span class="hljs-property">statusCode</span> == <span class="hljs-number">200</span>) &#123;<br>                    <span class="hljs-title function_">resolve</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(body))<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败&#x27;</span>, error);<br>                &#125;<br>            &#125;)<br>    &#125;)<br>    <span class="hljs-keyword">if</span> (dd.<span class="hljs-property">data</span> !== <span class="hljs-literal">null</span>) &#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;success&#x27;</span>,<br>            <span class="hljs-attr">imgs</span>: dd.<span class="hljs-property">data</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">404</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: -<span class="hljs-number">1</span>,<br>        &#125;<br>    &#125;<br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="2、async、await、Promise之间的联系"><a href="#2、async、await、Promise之间的联系" class="headerlink" title="2、async、await、Promise之间的联系"></a>2、async、await、Promise之间的联系</h3><p>async 函数</p>
+<ol>
+<li>函数的返回值为 promise 对象</li>
+<li>promise 对象的结果由 async 函数执行的返回值决定</li>
+</ol>
+<p>await 表达式</p>
+<ol>
+<li>await 右侧的表达式一般为 promise 对象, 但也可以是其它的值</li>
+<li>如果表达式是 promise 对象, await 返回的是 promise 成功的值</li>
+<li>如果表达式是其它值, 直接将此值作为 await 的返回值</li>
+</ol>
+<p> 注意</p>
+<ol>
+<li>await 必须写在 async 函数中, 但 async 函数中可以没有 await</li>
+<li>如果 await 的 promise 失败了, 就会抛出异常, 需要通过 try…catch 捕获处理</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//异步操作一般使用，该命令运行在async中</span><br><span class="hljs-comment">//let dd = await new Promise((resolve, reject) =&gt; &#123;  &#125;</span><br>    <br>&lt;script&gt;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn1</span>(<span class="hljs-params"></span>) &#123;<br>         <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-number">1</span>) <br>            &#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn2</span>(<span class="hljs-params"></span>) &#123;<br>         <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> <br>            &#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn3</span>(<span class="hljs-params"></span>) &#123;<br>         <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-number">3</span>)<br>         <span class="hljs-comment">// return fn3.test() // 程序运行会抛出异常</span><br>            &#125;<br><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fn4</span>(<span class="hljs-params"></span>) &#123;<br>         <span class="hljs-keyword">return</span> fn3.<span class="hljs-title function_">test</span>() <span class="hljs-comment">// 程序运行会抛出异常</span><br>           &#125;<br><br><span class="hljs-comment">// 没有使用 await 的 async 函数</span><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn5</span>(<span class="hljs-params"></span>) &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-number">4</span> <br>          &#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fn</span>(<span class="hljs-params"></span>) &#123;<br>           <span class="hljs-comment">// await 右侧是一个成功的 promise</span><br>           <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fn1</span>()<br>           <span class="hljs-comment">// await 右侧是一个非 promise 的数据</span><br>           <span class="hljs-comment">// const result = await fn2()</span><br>           <span class="hljs-comment">// await 右侧是一个失败的 promise</span><br>           <span class="hljs-comment">// const result = await fn3()</span><br>           <span class="hljs-comment">// await 右侧抛出异常</span><br>           <span class="hljs-comment">// const result = await fn4()</span><br>           <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;result: &#x27;</span>, result)<br>           <span class="hljs-keyword">return</span> result+<span class="hljs-number">10</span><br>           &#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>          <span class="hljs-keyword">const</span> result2 = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fn</span>()<br>          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;result2&#x27;</span>, result2) &#125; <span class="hljs-keyword">catch</span> (error) &#123;<br>                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;error&#x27;</span>, error) <br>                 &#125;<br>          <span class="hljs-keyword">const</span> result3 = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fn4</span>()<br>          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;result4&#x27;</span>, result3) <br>        &#125;<br>          <span class="hljs-comment">// test()</span><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3、koa-jwt的白名单"><a href="#3、koa-jwt的白名单" class="headerlink" title="3、koa-jwt的白名单"></a>3、koa-jwt的白名单</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs awk">const &#123;<br>    PRIVATE_KEY<br>&#125; = require(<span class="hljs-string">&#x27;./util/encrpytion/md5.js&#x27;</span>)<br>const koaJWT = require(<span class="hljs-string">&#x27;koa-jwt&#x27;</span>)<br><br><span class="hljs-regexp">//</span>使用kaoJwt拦截token<br>app.use(koaJWT(&#123;<br>    <span class="hljs-regexp">//</span> 解密 密钥<br>    secret: PRIVATE_KEY,<br>    algorithms: [<span class="hljs-string">&quot;HS256&quot;</span>]<br>   &#125;).unless(&#123;<br>    path: [<br>    <span class="hljs-string">&#x27;/home&#x27;</span>,<br>    <span class="hljs-string">&#x27;/login&#x27;</span>,<br>    <span class="hljs-string">&#x27;/login/register&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email/examEmail&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email/forget&#x27;</span>,<br>    <span class="hljs-regexp">/^\/files\/download\/*/</span>,<br>  ] <br>  <span class="hljs-regexp">//</span>此处使用正则表达式，此处是下载的命令<br>  <span class="hljs-regexp">//</span>⽩名单,除了这⾥写的地址，其 他的URL都需要验证<br>   &#125;));<br><br>白名单中需要使用正则表达式可放行<span class="hljs-regexp">/files/</span>download/:name<br></code></pre></td></tr></table></figure>
+
+<h3 id="4、解析token令牌，获取用户名"><a href="#4、解析token令牌，获取用户名" class="headerlink" title="4、解析token令牌，获取用户名"></a>4、解析token令牌，获取用户名</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//设置的加密，解码</span><br>md5.<span class="hljs-property">js</span><br><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;crypto&#x27;</span>)<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">md5</span>(<span class="hljs-params">s</span>) &#123;<br>    <span class="hljs-comment">// 给密码加密</span><br>    <span class="hljs-comment">//注意参数需要为string类型，否则会报错</span><br>    <span class="hljs-keyword">return</span> crypto.<span class="hljs-title function_">createHash</span>(<span class="hljs-string">&#x27;md5&#x27;</span>).<span class="hljs-title function_">update</span>(<span class="hljs-title class_">String</span>(s)).<span class="hljs-title function_">digest</span>(<span class="hljs-string">&#x27;hex&#x27;</span>);<br>&#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    md5,<br>    <span class="hljs-comment">// 处理密码的密钥</span><br>    <span class="hljs-attr">PWD_SALT</span>: <span class="hljs-string">&#x27;xd_node&#x27;</span>,<br>    <span class="hljs-comment">// 处理token的密钥</span><br>    <span class="hljs-attr">PRIVATE_KEY</span>: <span class="hljs-string">&#x27;xd_blog&#x27;</span>,<br>    <span class="hljs-comment">// token的过期时间</span><br>    <span class="hljs-attr">EXPIRESD</span>: <span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span><br>&#125;<br><br><span class="hljs-comment">//解析令牌</span><br>selectUser.<span class="hljs-property">js</span><br><span class="hljs-keyword">const</span> &#123;<br>    <span class="hljs-variable constant_">PRIVATE_KEY</span>,<br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../encrpytion/md5.js&#x27;</span>)<br><span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jsonwebtoken&#x27;</span>)<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">selectUser</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">ctx, next</span>) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> token = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">header</span>.<span class="hljs-property">authorization</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>)[<span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">if</span> (token) &#123;<br>        <span class="hljs-keyword">let</span> jiemi = <span class="hljs-keyword">await</span> jwt.<span class="hljs-title function_">verify</span>(token, <span class="hljs-variable constant_">PRIVATE_KEY</span>, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> &#123;<br>            <span class="hljs-keyword">return</span> data<br>        &#125;)<br>        <span class="hljs-keyword">let</span> myusername = jiemi.<span class="hljs-property">username</span><br>        <span class="hljs-keyword">return</span> myusername<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    &#125;<br>&#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    selectUser<br>&#125;<br><br>在接口中使用，导入即可<br><span class="hljs-keyword">const</span> &#123;<br>    selectUser<br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/file/selectUser.js&#x27;</span>)<br><br><span class="hljs-keyword">const</span> myusername = <span class="hljs-keyword">await</span> <span class="hljs-title function_">selectUser</span>(ctx)<br></code></pre></td></tr></table></figure>
+
+<h3 id="5、关于跨域问题"><a href="#5、关于跨域问题" class="headerlink" title="5、关于跨域问题"></a>5、关于跨域问题</h3><p>在前后端交互的过程中难免会遇到跨域的问题，解决的方式有如下</p>
+<p>1、在前端解决跨域问题</p>
+<p>2、在后端解决跨域问题</p>
+<p>3、通过nginx解决问题</p>
+<p>由于各种各样的问题且知识有限的问题，在解决跨域问题是优先考虑后端解决跨域问题，即使用cors解决</p>
+<p>在koa2中直接使用koa2-cors即可</p>
+<p>在app.js中导入</p>
+<p>const cors &#x3D; require(‘koa2-cors’)</p>
+<p>app.use(cors())</p>
+<h3 id="6、app-js文件解析"><a href="#6、app-js文件解析" class="headerlink" title="6、app.js文件解析"></a>6、app.js文件解析</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//整个函数的入口</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Koa</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa2&quot;</span>); <span class="hljs-comment">//构造函数</span><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>(); <span class="hljs-comment">//声明一个实例</span><br><span class="hljs-keyword">const</span> port = <span class="hljs-number">5030</span>; <span class="hljs-comment">//端口号</span><br><span class="hljs-keyword">const</span> router = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./router/index.js&#x27;</span>);<br><span class="hljs-keyword">const</span> koaStatic = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-static&#x27;</span>)<br><span class="hljs-keyword">const</span> chance = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;chance&#x27;</span>)<br><br><span class="hljs-keyword">const</span> &#123;<br>    <span class="hljs-variable constant_">PRIVATE_KEY</span><br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./util/encrpytion/md5.js&#x27;</span>)<br><span class="hljs-keyword">const</span> koaBody = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-body&#x27;</span>)<br><span class="hljs-keyword">const</span> koaJWT = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-jwt&#x27;</span>)<br><br><span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa2-cors&#x27;</span>)<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cors</span>())<br><br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>)<br><br><span class="hljs-comment">//koa-static可将文件路径转换为http路径，文件起始地址需先转到根路径，然后调用根目录下的静态目录下文件目录</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">koaStatic</span>(path.<span class="hljs-title function_">join</span>(__dirname, <span class="hljs-string">&#x27;public&#x27;</span>)))<br><br><span class="hljs-comment">//使用kaoJwt拦截token</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">koaJWT</span>(&#123;<br>    <span class="hljs-comment">// 解密 密钥</span><br>    <span class="hljs-attr">secret</span>: <span class="hljs-variable constant_">PRIVATE_KEY</span>,<br>    <span class="hljs-attr">algorithms</span>: [<span class="hljs-string">&quot;HS256&quot;</span>]<br>   &#125;).<span class="hljs-title function_">unless</span>(&#123;<br>    <span class="hljs-attr">path</span>: [<br>    <span class="hljs-string">&#x27;/home&#x27;</span>,<br>    <span class="hljs-string">&#x27;/login&#x27;</span>,<br>    <span class="hljs-string">&#x27;/login/register&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email/examEmail&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email/forget&#x27;</span>,<br>    <span class="hljs-regexp">/^\/files\/download\/*/</span>,<br>  ] <br>  <span class="hljs-comment">//此处使用正则表达式，此处是下载的命令</span><br>  <span class="hljs-comment">//⽩名单,除了这⾥写的地址，其 他的URL都需要验证</span><br>   &#125;));<br><br>app.<span class="hljs-title function_">use</span>(<br>    <span class="hljs-title function_">koaBody</span>(&#123;<br>        <span class="hljs-comment">// 允许上传多个文件</span><br>        <span class="hljs-attr">multipart</span>: <span class="hljs-literal">true</span>,<br>        <span class="hljs-attr">formidable</span>: &#123;<br>            <span class="hljs-comment">// 设置上传文件大小最大限制，默认2M</span><br>            <span class="hljs-attr">maxFileSize</span>: <span class="hljs-number">200</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>,<br>            <span class="hljs-comment">// 保留文件扩展名</span><br>            <span class="hljs-attr">keepExtensions</span>: <span class="hljs-literal">true</span>,<br>        &#125;<br>    &#125;)<br>);<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">   router.routers()的作用是：启动路由</span><br><span class="hljs-comment">   router.allowedMethods()的作用是：允许任何请求(get,post,put)</span><br><span class="hljs-comment">*/</span><br>app.<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">routes</span>(), router.<span class="hljs-title function_">allowedMethods</span>())<br><span class="hljs-comment">//路由重定向</span><br><br>app.<span class="hljs-title function_">use</span>(chance)<br><br>app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server is running at http://localhost:<span class="hljs-subst">$&#123;port&#125;</span>`</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="三、Mysql搭建，navicat中操作"><a href="#三、Mysql搭建，navicat中操作" class="headerlink" title="三、Mysql搭建，navicat中操作"></a>三、Mysql搭建，navicat中操作</h2><h4 id="1、mysql存储emoji表情，数据添加外键"><a href="#1、mysql存储emoji表情，数据添加外键" class="headerlink" title="1、mysql存储emoji表情，数据添加外键"></a>1、mysql存储emoji表情，数据添加外键</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>、mysql可直接使用navicat创建<br><span class="hljs-number">2</span>、一个表中的数据可以为另一个表的外键，建立外键，就可实现改主表的数据，引用表的数据也跟随着一起改变，建立外键的条件，必须两个表的数据类型一样，数据编码一样，且建立时，引用的表中数值要么为空，要么填写的所有数据都可在主表中找到，也就是，在建立关系的时候主表包含引用表<br><span class="hljs-number">3</span>、在数据库中存储emoji表情时，存储的编码格式必须改为utf8mb4，因为表情的占用<span class="hljs-number">4</span>个字节<br>utf8与utf8mb4的区别：<br><span class="hljs-variable constant_">UTF</span>-<span class="hljs-number">8</span>编码中，一个英文字符占用一个字节的存储空间，一个中文（含繁体）占用三个字节的存储空间。<br><span class="hljs-title class_">UTF8MB</span>4：<span class="hljs-title class_">MySQL</span>在<span class="hljs-number">5.5</span><span class="hljs-number">.3</span>之后增加了utf8mb4的编码，mb4就是most bytes <span class="hljs-number">4</span>的意思，专门用来兼容四字节的unicode。因此可以用来存储emoji表情。<br><br>修改完数据库后，还需在后端配置连接时加上 <span class="hljs-attr">charset</span>:<span class="hljs-string">&#x27;utf8mb4&#x27;</span><br><br>dbconfig.<span class="hljs-property">js</span><br><span class="hljs-keyword">let</span> config<br><span class="hljs-comment">//数据库配置</span><br> config = &#123;<br>        <span class="hljs-attr">host</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>        <span class="hljs-attr">port</span>:<span class="hljs-string">&#x27;3306&#x27;</span>,<br>        <span class="hljs-attr">user</span>:<span class="hljs-string">&#x27;root&#x27;</span>,<br>        <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;1234&#x27;</span>,<br>        <span class="hljs-attr">database</span>:<span class="hljs-string">&#x27;back_project_2&#x27;</span>,<br>        <span class="hljs-comment">//存入4字节的表情时，除了mysql改为utf8mb4,此处连接也需改为utf8mb4</span><br>        <span class="hljs-attr">charset</span>:<span class="hljs-string">&#x27;utf8mb4&#x27;</span><br>    &#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = config<br><br>正常插入有两种方式<br>有特殊字符时需使用方式<span class="hljs-number">2</span><br>方式<span class="hljs-number">1</span><br><span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`insert into artical (username,pagename,textpage,htmlpage) values (&#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27;,&#x27;<span class="hljs-subst">$&#123;textname&#125;</span>&#x27;,&#x27;<span class="hljs-subst">$&#123;textpage&#125;</span>&#x27;,&#x27;<span class="hljs-subst">$&#123;htmlpage&#125;</span>&#x27;)`</span>)<br><br><span class="hljs-comment">//此处必须这么写，因为文本可能中含有单引号，方式1写法会引起mysql的报错，</span><br><span class="hljs-comment">//而下面的方式2写法直接可以不用考虑单引号及其他特殊字符引起的变化</span><br><br>方式<span class="hljs-number">2</span><br><span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`insert into artical (username,pagename,textpage,htmlpage,comments) values (?,?,?,?,?)`</span>, [myusername, name, textpage, htmlpage, desc])<br><br>在配置连接池时，也无需过多的操作，只需加一个参数即可<br><span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./dbconfig&#x27;</span>)<br><span class="hljs-keyword">const</span> mysql = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mysql&#x27;</span>)<br><br><span class="hljs-comment">//创建连接池</span><br><span class="hljs-keyword">let</span> pool =mysql.<span class="hljs-title function_">createPool</span>(config);<br><br>此处的p就是插入操作中的数组[myusername, name, textpage, htmlpage, desc]<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-params">sql,p</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>      <br>        pool.<span class="hljs-title function_">getConnection</span>(<span class="hljs-function">(<span class="hljs-params">err,connection</span>)=&gt;</span>&#123;<br>            <span class="hljs-keyword">if</span>(err)&#123;<br>                <span class="hljs-title function_">reject</span>(err)<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//事件驱动回调</span><br>            connection.<span class="hljs-title function_">query</span>(sql,p,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>                <span class="hljs-keyword">if</span>(err)&#123;<br>                    <span class="hljs-title function_">reject</span>(err)<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    <span class="hljs-title function_">resolve</span>(data)<br>                &#125;<br>            &#125;);<br>            <span class="hljs-comment">//释放连接</span><br>            connection.<span class="hljs-title function_">release</span>();<br>        &#125;<br>        &#125;)<br>    &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>)=&gt;</span>&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)<br>    &#125;)<br>&#125;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = queryback<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、内连接"><a href="#2、内连接" class="headerlink" title="2、内连接"></a>2、内连接</h4><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">基础模型<br>1、<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> <span class="hljs-string">&#x27;...&#x27;</span><br><span class="hljs-number">2</span>、<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> u <br><span class="hljs-keyword">join</span>  test t <span class="hljs-keyword">on</span> t.pagename = u.pagename <span class="hljs-keyword">where</span> <span class="hljs-string">&#x27;...&#x27;</span><br><span class="hljs-number">3</span>、<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> u <br><span class="hljs-keyword">join</span>  test t <span class="hljs-keyword">on</span> t.pagename = u.pagename<br><span class="hljs-keyword">join</span>  exam <span class="hljs-built_in">e</span> <span class="hljs-keyword">on</span> <span class="hljs-built_in">e</span>.pagename = <span class="hljs-built_in">e</span>.pagename<br><span class="hljs-keyword">where</span> <span class="hljs-string">&#x27;...&#x27;</span><br><span class="hljs-number">4</span>、<br><span class="hljs-keyword">select</span> 查询列表 <span class="hljs-keyword">from</span> 表<br>[<span class="hljs-keyword">where</span> 筛选条件]<br><span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 分组的字段<br>[<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> 排序的字段];<br>5、<br>数据排序 <br>升序   asc<br>降序   desc<br>6、将有同一个用户名的不同标签的表混合成只有一行，将标签内容整合成一行，类似于数组<br>例：<span class="hljs-keyword">select</span> b.pagename,GROUP_CONCAT(b.classname SEPARATOR <span class="hljs-string">&#x27;,&#x27;</span>)<br><span class="hljs-keyword">from</span> textclass b<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> b.pagename<br><br><span class="hljs-number">7</span>、混合示例<br><span class="hljs-keyword">select</span> a.pagename,a.username,a.writetime,a.comments,c.classname,d.id <span class="hljs-keyword">from</span>  artical a <br><span class="hljs-keyword">join</span> <br>(<span class="hljs-keyword">select</span> b.pagename,<br>GROUP_CONCAT(b.classname SEPARATOR <span class="hljs-string">&#x27;,&#x27;</span>) classname<br><span class="hljs-keyword">from</span> textclass b<br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> b.pagename) c <br><span class="hljs-keyword">on</span> a.pagename=c.pagename <br><span class="hljs-keyword">join</span> articalcollect d <br><span class="hljs-keyword">on</span> d.pagename = c.pagename<br><span class="hljs-keyword">where</span> d.username = <span class="hljs-string">&#x27;test&#x27;</span> <br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> a.writetime <span class="hljs-keyword">DESC</span><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/" class="category-chain-item">大前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/">#大前端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue3 + koa2 + mysql 开发中的杂谈</div>
+      <div>https://github.com/hu-p.github.io/2023/03/08/Vue3 + koa2 + mysql 开发中的杂谈/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/08/typeScript%E5%9F%BA%E7%A1%80%E4%BA%8C/" title="typescript介绍">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">typescript介绍</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/08/vue3+koa2+mysql%E5%AE%9E%E6%88%98%E9%9A%8F%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="Vue3+Koa2+Mysql实战随记（一）">
+                        <span class="hidden-mobile">Vue3+Koa2+Mysql实战随记（一）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,846 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基于React-native+Taro开发**开发平台：Windows ** 目标平台：Android 本文基于对React Native 中文网及Taro官网总结环境搭建，并记录开发过程中遇到的问题 环境搭建安装依赖必须安装的依赖有：Node、JDK 和 Android Studio。 虽然你可以使用任何编辑器来开发应用（编写 js 代码），但你仍然必须安装 Android Studio 来获得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于React-native+Taro开发">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/04/16/%E5%9F%BA%E4%BA%8Ereact-native%20+%20taro%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="基于React-native+Taro开发**开发平台：Windows ** 目标平台：Android 本文基于对React Native 中文网及Taro官网总结环境搭建，并记录开发过程中遇到的问题 环境搭建安装依赖必须安装的依赖有：Node、JDK 和 Android Studio。 虽然你可以使用任何编辑器来开发应用（编写 js 代码），但你仍然必须安装 Android Studio 来获得">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-16T08:31:21.871Z">
+<meta property="article:modified_time" content="2023-04-16T09:19:04.525Z">
+<meta property="article:author" content="渊不语">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>基于React-native+Taro开发 - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="基于React-native+Taro开发"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-16 16:31" pubdate>
+          2023年4月16日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          39 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="React Native"
+        id="heading-bd9b1ab2f29a5f8de84a861f9081bdd5" role="tab" data-toggle="collapse" href="#collapse-bd9b1ab2f29a5f8de84a861f9081bdd5"
+        aria-expanded="true"
+      >
+        React Native
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-bd9b1ab2f29a5f8de84a861f9081bdd5"
+           role="tabpanel" aria-labelledby="heading-bd9b1ab2f29a5f8de84a861f9081bdd5">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2023/04/16/%E5%9F%BA%E4%BA%8Ereact-native%20+%20taro%E5%BC%80%E5%8F%91/" title="基于React-native+Taro开发"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">基于React-native+Taro开发</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于React-native+Taro开发</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="基于React-native-Taro开发"><a href="#基于React-native-Taro开发" class="headerlink" title="基于React-native+Taro开发"></a>基于React-native+Taro开发</h1><p>**开发平台：Windows **</p>
+<p><strong>目标平台：Android</strong></p>
+<p>本文基于对<a target="_blank" rel="noopener" href="https://reactnative.cn/"><strong>React Native 中文网</strong></a>及<a target="_blank" rel="noopener" href="https://taro.jd.com/"><strong>Taro官网</strong></a>总结环境搭建，并记录开发过程中遇到的问题</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>必须安装的依赖有：<strong>Node</strong>、<strong>JDK</strong> 和 <strong>Android Studio</strong>。</p>
+<p>虽然你可以使用<code>任何编辑器</code>来开发应用（编写 js 代码），但你仍然<strong>必须安装 Android Studio <strong>来获得编译 Android 应用所需的</strong>工具</strong>和<strong>环境</strong>。</p>
+<h4 id="Node"><a href="#Node" class="headerlink" title="Node"></a><a target="_blank" rel="noopener" href="https://nodejs.org/en">Node</a></h4><p>版本应大于等于 14，使用Node建议使用安装<a href="https://github.com/coreybutler/nvm-windows/releases"><strong>nvm</strong></a>控制node版本，使用nrm控制镜像源及查看当前镜像源延迟</p>
+<blockquote>
+<p>注意：不要使用 cnpm！cnpm 安装的模块路径比较奇怪，packager 不能正常识别！</p>
+</blockquote>
+<h4 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a><a target="_blank" rel="noopener" href="https://www.oracle.com/cn/java/technologies/downloads/">JDK</a></h4><p>react-native新版本不再支持<strong>jdk1.7</strong>和<strong>jdk1.8</strong>,需要 Java Development Kit [JDK] 11。你可以在命令行中输入 <code>javac -version</code>（请注意是 javac，不是 java）来查看你当前安装的 JDK 版本。如果版本不合要求，则可以去<a target="_blank" rel="noopener" href="https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot">Temurin</a>或<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/#java11">Oracle JDK</a>上下载(后者下载需注册登录)</p>
+<blockquote>
+<p>低于 0.67 版本的 React Native 需要 JDK 1.8 版本（官方也称 8 版本）。</p>
+</blockquote>
+<h4 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a><a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/features?hl=zh-cn">Android Studio</a></h4><p>Android Studio安装可直接参考<a target="_blank" rel="noopener" href="https://reactnative.cn/docs/environment-setup#android-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><strong>React Native 中文网 Android 开发环境</strong></a></p>
+<p>可通过查看设备命令行**<code>adb devices</code>**判断环境是否安装成功</p>
+<blockquote>
+<p>需要注意配置<code>环境变量</code>时<code>%ANDROID_HOME%</code>不生效时可替换成<code>%ANDROID_SDK_ROOT%</code>,根据文档规定配置<code>%ANDROID_HOME%</code>即可，但是笔者在配置过程中首次使用<code>%ANDROID_HOME%</code>，导致<code>platform-tools</code>中<code>adb devices</code>只有首次生效，后调整成<code>%ANDROID_SDK_ROOT%</code>排除bug，但是当第二次配置成<code>%ANDROID_HOME%</code>却没有bug出现，<strong>不排除其他环境配置问题导致，示例仅供参考</strong></p>
+</blockquote>
+<blockquote>
+<p>如果定义了 ANDROID_HOME 并且其中包含有效的 SDK 安装，系统会使用 ANDROID_HOME 的值而不是 ANDROID_SDK_ROOT 中的值。</p>
+<ul>
+<li>如果未定义 ANDROID_HOME，系统会使用 ANDROID_SDK_ROOT 中的值。</li>
+<li>如果定义了 ANDROID_HOME，但其中不存在或不包含有效的 SDK 安装，系统会使用 ANDROID_SDK_ROOT 中的值。</li>
+</ul>
+</blockquote>
+<h2 id="运行调试"><a href="#运行调试" class="headerlink" title="运行调试"></a>运行调试</h2><blockquote>
+<p>在开发过程中，由于线材、设备分辨率等限制，优先推荐使用物理机局域网调试，当不需要过多的额外的挂载设备时推荐使用虚拟机调试</p>
+</blockquote>
+<h3 id="物理机局域网调试"><a href="#物理机局域网调试" class="headerlink" title="物理机局域网调试"></a>物理机局域网调试</h3><blockquote>
+<p>调试的前提需要先将<code>debug</code>包(非realease包)安装到移动设备上，那么直接使用命令行<code>yarn taro build --type rn --reset-cache</code>(基于taro)即可</p>
+</blockquote>
+<ol>
+<li>首先确保你的电脑和手机设备在<strong>同一个 Wi-Fi 环境</strong>下。</li>
+<li>在设备上运行你的 React Native 应用。和打开其它 App 一样操作。</li>
+<li>你应该会看到一个“红屏”错误提示。这是正常的，下面的步骤会解决这个报错。</li>
+<li>摇晃设备，或者运行<code>adb shell input keyevent 82</code>，可以打开<strong>开发者菜单</strong>。</li>
+<li>点击<code>Dev Settings</code> -&gt; <code>Debug server host for device</code>。</li>
+<li>输入你电脑的 IP 地址和端口号（譬如 10.0.1.1:8081）。<strong>在 Windows 上</strong>，打开命令提示符并输入<code>ipconfig</code>来查询你的 IP 地址。</li>
+<li>回到<strong>开发者菜单</strong>然后选择<code>Reload JS</code>。</li>
+</ol>
+<blockquote>
+<p>当以上操作流程无误，依然无法触发Reload JS,请关闭React Native 应用，并将二者的网络断开重新连接，如果依然不生效，请重启设备</p>
+</blockquote>
+<h3 id="虚拟机调试"><a href="#虚拟机调试" class="headerlink" title="虚拟机调试"></a>虚拟机调试</h3><p>需要先<a target="_blank" rel="noopener" href="https://developer.android.com/studio/run/managing-avds.html">创建一个虚拟设备</a>。点击”Create Virtual Device…”，然后选择所需的设备类型并点击”Next”，然后选择<strong>S</strong> API Level 31 image</p>
+<blockquote>
+<p>请不要轻易点击 Android Studio 中可能弹出的建议更新项目中某依赖项的建议，否则可能导致无法运行。</p>
+</blockquote>
+<h3 id="物理机USB调试"><a href="#物理机USB调试" class="headerlink" title="物理机USB调试"></a>物理机USB调试</h3><p>使用 Android 真机来代替模拟器进行开发，只需用 usb 数据线连接到电脑，然后遵照<a target="_blank" rel="noopener" href="https://reactnative.cn/docs/running-on-device">在设备上运行</a>这篇文档的说明操作即可</p>
+<h3 id="编译并运行-React-Native-应用"><a href="#编译并运行-React-Native-应用" class="headerlink" title="编译并运行 React Native 应用"></a>编译并运行 React Native 应用</h3><blockquote>
+<p>使用虚拟机调试可完全跳过该步骤，只需要<code>yarn start</code>启动项目即可</p>
+</blockquote>
+<p>确保你先运行了模拟器或者连接了真机，然后在你的项目目录中运行<code>yarn android</code>或者<code>yarn react-native run-android</code>：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs jsx">cd <span class="hljs-title class_">AwesomeProject</span><br>yarn android<br># 或者<br>yarn react-native run-android<br></code></pre></td></tr></table></figure>
+
+
+
+<p>此命令会对项目的原生部分进行编译，同时在另外一个命令行中启动<code>Metro</code>服务对 js 代码进行实时打包处理（类似 webpack）。<code>Metro</code>服务也可以使用<code>yarn start</code>命令单独启动。</p>
+<p>如果配置没有问题，你应该可以看到应用自动安装到设备上并开始运行。注意第一次运行时需要下载大量编译依赖，耗时可能数十分钟。此过程<code>严重依赖稳定的代理软件</code>，否则将频繁遭遇链接超时和断开，导致无法运行。</p>
+<p>也可以尝试阿里云提供的<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.0.0.361865e90r2x4b">maven 镜像</a>，将<code>android/build.gradle</code>中的<code>jcenter()</code>和<code>google()</code>分别替换为<code>maven &#123; url &#39;https://maven.aliyun.com/repository/jcenter&#39; &#125;</code>和<code>maven &#123; url &#39;https://maven.aliyun.com/repository/google&#39; &#125;</code>（注意有多处需要替换）。</p>
+<p><code>npx react-native run-android</code>只是运行应用的方式之一。你也可以在 Android Studio 中直接运行应用。</p>
+<blockquote>
+<p>译注：建议在<code>run-android</code>成功后再尝试使用 Android Studio 启动。请不要轻易点击 Android Studio 中可能弹出的建议更新项目中某依赖项的建议，否则可能导致无法运行。</p>
+</blockquote>
+<blockquote>
+<p>如果你无法正常运行，遇到奇奇怪怪的红屏错误，先回头<code>仔细对照文档检查</code>，然后可以看看<a href="https://github.com/reactnativecn/react-native-website/issues">问题讨论区</a>。不同时期不同版本可能会碰到不同的问题，我们会在论坛中及时解答更新。但请注意***千万不要***执行 bundle 命令，那样会导致代码完全无法刷新。</p>
+</blockquote>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p><strong>技术栈：react-native taro taro-ui</strong></p>
+<p><strong>设备：东集Seuic手持终端PDA</strong></p>
+<blockquote>
+<p>东集Seuic手持终端PDA未知来源初始密码:4007770876</p>
+</blockquote>
+<h3 id="React-Native组件"><a href="#React-Native组件" class="headerlink" title="React Native组件"></a>React Native组件</h3><h4 id="ScrollView"><a href="#ScrollView" class="headerlink" title="ScrollView"></a>ScrollView</h4><p>在开发过程中，同一个页面中存在多层ScrollView嵌套问题，此时会存在只有最外层的ScrollView生效，其他的ScrollView并未生效，但是</p>
+<p>ScrollView本身提供了属性nestedScrollEnabled支持嵌套</p>
+<h5 id="最优解"><a href="#最优解" class="headerlink" title="最优解"></a>最优解</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;ScrollView &gt;<br>    ...<br>  &lt;ScrollView nestedScrollEnabled=&#123;true&#125;&gt;<br>   ...<br>   &lt;/ScrollView&gt;<br>    ..<br>&lt;/ScrollView&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="自定义实现"><a href="#自定义实现" class="headerlink" title="自定义实现"></a>自定义实现</h5><p>通过state状态值来控制外层的ScrollView是否可以滚动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs react">const [showScroll, setShowScroll] = useState&lt;boolean&gt;(false)<br>return (<br>    &lt;ScrollView scrollEnabled=&#123;showScroll&#125;&gt;<br>               &lt;ScrollView<br>                   onTouchStart=&#123;(ev) =&gt; &#123;<br>                       console.log(&#x27;开始滑动&#x27;);<br>                       setShowScroll(false)<br>                   &#125;&#125;<br>                   onMomentumScrollEnd=&#123;(e) =&gt; &#123;<br>                       console.log(&#x27;滑动结束&#x27;);<br>                       setShowScroll(true)<br>                   &#125;&#125;<br>                   //当用户开始拖动此视图时调用此函数<br>                   onScrollBeginDrag=&#123;() =&gt; &#123;<br>                       console.log(&#x27;拖动开始&#x27;);<br>                       setShowScroll(false)<br>                   &#125;&#125;<br>                   //当用户停止拖动此视图时调用此函数<br>                   onScrollEndDrag=&#123;(e) =&gt; &#123;<br>                       console.log(&#x27;拖动结束&#x27;);<br>                       setShowScroll(true)<br>                   &#125;&#125;<br>                   style=&#123;&#123; margin: 10, maxHeight: 300 &#125;&#125;<br>               &gt;<br>               &lt;/ScrollView&gt;<br>    &lt;/ScrollView&gt;<br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="按钮需要点击两次生效"><a href="#按钮需要点击两次生效" class="headerlink" title="按钮需要点击两次生效"></a>按钮需要点击两次生效</h4><p>在页面的开发过程中，发现页面上的按钮需要触发两次才能生效(先失焦，再聚焦)，点击按钮需要两次的原因是，焦点还在原来的TextInput上面，解决的办法就是，监听软键盘的消失方法，然后在消失方法里面，再一次调用软键盘消失方法：但是只推荐react-native官方提供的方法，即使用组件用ScrollView或FlatList组件包裹，给ScrollView或FlatList组件添加如下属性<code>keyboardShouldPersistTaps=&#39;handled&#39;</code></p>
+<blockquote>
+<p>如果当前界面有软键盘，那么点击 scrollview 后是否收起键盘，取决于本属性的设置。</p>
+<p>（译注：很多人反应 TextInput 无法自动失去焦点&#x2F;需要点击多次切换到其他组件等等问题，其关键都是需要将 TextInput 放到 ScrollView 中再设置本属性）</p>
+<ul>
+<li><code>&#39;never&#39;</code> （默认值），点击 TextInput 以外的子组件会使当前的软键盘收起。此时子元素不会收到点击事件。</li>
+<li><code>&#39;always&#39;</code>，键盘不会自动收起，ScrollView 也不会捕捉点击事件，但子组件可以捕获。</li>
+<li><code>&#39;handled&#39;</code>，当点击事件被子组件捕获时，键盘不会自动收起。这样切换 TextInput 时键盘可以保持状态。多数带有 TextInput 的情况下你应该选择此项。</li>
+<li><code>false</code>，已过时，请使用’never’代替。</li>
+<li><code>true</code>，已过时，请使用’always’代替。</li>
+</ul>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;ScrollView keyboardShouldPersistTaps=&#x27;handled&#x27;&gt;<br></code></pre></td></tr></table></figure>
+
+<p>若基于taro框架以上配置未生效，需要在每个页面入口index.tsx同级目录添加一个index.config.ts文件</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-comment">//index.config.ts</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">definePageConfig</span>(&#123;<br>    <span class="hljs-attr">disableScroll</span>: <span class="hljs-literal">true</span><br>  &#125;)<br>  <br></code></pre></td></tr></table></figure>
+
+<h4 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h4><p>一个用于显示文本的 React 组件，并且它也支持嵌套、样式，以及触摸处理。属性<code>selectable</code>决定用户是否可以长按选择文本，以便复制和粘贴。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs react">&lt;Text selectable=&#123;true&#125;&gt;and red&lt;/Text&gt;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/React-Native/" class="category-chain-item">React Native</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/React-Native/">#React Native</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>基于React-native+Taro开发</div>
+      <div>https://github.com/hu-p.github.io/2023/04/16/基于react-native + taro开发/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/08/Nvm%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86/" title="Nvm版本管理">
+                        <span class="hidden-mobile">Nvm版本管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

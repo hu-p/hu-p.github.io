@@ -1,0 +1,271 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    resize: none;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+.siderNav::-webkit-scrollbar,
+html::-webkit-scrollbar,
+div::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.siderNav::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+    background-color: #d4d3d3bb;
+    border-radius: 1em;
+}
+
+.siderNav::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+    background-color: #ffffffbd;
+    border-radius: 1em;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+::placeholder {
+    color: #C0C4CC;
+}
+
+#box-body-box {
+    width: 80%;
+    height: 80%;
+    padding: 24px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+
+.box-top-box,
+.box-bottom-box {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#sqlInput,
+#showSql {
+    height: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: #ddd 1px solid;
+    transition: all 0.30s ease-in-out;
+}
+
+#sqlInput:hover {
+    border: #409EFF 1px solid;
+}
+
+#showSql:hover {
+    cursor: pointer;
+}
+
+#btn-conversion,
+#btn-copy,
+#btn-test,
+#btn-clear {
+    font-size: 15px;
+    font-family: Arial;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    border: #0000 solid 1px;
+    border-radius: 4px;
+    padding: 12px 20px;
+}
+
+.btn-primary {
+    color: #fff;
+    background: #67c23a;
+}
+
+.btn-primary:hover {
+    background: #85ce61;
+}
+
+.btn-info {
+    color: #606266;
+    background-color: #fff;
+    border: #dcdfe6 solid 1px !important;
+}
+
+.btn-info:hover {
+    border: #409eff solid 1px !important;
+    background-color: #ecf5ff;
+    color: #409eff;
+}
+
+#box-alert-box {
+    position: absolute;
+    top: 3%;
+    min-width: 380px;
+    background-color: #f0f9eb;
+    color: #67c23a;
+    padding: 15px 15px 15px 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity .2s;
+    box-shadow: 0 6px 16px -8px #00000014, 0 9px 28px #0000000d, 0 12px 48px 16px #00000008;
+}
+
+#box-alert-box div {
+    display: flex;
+    align-items: center;
+}
+
+#box-alert-box div span {
+    margin-right: 10px;
+}
+
+#box-alert-box span {
+    display: flex;
+    align-items: center;
+}
+
+#box-alert-box .delete {
+    color: #c0c4cc;
+    cursor: pointer;
+}
+
+#box-alert-box .delete:hover {
+    color: #a5a8af;
+}
+
+.alert-show {
+    animation: scale-up-top 0.3s ease-in-out both;
+}
+
+.alert-hide {
+    animation: scale-out-top 0.3s ease-in-out both;
+}
+
+@keyframes scale-up-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px)
+    }
+}
+
+@keyframes scale-out-top {
+    0% {
+        opacity: 1;
+        transform: translateY(0px)
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+#back {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    padding: 10px 20px;
+    border: #ddd solid 1px;
+    border-radius: 8px;
+}
+
+/* em 和 i 斜体的文字不倾斜 */
+em,
+i {
+    font-style: normal
+}
+
+/* 去掉li 的小圆点 */
+li {
+    list-style: none
+}
+
+img {
+    /* border 0 照顾低版本浏览器 如果 图片外面包含了链接会有边框的问题 */
+    border: 0;
+    /* 取消图片底侧有空白缝隙的问题 */
+    vertical-align: middle
+}
+
+button {
+    /* 当我们鼠标经过button 按钮的时候，鼠标变成小手 */
+    cursor: pointer
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover,
+/*指鼠标在链接*/
+a:active
+/* 指正在点的链接*/
+    {
+    color: #409eff;
+}
+
+button,
+input {
+    /* "\5B8B\4F53" 就是宋体的意思 这样浏览器兼容性比较好 */
+    font-family: Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    /* 边框为零,取消选中后出现的框 */
+    border: 0;
+    outline: none;
+}
+
+body {
+    /* CSS3 抗锯齿形 让文字显示的更加清晰 */
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+    color: #666;
+}
+
+.hide,
+.none {
+    display: none
+}
+
+/* 清除浮动 */
+.clearfix:after {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0
+}
+
+.clearfix {
+    *zoom: 1
+}

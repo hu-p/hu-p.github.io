@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Vue3+Koa2+Mysql实战随记（一）一、项目创建一、vue3项目创建的两种方法1) 使用 vue-cli 创建文档 12345678910111213141516## 安装或者升级npm install -g @vue&#x2F;cli## 保证 vue cli 版本在 4.5.0 以上vue --version## 创建项目vue create my-project运行项目一般用npm run s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3+Koa2+Mysql实战随记（一）">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/03/08/vue3+koa2+mysql%E5%AE%9E%E6%88%98%E9%9A%8F%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="Vue3+Koa2+Mysql实战随记（一）一、项目创建一、vue3项目创建的两种方法1) 使用 vue-cli 创建文档 12345678910111213141516## 安装或者升级npm install -g @vue&#x2F;cli## 保证 vue cli 版本在 4.5.0 以上vue --version## 创建项目vue create my-project运行项目一般用npm run s">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-08T01:44:05.858Z">
+<meta property="article:modified_time" content="2023-04-16T09:16:37.851Z">
+<meta property="article:author" content="渊不语">
+<meta property="article:tag" content="大前端">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Vue3+Koa2+Mysql实战随记（一） - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue3+Koa2+Mysql实战随记（一）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-08 09:44" pubdate>
+          2023年3月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          27k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          221 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue3+Koa2+Mysql实战随记（一）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Vue3-Koa2-Mysql实战随记（一）"><a href="#Vue3-Koa2-Mysql实战随记（一）" class="headerlink" title="Vue3+Koa2+Mysql实战随记（一）"></a>Vue3+Koa2+Mysql实战随记（一）</h1><h2 id="一、项目创建"><a href="#一、项目创建" class="headerlink" title="一、项目创建"></a>一、项目创建</h2><h3 id="一、vue3项目创建的两种方法"><a href="#一、vue3项目创建的两种方法" class="headerlink" title="一、vue3项目创建的两种方法"></a>一、vue3项目创建的两种方法</h3><h4 id="1-使用-vue-cli-创建"><a href="#1-使用-vue-cli-创建" class="headerlink" title="1) 使用 vue-cli 创建"></a>1) 使用 vue-cli 创建</h4><p><a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create">文档</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs vue">## 安装或者升级<br>npm install -g @vue/cli<br>## 保证 vue cli 版本在 4.5.0 以上<br>vue --version<br>## 创建项目<br>vue create my-project<br><br>运行项目一般用<br>npm run serve<br><br>此处会因为不兼容会出现bug，使用脚手架创建vue3项目启动不了，时间2021.7.21，<br>解决办法<br>打包的vue的版本3.1.3有问题<br>删掉，换成3.1.2<br>npm uninstall vue<br>npm install vue@3.1.2<br></code></pre></td></tr></table></figure>
+
+<p>Please pick a preset - 选择 Manually select features<br>Check the features needed for your project - 选择上 TypeScript ，特别注意点空格是选择，点回车是下一步<br>Choose a version of Vue.js that you want to start the project with - 选择 3.x (Preview)<br>Use class-style component syntax - 直接回车<br>Use Babel alongside TypeScript - 直接回车<br>Pick a linter &#x2F; formatter config - 直接回车<br>Use history mode for router? - 直接回车<br>Pick a linter &#x2F; formatter config - 直接回车<br>Pick additional lint features - 直接回车<br>Where do you prefer placing config for Babel, ESLint, etc.? - 直接回车<br>Save this as a preset for future projects? - 直接回车</p>
+<h4 id="2-使用-vite-创建"><a href="#2-使用-vite-创建" class="headerlink" title="2) 使用 vite 创建"></a>2) 使用 vite 创建</h4><p><a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/installation.html">文档</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vue">npm init vite-app &lt;project-name&gt;<br>cd &lt;project-name&gt;<br>npm install<br>npm run dev<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>vite 是一个由原生 ESM 驱动的 Web 开发构建工具。在开发环境下基于浏览器原生 ES imports 开发，</li>
+<li>它做到了<em><strong>本地快速开发启动</strong></em>, 在生产环境下基于 Rollup 打包。<ul>
+<li>快速的冷启动，不需要等待打包操作；</li>
+<li>即时的热模块更新，替换性能和模块数量的解耦让更新飞起；</li>
+<li>真正的按需编译，不再等待整个应用编译完成，这是一个巨大的改变。</li>
+</ul>
+</li>
+</ul>
+<h3 id="二、创建koa2项目"><a href="#二、创建koa2项目" class="headerlink" title="二、创建koa2项目"></a>二、创建koa2项目</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"># 项目初始化<br>npm init -y<br><br># 安装koa2<br>npm i koa2 -S<br><br>运行项目一般用<br>node app.<span class="hljs-property">js</span><br>可通过npm i -s nodemon 配置热启动，nodemon app.<span class="hljs-property">js</span><br>如果nodemon app.<span class="hljs-property">js</span>，即使用npx nodemon app.<span class="hljs-property">js</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="二、项目搭建时的问题"><a href="#二、项目搭建时的问题" class="headerlink" title="二、项目搭建时的问题"></a>二、项目搭建时的问题</h2><h3 id="一、前端vue3-element-plus"><a href="#一、前端vue3-element-plus" class="headerlink" title="一、前端vue3+element-plus"></a>一、前端vue3+element-plus</h3><p><strong>由于vue3相对于vue2变化较大，组件element不兼容，故相应的推出了element-plus</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>、对于引用element-plus的组件，存在一些深层的样式不容易修改，例如el-input的输入框背景颜色，故使用deep或&gt;&gt;&gt;修改，<br>另外还需为style加上scoped,将修改的内容影响限定在该页面<br><span class="hljs-comment">/* 此处需要深层次修改，故用&gt;&gt;&gt;和/deep/，不过vue3提示用:deep() </span><br><span class="hljs-comment">   其中el-input__inner为深层的input标签的class名 */</span><br>:<span class="hljs-title function_">deep</span>().<span class="hljs-property">el</span>-input__inner &#123;<br>    background-<span class="hljs-attr">color</span>: transparent;<br>    <span class="hljs-attr">color</span>: turquoise;<br>   &#125;<br><br>衍生：span不换行盒子，div换行盒子<br>     设置<span class="hljs-attr">display</span>:flex,然后可使用弹性盒子flex，极度方便，详情可见<span class="hljs-attr">https</span>:<span class="hljs-comment">//www.runoob.com/w3cnote/flex-grammar.html</span><br>     亦可参见阮一峰的grid，<span class="hljs-attr">http</span>:<span class="hljs-comment">//www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</span><br>     还有camvas画布，<br><br><span class="hljs-number">2</span>、不存在页面或错误页面的显示，在vue2中可以直接<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;*&#x27;</span>即可，但是vue3需要<span class="hljs-string">&#x27;/:catchAll(.*)&#x27;</span><br>&#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/:catchAll(.*)&#x27;</span>,<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Not Found&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;../views/404.vue&#x27;</span>)<br>  &#125;<br><br><span class="hljs-number">3</span>、路由守卫<br><span class="hljs-comment">//to值访问路由，from跳转路由，next执行下一项</span><br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">//此处的isToken为得到，后端登录后生成并录入浏览器的token</span><br>  <span class="hljs-keyword">const</span> isToken = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-property">elementToken</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">//未登录时，如果遇到以下三个页面放行，否则跳转至登录页面</span><br>  <span class="hljs-keyword">if</span>(to.<span class="hljs-property">path</span> == <span class="hljs-string">&#x27;/login&#x27;</span> || to.<span class="hljs-property">path</span> == <span class="hljs-string">&#x27;/register&#x27;</span> || to.<span class="hljs-property">path</span> == <span class="hljs-string">&#x27;/forget&#x27;</span>)&#123;<br>    <span class="hljs-title function_">next</span>()<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    isToken ? <span class="hljs-title function_">next</span>() : <span class="hljs-title function_">next</span>(<span class="hljs-string">&#x27;/login&#x27;</span>)<br>  &#125;<br>  <br> <span class="hljs-number">4</span>、页面实例分析<br> &lt;template&gt;<br>&lt;div class=&quot;register-b&quot;&gt;<br>  &lt;div class=&quot;register&quot;&gt;<br>    &lt;h3&gt;注册页面&lt;/h3&gt;<br>    //以下为form表单，详情参考element-plus组件<br>    &lt;el-form<br>    //绑定数据<br>      :model=&quot;registerData&quot;<br>    //是否显示必填字段的标签旁边的红色星号<br>      hide-required-asterisk=&quot;false&quot;<br>    //输入规则<br>      :rules=&quot;rules&quot;<br>    //显示输入对错的图标<br>      status-icon<br>    //表单验证，ref 绑定控件，$refs 获取控件<br>      ref=&quot;registerForm&quot;<br>    //标签大小<br>      label-width=&quot;100px&quot;<br>      class=&quot;demo-ruleForm&quot;<br>    &gt;<br>      &lt;el-form-item prop=&quot;email&quot;&gt;<br>        &lt;el-input<br>          type=&quot;email&quot;<br>          v-model=&quot;registerData.email&quot;<br>        //输入框中的文字<br>          placeholder=&quot;请在此处输入邮箱&quot;<br>          //输入框内开头的图标<br>          prefix-icon=&quot;el-icon-message&quot;<br>        &gt;&lt;/el-input&gt;<br>      &lt;/el-form-item&gt;<br>      &lt;el-form-item prop=&quot;code&quot;&gt;<br>        &lt;el-input<br>          type=&quot;text&quot;<br>          style=&quot;width:50%&quot;<br>          v-model=&quot;registerData.code&quot;<br>          placeholder=&quot;请在此处输入验证码&quot;<br>          prefix-icon=&quot;el-icon-s-promotion&quot;<br>        &gt;&lt;/el-input&gt;<br>        &lt;span class=&quot;jianju&quot;<br>          &gt;&lt;time-yan-zheng :email=&quot;registerData.email&quot;&gt; &lt;/time-yan-zheng<br>        &gt;&lt;/span&gt;<br>      &lt;/el-form-item&gt;<br><br>      &lt;el-form-item prop=&quot;username&quot;&gt;<br>        &lt;el-input<br>          type=&quot;text&quot;<br>          v-model=&quot;registerData.username&quot;<br>          placeholder=&quot;请在此处输入昵称&quot;<br>          prefix-icon=&quot;el-icon-user&quot;<br>        &gt;&lt;/el-input&gt;<br>      &lt;/el-form-item&gt;<br>      &lt;el-form-item prop=&quot;password&quot;&gt;<br>        &lt;el-input<br>          type=&quot;password&quot;<br>          v-model=&quot;registerData.password&quot;<br>          placeholder=&quot;请在此处输入密码&quot;<br>          prefix-icon=&quot;el-icon-lock&quot;<br>    //提供密码显示的功能<br>          show-password<br>        &gt;&lt;/el-input&gt;<br>      &lt;/el-form-item&gt;<br>      &lt;el-form-item prop=&quot;password2&quot;&gt;<br>        &lt;el-input<br>          type=&quot;password&quot;<br>          v-model=&quot;registerData.password2&quot;<br>          placeholder=&quot;请在此处输入密码&quot;<br>          prefix-icon=&quot;el-icon-lock&quot;<br>          show-password<br>        &gt;&lt;/el-input&gt;<br>      &lt;/el-form-item&gt;<br>      &lt;div class=&quot;input-button&quot;&gt;<br>        &lt;el-button<br>          type=&quot;primary&quot;<br>          @click=&quot;submitForm(&#x27;registerForm&#x27;)&quot;<br>          class=&quot;res&quot;<br>          &gt;注册&lt;/el-button<br>        &gt;<br>      &lt;/div&gt;<br><br>      &lt;div class=&quot;input-link&quot;&gt;<br>        &lt;span class=&quot;login&quot;<br>          &gt;&lt;el-button type=&quot;text&quot; @click=&quot;topage(&#x27;/login&#x27;)&quot;<br>            &gt;用户登录&lt;/el-button<br>          &gt;&lt;/span<br>        &gt;<br>        &lt;span class=&quot;forget&quot;<br>          &gt;&lt;el-button type=&quot;text&quot; @click=&quot;topage(&#x27;/forget&#x27;)&quot;<br>            &gt;忘记密码&lt;/el-button<br>          &gt;&lt;/span<br>        &gt;<br>      &lt;/div&gt;<br>    &lt;/el-form&gt;<br>  &lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>import &#123; defineComponent, reactive &#125; from &quot;vue&quot;;<br>import timeYanZheng from &quot;../components/emailTime/time.vue&quot;;<br>import &#123; useRouter &#125; from &quot;vue-router&quot;;<br><br>export default defineComponent(&#123;<br>  components: &#123;<br>    timeYanZheng,<br>  &#125;,<br>  setup() &#123;<br>    const registerData = reactive(&#123;<br>      username: &quot;&quot;,<br>      password: &quot;&quot;,<br>      password2: &quot;&quot;,<br>      code: &quot;&quot;,<br>      email: &quot;&quot;,<br>    &#125;);<br>  <br>     //此处的功能实现vue3中页面的跳转，通过点击时调用函数topage，跳转页面<br>    const router = useRouter();<br>    const topage = (path) =&gt; &#123;<br>      router.push(path);<br>    &#125;;<br><br>    let validatePass = (rule, value, callback) =&gt; &#123;<br>      if (value != registerData.password) &#123;<br>        callback(new Error(&quot;两次输入的密码不一致&quot;));<br>      &#125; else &#123;<br>        callback();<br>      &#125;<br>    &#125;;<br><br>    const rules = reactive(&#123;<br>      //以下皆是输入框中的规则，可通过在数组中添加不同的对象实现，详情可见element-plus<br>      username: [<br>        &#123; required: true, message: &quot;用户名不得为空&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123; min: 3, max: 32, message: &quot;长度应在3-32之间&quot;, trigger: &quot;blur&quot; &#125;,<br>      ],<br>      password: [<br>        &#123; required: true, message: &quot;密码不得为空&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123; min: 3, max: 32, message: &quot;长度应在3-32之间&quot;, trigger: &quot;blur&quot; &#125;,<br>      ],<br>      password2: [<br>        &#123; required: true, message: &quot;密码不得为空&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123; min: 3, max: 32, message: &quot;长度应在3-32之间&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123; validator: validatePass, trigger: &quot;blur&quot; &#125;,<br>      ],<br>      code: [<br>        &#123; required: true, message: &quot;验证码不得为空&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123; min: 6, max: 6, message: &quot;长度应为6位&quot;, trigger: &quot;blur&quot; &#125;,<br>      ],<br>      email: [<br>        &#123; required: true, message: &quot;请输入邮箱地址&quot;, trigger: &quot;blur&quot; &#125;,<br>        &#123;<br>          type: &quot;email&quot;,<br>          message: &quot;请输入正确的邮箱地址&quot;,<br>          trigger: [&quot;blur&quot;, &quot;change&quot;],<br>        &#125;,<br>      ],<br>    &#125;);<br><br>    return &#123;<br>      registerData,<br>      rules,<br>      topage,<br>    &#125;;<br>  &#125;,<br>  methods: &#123;<br>    submitForm(formName) &#123;<br>      console.log(this.$refs[formName]);<br>        //检查表单，element-plus提供<br>      this.$refs[formName].validate((valid) =&gt; &#123;<br>        if (valid) &#123;<br>            //在写后端时，尽量返回ctx.resposes.status状态码,因为这样可直接通过element-plus在浏览器中显示效果出来，status               状态码返回的状态可在前端判判定，未成功不能进入下一个页面<br>            //通过axios访问后端，通过将第二个访问post包裹在第一个post的then里，可实现递进式访问<br>          this.$axios<br>            .post(&quot;./email/examEmail&quot;, this.registerData)<br>            .then(<br>              this.$axios<br>                .post(&quot;./login/register&quot;, this.registerData)<br>                .then((res) =&gt; &#123;<br>                  console.log(res.data);<br>                &#125;)<br>            )<br>          <br>            //成功即打印<br>            .then((res) =&gt; &#123;<br>              console.log(res.data);<br>              this.$message(&#123;<br>                type: &quot;success&quot;,<br>                message: &quot;用户注册成功&quot;,<br>              &#125;);<br>              //当无误完成后，即跳转至登录页面<br>              this.$router.push(&quot;/login&quot;);<br>            &#125;);<br>          //     console.log(res.data);<br>          //     if (res.data.code === 0) &#123;<br>          //       this.$router.push(&quot;/login&quot;);<br>          //     this.$message(&#123;<br>          //       type: &quot;success&quot;,<br>          //       message: &quot;用户注册成功&quot;,<br>          //     &#125;);<br>          //      &#125;<br>          //      else&#123;<br>          //        this.$message(&#123;<br>          //       type: &quot;error&quot;,<br>          //       message: &quot;用户注册失败&quot;,<br>          //     &#125;);<br>          //      &#125;<br>        &#125; else &#123;<br>          console.log(&quot;error submit!!&quot;);<br>          return false;<br>        &#125;<br>      &#125;);<br>    &#125;,<br>  &#125;,<br>&#125;);<br>&lt;/script&gt;<br><br>&lt;style scoped&gt;<br>.register-b &#123;<br>  background: url(&quot;../assets/img/bg11.jpg&quot;) no-repeat center;<br>  height: 100vh;<br>  background-size: cover;<br>&#125;<br><br>.register &#123;<br>  width: 40vw;<br>  height: 70vh;<br>  background-color: rgba(17, 30, 131, 0.1);<br>  position: absolute;<br>    //通过函数，将盒子居中，推荐<br>  left: calc(50% - 40vw / 2);<br>  top: calc(50% - 70vh / 2);<br>    //flex弹性盒子的应用，两边对齐<br>  justify-content: space-between;<br>&#125;<br><br>.jianju &#123;<br>  margin-left: 1vw;<br>&#125;<br><br>h3 &#123;<br>  text-align: center;<br>&#125;<br><br>.el-input &#123;<br>  width: 80%;<br>&#125;<br><br>.input-button &#123;<br>  display: flex;<br>&#125;<br><br>/* 此处需要深层次修改，故用&gt;&gt;&gt;和/deep/，不过vue提示用:deep() */<br>:deep().el-input__inner &#123;<br>    background-color: transparent;<br>    color: turquoise;<br>   &#125; <br><br>.el-button &#123;<br>  margin: 0 auto;<br>&#125;<br><br>.input-link &#123;<br>  margin-top: 10px;<br>  display: flex;<br>  justify-content: space-between;<br>&#125;<br><br>.el-button.res &#123;<br>  width: 67%;<br>&#125;<br>.login &#123;<br>  margin-left: 4vw;<br>&#125;<br><br>.forget &#123;<br>  margin-right: 4vw;<br>&#125;<br>&lt;/style&gt;<br><br> 5、验证码倒计时组件如下：<br> <br> time.vue<br>  <br> &lt;template&gt;<br>      &lt;el-button<br>        type=&quot;primary&quot;<br>        class=&quot;yanzheng&quot;<br>        @click=&quot;getCode()&quot;<br>        :disabled=&quot;!login.canGet&quot;<br>      &gt;<br>        &lt;div&gt;<br>          &lt;span v-show=&quot;!login.canGet&quot;&gt;&#123;&#123;<br>            login.waitTime + &quot;s后重新获取&quot;<br>          &#125;&#125;&lt;/span&gt;<br>          &lt;span v-show=&quot;login.canGet&quot;&gt;获取邮箱验证码&lt;/span&gt;<br>        &lt;/div&gt;<br>      &lt;/el-button&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>import &#123; defineComponent &#125; from &quot;vue&quot;;<br>import timeCountdown from &quot;./time.js&quot;;<br><br>export default defineComponent(&#123;<br>  props: &#123;<br>    email: &#123;<br>      type: String,<br>      default: &#x27;&#x27;<br>    &#125;<br>  &#125;,<br>  data() &#123;<br>    return &#123;<br>      registerData: &#123;<br>        yanzhengma: &quot;&quot;,<br>      &#125;,<br>      tempLogin: &#123;<br>        //定义一个临时对象<br>        canGet: true,<br>        timer: null,<br>        waitTime: 60,<br>      &#125;,<br>    &#125;;<br>  &#125;,<br>  methods: &#123;<br>    getCode() &#123;<br>        //由于传过来的email为单一的值，而axios传回后端的为&#123;&#125;对象类型，<br>      console.log(1, this.login);<br>      let test =&#123;<br>          email:this.email<br>      &#125;<br>      this.$axios.post(&quot;/email&quot;, test).then((res) =&gt; &#123;<br>        console.log(2, res.data);<br>        this.$message(&#123;<br>          type: &quot;success&quot;,<br>          message: &quot;验证码发送成功&quot;,<br>        &#125;);<br>      &#125;);<br><br>      //倒计时开始<br>      timeCountdown(this.login); //参数为最终对象<br>    &#125;,<br>  &#125;,<br>  computed: &#123;<br>    login() &#123;<br>      //最终对象<br>      if (!this.tempLogin.canGet) &#123;<br>        console.log(this.email);<br>        return timeCountdown(this.tempLogin);<br>      &#125; else &#123;<br>        return this.tempLogin;<br>      &#125;<br>    &#125;,<br>  &#125;,<br>&#125;);<br>&lt;/script&gt;<br><br>&lt;style&gt;<br>.el-button.yanzheng &#123;<br>  margin-left: 1vw;<br>  width: 9vw;<br>&#125;<br><br>&lt;/style&gt;<br><br>//time.js<br><br>function timeCountdown(obj) &#123; //obj包括timer、waitTime 、canGet <br>    const TIME_COUNT = 60; //默认倒计时秒数<br><br>    if (!obj.timer) &#123;<br>        obj.waitTime = TIME_COUNT;<br>        obj.canGet = false;<br>        obj.timer = setInterval(() =&gt; &#123;<br>            if (obj.waitTime&gt;0 &amp;&amp; obj.waitTime&lt;=TIME_COUNT) &#123;<br>                obj.waitTime--;<br>            &#125;else&#123;<br>                obj.canGet = true;<br>                clearInterval(obj.timer); //清空定时器<br>                obj.timer = null;<br>            &#125;<br>        &#125;, 1000)<br>    &#125;<br>    return &#123;<br>        timer: obj.timer,<br>        canGet: obj.canGet,<br>        waitTime: obj.waitTime<br>    &#125;<br>&#125;<br><br>export default timeCountdown<br><br><br>6、axios配置文件<br><br>axios.js<br><br>import axios from &quot;axios&quot;;<br>import &#123; ElMessage &#125; from &quot;element-plus&quot;;<br><br><br>let http = axios.create(&#123;<br>  baseURL:&#x27;http://localhost:5030/&#x27;<br>&#125;)<br><br>//请求拦截<br>http.interceptors.request.use( config =&gt; &#123;<br>   if(localStorage.elementToken)&#123;<br>     config.headers.Authorization = localStorage.elementToken<br>   &#125;<br>   return config<br>&#125;)<br><br>//响应拦截<br>http.interceptors.response.use( res =&gt; &#123;<br>  return res<br>&#125;, err =&gt; &#123;<br>  console.log(err.response);<br>    //在浏览器头先生出相应的错误<br>  ElMessage.error(err.response.data.msg)<br>&#125;)<br><br>export default http<br><br>在main.js中导入axios<br><br>import axios from &#x27;./axios.js&#x27;<br>const app = createApp(App);<br>app.config.globalProperties.$axios=axios;<br><br>7、引用阿里图标写一个组件<br>&lt;template&gt;<br>  &lt;div :class=&quot;[&#x27;iconfont&#x27;, id, color]&quot; :style=&quot;&#123;fontSize: `$&#123;size&#125;px`&#125;&quot;&gt;   <br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script&gt;<br>import &#123; defineComponent &#125; from &#x27;vue&#x27;<br>export default defineComponent(&#123;<br>  props:&#123;<br>      id: &#123;<br>          type:String,<br>          default:&quot;&quot;<br>      &#125;,<br>      color: &#123;<br>          type:String,<br>          default:&quot;&quot;<br>      &#125;,<br>      size: &#123;<br>          type:[Number,String],<br>          default:40<br>      &#125;,<br>  &#125;<br>&#125;)<br>&lt;/script&gt;<br>&lt;style&gt;<br>&lt;/style&gt;<br><br>8、根据不同的页面的路径判断是否展示某一模块<br>&lt;template&gt;<br>  &lt;div class=&quot;home&quot;&gt;<br>    &lt;div class=&quot;wrapper&quot;&gt;<br>      &lt;layoutSlide icon-id=&quot;icon-wangluo&quot; icon-color=&quot;text-warning&quot; icon-size=&quot;45&quot;&gt;<br>        Welcome to LongQue<br>      &lt;/layoutSlide&gt;<br>      &lt;div :class=&quot;(`$&#123;data&#125;`)&quot; style=&quot;max-height: 90vh&quot;&gt;<br>        &lt;layoutHead&gt;<br>          &lt;template #title&gt;&#123;&#123;title&#125;&#125;&lt;/template&gt;<br>          &lt;template #dea&gt;&#123;&#123;dea&#125;&#125;&lt;/template&gt;<br>          &lt;template #good&gt;您已被赞&#123;&#123;praise&#125;&#125;次！&lt;/template&gt;<br>        &lt;/layoutHead&gt;<br>        &lt;transition enter-active-class=&quot;animate__animated animate__zoomIn&quot;&gt;<br>          &lt;router-view&gt;&lt;/router-view&gt;<br>        &lt;/transition&gt;<br>      &lt;/div&gt;<br>     &lt;userProfile :src=&quot;src&quot; /&gt;<br>    &lt;/div&gt;<br><br>    &lt;layout-footer&gt;&lt;/layout-footer&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script lang=&quot;ts&quot;&gt;<br>import &#123; <br>         defineComponent,<br>         &#125; from &#x27;vue&#x27;;<br>import userProfile from &#x27;../components/home/userProfile.vue&#x27;<br>import layoutSlide from &#x27;../components/home/layout/layoutSlide.vue&#x27;<br>import layoutHead from &#x27;../components/home/layout/layoutHead.vue&#x27;<br>import &#123; computed&#125; from &#x27;vue&#x27;<br>import &#123; useRouter &#125; from &#x27;vue-router&#x27;;<br>import &#123; praise &#125; from &#x27;../components/introduction/sendData.js&#x27;<br>import LayoutFooter from &#x27;../components/home/layout/layoutFooter.vue&#x27;;<br><br>export default defineComponent(&#123;<br>  name: &#x27;Home&#x27;,<br>  setup() &#123;<br>    const router = useRouter();<br>    const title = computed(() =&gt; &#123;<br>      const &#123;path &#125; = router.currentRoute.value;<br>       //如果是根目录，即展示I&#x27;m，否则不展示<br>      return path === &quot;/&quot; ? &quot;I&#x27;m&quot; : &quot;&quot;;<br>    &#125;)<br>    const dea = computed(() =&gt; &#123;<br>      const &#123;path, name &#125; = router.currentRoute.value;<br>      return path === &quot;/&quot; ? &quot;Mark&quot; : name;<br>    &#125;)<br><br>    const data = computed(() =&gt; &#123;<br>      const &#123; path &#125; = router.currentRoute.value;<br>        //如果是根目录，即宽度为100%，否则宽度为100，且有下拉条<br>      return path === &quot;/&quot; ? &quot;w-100&quot; : &quot;w-100 pre-scrollable&quot;;<br>    &#125;);<br>   <br>     return&#123;<br>       src: require(&#x27;../assets/img/p1.jpg&#x27;),<br>       title,<br>       dea,<br>       praise,<br>       data<br>     &#125;<br>  &#125;,<br>  components: &#123;<br>    userProfile,<br>    layoutSlide,<br>    layoutHead,<br>    LayoutFooter<br>  &#125;,<br><br>&#125;);<br>&lt;/script&gt;<br><br>&lt;style&gt;<br>.home &#123;<br>  background: url(&quot;../assets/img/bg.jpg&quot;) no-repeat center;<br>  background-attachment: scroll;<br>  height: 100vh;<br>  background-size: cover;<br>&#125;<br><br>.wrapper &#123;<br>  width: 90vw;<br>  height: 90vh;<br>  background-color: rgb(44,48,80,0.1);<br>  position: absolute;<br>  left:calc(50% - 90vw / 2);<br>  top:calc(50% - 90vh /2);<br>  display: flex;<br>  justify-content: space-between;<br>&#125;<br>&lt;/style&gt;<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="二、后端koa2"><a href="#二、后端koa2" class="headerlink" title="二、后端koa2"></a>二、后端koa2</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-number">1</span>、mysql数据库连接<br>config.<span class="hljs-property">js</span><br><br><span class="hljs-keyword">let</span> config<br><span class="hljs-comment">//数据库配置</span><br> config = &#123;<br>        <span class="hljs-attr">host</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>        <span class="hljs-attr">port</span>:<span class="hljs-string">&#x27;3306&#x27;</span>,<br>        <span class="hljs-attr">user</span>:<span class="hljs-string">&#x27;root&#x27;</span>,<br>        <span class="hljs-attr">password</span>:<span class="hljs-string">&#x27;1234&#x27;</span>,<br>        <span class="hljs-attr">database</span>:<span class="hljs-string">&#x27;back_project_2&#x27;</span><br>    &#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = config<br><br>db.<span class="hljs-property">js</span><br><span class="hljs-keyword">const</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./config&#x27;</span>)<br><span class="hljs-keyword">const</span> mysql = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mysql&#x27;</span>)<br><br><span class="hljs-comment">//创建连接池</span><br><span class="hljs-keyword">let</span> pool =mysql.<span class="hljs-title function_">createPool</span>(config);<br><br><span class="hljs-comment">//基础</span><br><span class="hljs-comment">// //对数据库进行增删改查操作的基础</span><br><span class="hljs-comment">// function query(sql,callback)&#123;</span><br><span class="hljs-comment">//     //创建连接</span><br><span class="hljs-comment">//     pool.getConnection(function(err,connection)&#123;</span><br><span class="hljs-comment">//         connection.query(sql,function(err,rows)&#123;</span><br><span class="hljs-comment">//             //表示连接成功时有错误即抛出错误，没有错误即返回取得的数据</span><br><span class="hljs-comment">//             callback(err,rows)</span><br><span class="hljs-comment">//             //中断连接</span><br><span class="hljs-comment">//             connection.release()</span><br><span class="hljs-comment">//         &#125;)</span><br><span class="hljs-comment">//     &#125;)</span><br><span class="hljs-comment">// &#125;</span><br><br><span class="hljs-comment">//直接使用含回调的即可</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-params">sql</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve,reject</span>)=&gt;</span>&#123;<br>      <br>        pool.<span class="hljs-title function_">getConnection</span>(<span class="hljs-function">(<span class="hljs-params">err,connection</span>)=&gt;</span>&#123;<br>            <span class="hljs-keyword">if</span>(err)&#123;<br>                <span class="hljs-title function_">reject</span>(err)<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//事件驱动回调</span><br>            connection.<span class="hljs-title function_">query</span>(sql,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>                <span class="hljs-keyword">if</span>(err)&#123;<br>                    <span class="hljs-title function_">reject</span>(err)<br>                &#125;<span class="hljs-keyword">else</span>&#123;<br>                    <span class="hljs-title function_">resolve</span>(data)<br>                &#125;<br>            &#125;);<br>            <span class="hljs-comment">//释放连接</span><br>            connection.<span class="hljs-title function_">release</span>();<br>        &#125;<br>        &#125;)<br>    &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">err</span>)=&gt;</span>&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)<br>    &#125;)<br>&#125;<br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = queryback<br><br><span class="hljs-number">2</span>、验证码发送<br><span class="hljs-comment">//验证码配置</span><br><span class="hljs-keyword">const</span> nodemailer = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;nodemailer&#x27;</span>)<br><span class="hljs-keyword">const</span> smtpTransport = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;nodemailer-smtp-transport&#x27;</span>)<br><br><span class="hljs-keyword">const</span> transport = nodemailer.<span class="hljs-title function_">createTransport</span>(<span class="hljs-title function_">smtpTransport</span>(&#123;<br>    <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;smtp.163.com&#x27;</span>, <span class="hljs-comment">// 服务 由于我用的163邮箱</span><br>    <span class="hljs-attr">port</span>: <span class="hljs-number">465</span>, <span class="hljs-comment">// smtp端口 默认无需改动</span><br>    <span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">auth</span>: &#123;<br>      <span class="hljs-attr">user</span>: <span class="hljs-string">&#x27;******@163.com&#x27;</span>, <span class="hljs-comment">// 邮箱用户名</span><br>      <span class="hljs-attr">pass</span>: <span class="hljs-string">&#x27;**********&#x27;</span> <span class="hljs-comment">// SMTP授权码  //邮箱设置中开启</span><br>    &#125;<br>&#125;));<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">randomFns</span>=(<span class="hljs-params"></span>)=&gt; &#123; <span class="hljs-comment">// 生成6位随机数</span><br>    <span class="hljs-keyword">let</span> code = <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i= <span class="hljs-number">0</span>;i&lt;<span class="hljs-number">6</span>;i++)&#123;<br>        code += <span class="hljs-built_in">parseInt</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>()*<span class="hljs-number">10</span>)<br>    &#125;<br>    <span class="hljs-keyword">return</span> code <br>&#125;<br> <br><span class="hljs-keyword">const</span> regEmail=<span class="hljs-regexp">/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]&#123;2,3&#125;$/</span> <span class="hljs-comment">//验证邮箱正则</span><br><br> <span class="hljs-keyword">const</span> <span class="hljs-title function_">emailModel</span> = <span class="hljs-keyword">async</span>(<span class="hljs-params">EMAIL,code,call</span>) =&gt; &#123;<br>    transport.<span class="hljs-title function_">sendMail</span>(&#123;<br>      <span class="hljs-attr">from</span>: <span class="hljs-string">&#x27;******@163.com&#x27;</span>, <span class="hljs-comment">// 发件邮箱，须根上面的邮箱用户名一样</span><br>      <span class="hljs-attr">to</span>: <span class="hljs-variable constant_">EMAIL</span>, <span class="hljs-comment">// 收件列表</span><br>      <span class="hljs-attr">subject</span>: <span class="hljs-string">&#x27;验证你的电子邮件&#x27;</span>, <span class="hljs-comment">// 标题</span><br>      <span class="hljs-attr">html</span>: <span class="hljs-string">`</span><br><span class="hljs-string">      &lt;p&gt;你好！&lt;/p&gt;</span><br><span class="hljs-string">      &lt;p&gt;您正在注册龙雀社区账号&lt;/p&gt;</span><br><span class="hljs-string">      &lt;p&gt;你的验证码是：&lt;strong style=&quot;color: #ff4e2a;&quot;&gt;<span class="hljs-subst">$&#123;code&#125;</span>&lt;/strong&gt;&lt;/p&gt;</span><br><span class="hljs-string">      &lt;p&gt;***该验证码5分钟内有效***&lt;/p&gt;`</span> <span class="hljs-comment">// html 内容</span><br>    &#125;, <br>    <span class="hljs-function">(<span class="hljs-params">error, data</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">if</span>(error)&#123;<br>       call (<span class="hljs-literal">false</span>)<br>      &#125;<span class="hljs-keyword">else</span>&#123;<br>       call (<span class="hljs-literal">true</span>)<br>      &#125;<br>      <span class="hljs-comment">// console.log(1,error)</span><br>      <span class="hljs-comment">// console.log(2,data)</span><br>      transport.<span class="hljs-title function_">close</span>(); <span class="hljs-comment">// 如果没用，关闭连接池</span><br>    &#125;)<br>    <span class="hljs-comment">//....验证码发送后的相关工作 </span><br>  &#125;<br><br>  <span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>      regEmail,<br>      randomFns,<br>      emailModel<br>  &#125;<br><br>调用验证码<br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Router</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-router&#x27;</span>);<br><span class="hljs-keyword">const</span> queryback = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/db/db.js&#x27;</span>)<br><span class="hljs-keyword">const</span> email = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>();<br><br><span class="hljs-keyword">const</span> &#123;<br>    regEmail,<br>    emailModel,<br>    randomFns<br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/email/emailConfig&#x27;</span>)<br><br><br><span class="hljs-comment">//注册验证码</span><br>email.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (ctx, next) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-title class_">Email</span> = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">email</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Email</span>);<br>    <span class="hljs-keyword">let</span> find = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select email from user where email = &#x27;<span class="hljs-subst">$&#123;Email&#125;</span>&#x27;`</span>)<br>    <span class="hljs-comment">// console.log(find);</span><br>    <span class="hljs-keyword">if</span> (!find || find.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">let</span> code = <span class="hljs-title function_">randomFns</span>()<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(code);<br>        <span class="hljs-keyword">if</span> (regEmail.<span class="hljs-title function_">test</span>(<span class="hljs-title class_">Email</span>)) &#123;<br>            <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`insert into emails (email,code) values (&#x27;<span class="hljs-subst">$&#123;Email&#125;</span>&#x27;,&#x27;<span class="hljs-subst">$&#123;code&#125;</span>&#x27;)`</span>)<br>          <br>            <span class="hljs-comment">//重点，化为异步之后方可实现返回验证码发送之后的结果</span><br>            <span class="hljs-comment">//await是异步的标志，new promise是异步的施行</span><br>            <span class="hljs-keyword">let</span> dd = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>                <span class="hljs-title function_">emailModel</span>(<span class="hljs-title class_">Email</span>, code, <span class="hljs-function">(<span class="hljs-params">call</span>) =&gt;</span> &#123;<br>                    <span class="hljs-title function_">resolve</span>(call)<br>                &#125;)<br>            &#125;)<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(dd)<br>            <span class="hljs-keyword">if</span> (dd === <span class="hljs-literal">true</span>)<br>               &#123;<br>                   ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>                   ctx.<span class="hljs-property">body</span> = &#123;<br>                       <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>                       <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;验证码已发送&#x27;</span><br>                   &#125;<br>                    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">async</span> () =&gt; &#123; <span class="hljs-comment">//5分钟后失效</span><br>                    <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`delete from emails where email = &#x27;<span class="hljs-subst">$&#123;Email&#125;</span>&#x27;`</span>)<br>                &#125;, <span class="hljs-number">1000</span> * <span class="hljs-number">60</span> * <span class="hljs-number">5</span>)<br>               &#125;<span class="hljs-keyword">else</span>&#123;<br>                ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>                ctx.<span class="hljs-property">body</span> = &#123;<br>                    <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>                    <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;验证码发送失败，请稍后再试&#x27;</span><br>                &#125;<br>               &#125;<br>             <br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// assert(false,422,&#x27;请输入正确的邮箱格式！&#x27;)</span><br>            ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">422</span><br>            ctx.<span class="hljs-property">body</span> = &#123;<br>                <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>                <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;请输入正确的邮箱格式&#x27;</span><br>            &#125;<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">400</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: -<span class="hljs-number">1</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;该邮箱已注册&#x27;</span><br>        &#125;<br>    &#125;<br>&#125;)<br><br><span class="hljs-comment">//校验验证码</span><br>email.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/examEmail&#x27;</span>, <span class="hljs-keyword">async</span> (ctx) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> email = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">email</span><br>    <span class="hljs-keyword">const</span> code = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">code</span><br>    <span class="hljs-keyword">const</span> examE = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select * from emails where email = &#x27;<span class="hljs-subst">$&#123;email&#125;</span>&#x27; and code = &#x27;<span class="hljs-subst">$&#123;code&#125;</span>&#x27;`</span>)<br>    <span class="hljs-keyword">if</span>(!examE || examE.<span class="hljs-property">length</span> ===<span class="hljs-number">0</span>)&#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">400</span><br>                ctx.<span class="hljs-property">body</span> = &#123;<br>                    <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>                    <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;验证码错误，请稍后再试&#x27;</span><br>                &#125;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>                ctx.<span class="hljs-property">body</span> = &#123;<br>                    <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>                    <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;验证码填写正确&#x27;</span><br>                &#125;<br>    &#125;<br>&#125;)<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = email;<br><br><span class="hljs-number">3</span>、加密、解密<br>配置md5.<span class="hljs-property">js</span><br><br><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;crypto&#x27;</span>)<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">md5</span>(<span class="hljs-params">s</span>)&#123;<br>  <span class="hljs-comment">// 给密码加密</span><br>    <span class="hljs-comment">//注意参数需要为string类型，否则会报错</span><br>    <span class="hljs-keyword">return</span> crypto.<span class="hljs-title function_">createHash</span>(<span class="hljs-string">&#x27;md5&#x27;</span>).<span class="hljs-title function_">update</span>(<span class="hljs-title class_">String</span>(s)).<span class="hljs-title function_">digest</span>(<span class="hljs-string">&#x27;hex&#x27;</span>);<br>&#125;<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>    md5,<br>    <span class="hljs-comment">// 处理密码的密钥</span><br>    <span class="hljs-attr">PWD_SALT</span>:<span class="hljs-string">&#x27;xd_node&#x27;</span>,<br>    <span class="hljs-comment">// 处理token的密钥</span><br>    <span class="hljs-attr">PRIVATE_KEY</span>:<span class="hljs-string">&#x27;xd_blog&#x27;</span>,<br>    <span class="hljs-comment">// token的过期时间</span><br>    <span class="hljs-attr">EXPIRESD</span>:<span class="hljs-number">60</span>*<span class="hljs-number">60</span>*<span class="hljs-number">24</span><br>&#125;<br><br>login.<span class="hljs-property">js</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Router</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-router&#x27;</span>);<br><span class="hljs-keyword">const</span> queryback = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/db/db.js&#x27;</span>)<br><span class="hljs-keyword">const</span> login = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>();<br><br><span class="hljs-keyword">const</span> &#123;<br>    md5,<br>    <span class="hljs-variable constant_">PWD_SALT</span>,<br>    <span class="hljs-variable constant_">PRIVATE_KEY</span>,<br>    <span class="hljs-variable constant_">EXPIRESD</span><br>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/encrpytion/md5.js&#x27;</span>)<br><span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jsonwebtoken&#x27;</span>)<br><br><span class="hljs-comment">//注册接口</span><br>login.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/register&#x27;</span>, <span class="hljs-keyword">async</span> (ctx, next) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> myusername = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">username</span><br>    <span class="hljs-keyword">let</span> mypwd = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">password</span><br>    <span class="hljs-keyword">let</span> myemail = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">email</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myusername, mypwd, myemail);<br>    <span class="hljs-comment">// 查询有无相同的用户名</span><br>    <span class="hljs-keyword">let</span> regis = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select * from user where username = &#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27;`</span>)<br>    <span class="hljs-comment">// 用户名不存在</span><br>    <span class="hljs-keyword">if</span> (!regis || regis.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">// 调用加密方法给密码加密</span><br>        mypwd = <span class="hljs-title function_">md5</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;mypwd&#125;</span><span class="hljs-subst">$&#123;PWD_SALT&#125;</span>`</span>)<br>        <span class="hljs-comment">// 然后再插入到数据库</span><br>        <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`insert into user (username, password, email) values (&#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27;,&#x27;<span class="hljs-subst">$&#123;mypwd&#125;</span>&#x27;,&#x27;<span class="hljs-subst">$&#123;myemail&#125;</span>&#x27;)`</span>)<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;注册成功！&quot;</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">400</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: -<span class="hljs-number">1</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;账号已存在，请重新注册！&quot;</span><br>        &#125;<br>    &#125;<br>&#125;)<br><br><span class="hljs-comment">//更新密码</span><br>login.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/forget&#x27;</span>, <span class="hljs-title function_">async</span>(ctx) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> mypwd = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">password</span><br>    <span class="hljs-keyword">let</span> myemail = ctx .<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">email</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(mypwd, myemail);<br>    <span class="hljs-keyword">let</span> regis = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select * from user where email = &#x27;<span class="hljs-subst">$&#123;myemail&#125;</span>&#x27;`</span>)<br>    <span class="hljs-comment">// 邮箱不存在</span><br>    <span class="hljs-keyword">if</span> (!regis || regis.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) &#123;<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">400</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: -<span class="hljs-number">1</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;邮箱未注册，请先注册！&quot;</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 调用加密方法给密码加密</span><br>        mypwd = <span class="hljs-title function_">md5</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;mypwd&#125;</span><span class="hljs-subst">$&#123;PWD_SALT&#125;</span>`</span>)<br>        <span class="hljs-comment">// 然后再插入到数据库</span><br>        <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`update user set password = &#x27;<span class="hljs-subst">$&#123;mypwd&#125;</span>&#x27; where email = &#x27;<span class="hljs-subst">$&#123;myemail&#125;</span>&#x27;`</span>)<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&quot;修改成功！&quot;</span><br>        &#125;<br>      <br>    &#125;<br>&#125;)<br><br><span class="hljs-comment">//登录接口</span><br>login.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">async</span> (ctx, next) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> myusername = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">username</span><br>    <span class="hljs-keyword">let</span> mypwd = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">body</span>.<span class="hljs-property">password</span><br>    <span class="hljs-keyword">let</span> user = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select username,email from user where username = &#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27; or email = &#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27;`</span>)<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myusername, mypwd);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(user);<br>    <span class="hljs-keyword">if</span> (!user || user.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-comment">//用户名不存在</span><br>        <span class="hljs-comment">//返回时必须返回status,status状态码可与前端element-ui中的form表单一起使用，可以判断</span><br>       ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">400</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: -<span class="hljs-number">1</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;该账号不存在&#x27;</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 调用加密方法给密码加密</span><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myusername,mypwd);<br>        mypwd = <span class="hljs-title function_">md5</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;mypwd&#125;</span><span class="hljs-subst">$&#123;PWD_SALT&#125;</span>`</span>)<br>        <span class="hljs-comment">// 把加密过后的密码以及用户名 和 数据库的数据  匹配</span><br>        <span class="hljs-keyword">let</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select * from user where username = &#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27; or email = &#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27; and password = &#x27;<span class="hljs-subst">$&#123;mypwd&#125;</span>&#x27;`</span>)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result);<br>        <span class="hljs-keyword">if</span> (!result || result.<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) &#123;<br>            ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">404</span><br>            ctx.<span class="hljs-property">body</span> = &#123;<br>                <span class="hljs-attr">code</span>: -<span class="hljs-number">1</span>,<br>                <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;账号或密码不正确&#x27;</span><br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 如果该结果存在说明登录成功，则生成token</span><br>            <span class="hljs-keyword">let</span> token = jwt.<span class="hljs-title function_">sign</span>(&#123;<br>                myusername<br>            &#125;, <span class="hljs-variable constant_">PRIVATE_KEY</span>, &#123;<br>                <span class="hljs-attr">expiresIn</span>: <span class="hljs-variable constant_">EXPIRESD</span><br>            &#125;)<br>            ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>            ctx.<span class="hljs-property">body</span> = &#123;<br>                <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>                <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;登录成功&#x27;</span>,<br>                <span class="hljs-attr">token</span>: token<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;)<br><br><span class="hljs-comment">// 获取用户信息</span><br>login.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/info&#x27;</span>, <span class="hljs-keyword">async</span> (ctx, next) =&gt; &#123;<br>    <span class="hljs-comment">// 这个req是经过了 koaJwt拦截token 后得到的对象  req.user可得到解密后的token信息</span><br>    <span class="hljs-comment">// console.log(ctx.request.body.user);</span><br>    <span class="hljs-keyword">let</span> token = ctx.<span class="hljs-property">request</span>.<span class="hljs-property">header</span>.<span class="hljs-property">authorization</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>)[<span class="hljs-number">1</span>];<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(token);<br>    <span class="hljs-keyword">if</span> (token) &#123;<br>        <span class="hljs-keyword">let</span> jiemi = <span class="hljs-keyword">await</span> jwt.<span class="hljs-title function_">verify</span>(token, <span class="hljs-variable constant_">PRIVATE_KEY</span>, <span class="hljs-function">(<span class="hljs-params">err, data</span>) =&gt;</span> &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>            <span class="hljs-keyword">return</span> data<br>        &#125;)<br>        <span class="hljs-keyword">let</span> myusername = jiemi.<span class="hljs-property">myusername</span><br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(myusername);<br>        <span class="hljs-keyword">let</span> userinfo = <span class="hljs-keyword">await</span> <span class="hljs-title function_">queryback</span>(<span class="hljs-string">`select test from user where username = &#x27;<span class="hljs-subst">$&#123;myusername&#125;</span>&#x27;`</span>)<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(userinfo);<br>        ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">200</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;成功&#x27;</span>,<br>            <span class="hljs-attr">data</span>: userinfo<br>        &#125;<br>    &#125;<br>&#125;)<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = login;<br><br><span class="hljs-number">4</span>、在前端中已经通过判定生成的token进行放行(可设置直接放行)，在后端中也需在app.<span class="hljs-property">js</span>中设置放行<br><br><span class="hljs-comment">//整个函数的入口</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Koa</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;koa2&quot;</span>);  <span class="hljs-comment">//构造函数</span><br><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();   <span class="hljs-comment">//声明一个实例</span><br><span class="hljs-keyword">const</span> port = <span class="hljs-number">5030</span>;   <span class="hljs-comment">//端口号</span><br><span class="hljs-keyword">const</span> router = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../router/index.js&#x27;</span>);<br><span class="hljs-keyword">const</span> &#123;<span class="hljs-variable constant_">PRIVATE_KEY</span>&#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../util/encrpytion/md5.js&#x27;</span>)<br><span class="hljs-keyword">const</span> koaBody = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-body&#x27;</span>)<br><span class="hljs-keyword">const</span> koaJWT = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-jwt&#x27;</span>)<br><br><span class="hljs-keyword">const</span> cors = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa2-cors&#x27;</span>)<br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">cors</span>())<br><br><span class="hljs-comment">// 使用kaoJwt拦截token</span><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">koaJWT</span>(&#123;<br>    <span class="hljs-comment">// 解密 密钥</span><br>    <span class="hljs-attr">secret</span>: <span class="hljs-variable constant_">PRIVATE_KEY</span>,<br>    <span class="hljs-attr">algorithms</span>: [<span class="hljs-string">&quot;HS256&quot;</span>]<br>   &#125;).<span class="hljs-title function_">unless</span>(&#123;<br>    <span class="hljs-attr">path</span>: [<br>    <span class="hljs-string">&#x27;/home&#x27;</span>,<br>    <span class="hljs-string">&#x27;/list&#x27;</span>,<br>    <span class="hljs-string">&#x27;/login&#x27;</span>,<br>    <span class="hljs-string">&#x27;/login/register&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email/examEmail&#x27;</span>,<br>    <span class="hljs-string">&#x27;/email/forget&#x27;</span>,<br>  <br>  ] <span class="hljs-comment">//⽩名单,除了这⾥写的地址，其 他的URL都需要验证</span><br>   &#125;));<br><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">koaBody</span>());<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">   router.routers()的作用是：启动路由</span><br><span class="hljs-comment">   router.allowedMethods()的作用是：允许任何请求(get,post,put)</span><br><span class="hljs-comment">*/</span><br>app.<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">routes</span>(),router.<span class="hljs-title function_">allowedMethods</span>())<br><span class="hljs-comment">//路由重定向</span><br><br><br><span class="hljs-comment">//调用中间件</span><br><span class="hljs-comment">// app.use( async (ctx)=&gt;&#123;</span><br><span class="hljs-comment">//    //返回数据给页面 ctx.response.body=&quot;&quot;</span><br><span class="hljs-comment">//    ctx.response.body = &quot;Hello,Koa&quot;;</span><br><span class="hljs-comment">// &#125;)</span><br><br>app.<span class="hljs-title function_">listen</span>(port, <span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Server is running at http://localhost:<span class="hljs-subst">$&#123;port&#125;</span>`</span>)<br>&#125;)<br><br><span class="hljs-number">5</span>、多层路由<br>index.<span class="hljs-property">js</span><br><span class="hljs-keyword">const</span> <span class="hljs-title class_">Router</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;koa-router&#x27;</span>);<br><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>();<br><br><span class="hljs-keyword">const</span> login =<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./login.js&#x27;</span>)<br><br>router.<span class="hljs-title function_">use</span>(<span class="hljs-string">&#x27;/login&#x27;</span>,login.<span class="hljs-title function_">routes</span>(),login.<span class="hljs-title function_">allowedMethods</span>());<br><br><span class="hljs-comment">//路由重定向</span><br><span class="hljs-comment">//修改此处重定向时，需要将当前初始页填入第一个，将修改的的填入第二个，方可成功修改，原因未知</span><br>router.<span class="hljs-title function_">redirect</span>(<span class="hljs-string">&#x27;/home&#x27;</span>,<span class="hljs-string">&#x27;/list&#x27;</span>);<br><br><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = router;<br></code></pre></td></tr></table></figure>
+
+<p>在结合Vue3+Element-plus+mysql开发中，后端最好返回如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">ctx.<span class="hljs-property">response</span>.<span class="hljs-property">status</span> = <span class="hljs-number">400</span><br>        ctx.<span class="hljs-property">body</span> = &#123;<br>            <span class="hljs-attr">code</span>: <span class="hljs-number">0</span>,<br>            <span class="hljs-attr">msg</span>: <span class="hljs-string">&#x27;成功&#x27;</span>,<br>            <span class="hljs-attr">data</span>: userinfo<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>status状态码返回的状态码可在前端判判定，未成功不能进入下一个页面</p>
+<p>参考链接：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oK4y147t8">b站视频1，进主页查看所有</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1dz4y1X79Z">b站视频2</a></p>
+<p><a target="_blank" rel="noopener" href="http://codesohigh.com/subject/koa2/koa2.html">koa2文档</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%89%8D%E7%AB%AF/" class="category-chain-item">大前端</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/">#大前端</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue3+Koa2+Mysql实战随记（一）</div>
+      <div>https://github.com/hu-p.github.io/2023/03/08/vue3+koa2+mysql实战随记（一）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/08/Vue3%20+%20koa2%20+%20mysql%20%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E6%9D%82%E8%B0%88/" title="Vue3 + koa2 + mysql 开发中的杂谈">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Vue3 + koa2 + mysql 开发中的杂谈</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

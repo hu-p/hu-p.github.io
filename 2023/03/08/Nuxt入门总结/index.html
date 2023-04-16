@@ -1,0 +1,1137 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Nuxt入门总结一、nuxt简介及安装Nuxt.js 官方介绍：  Nuxt.js 是一个基于 Vue.js 的通用应用框架。通过对客户端&#x2F;服务端基础架构的抽象组织，Nuxt.js 主要关注的是应用的 UI 渲染。我们的目标是创建一个灵活的应用框架，你可以基于它初始化新项目的基础结构代码，或者在已有 Node.js 项目中使用 Nuxt.js，Nuxt.js 预设了利用 Vue.js 开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuxt入门总结">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/03/08/Nuxt%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="Nuxt入门总结一、nuxt简介及安装Nuxt.js 官方介绍：  Nuxt.js 是一个基于 Vue.js 的通用应用框架。通过对客户端&#x2F;服务端基础架构的抽象组织，Nuxt.js 主要关注的是应用的 UI 渲染。我们的目标是创建一个灵活的应用框架，你可以基于它初始化新项目的基础结构代码，或者在已有 Node.js 项目中使用 Nuxt.js，Nuxt.js 预设了利用 Vue.js 开">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-08T01:44:05.871Z">
+<meta property="article:modified_time" content="2023-04-16T09:09:48.132Z">
+<meta property="article:author" content="渊不语">
+<meta property="article:tag" content="Nuxt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Nuxt入门总结 - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Nuxt入门总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-08 09:44" pubdate>
+          2023年3月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          29k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          239 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Nuxt入门总结</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Nuxt入门总结"><a href="#Nuxt入门总结" class="headerlink" title="Nuxt入门总结"></a>Nuxt入门总结</h1><h2 id="一、nuxt简介及安装"><a href="#一、nuxt简介及安装" class="headerlink" title="一、nuxt简介及安装"></a>一、nuxt简介及安装</h2><p>Nuxt.js 官方介绍：</p>
+<blockquote>
+<p>Nuxt.js 是一个基于 Vue.js 的通用应用框架。通过对客户端&#x2F;服务端基础架构的抽象组织，Nuxt.js 主要关注的是应用的 <strong>UI 渲染</strong>。我们的目标是创建一个灵活的应用框架，你可以基于它初始化新项目的基础结构代码，或者在已有 Node.js 项目中使用 Nuxt.js，Nuxt.js 预设了利用 Vue.js 开发<strong>服务端渲染</strong>的应用所需要的各种配置。作为框架，Nuxt.js 为 <code>客户端/服务端</code> 这种典型的应用架构模式提供了许多有用的特性，例如异步数据加载、中间件支持、布局支持等。</p>
+</blockquote>
+<h3 id="一、nuxt简介"><a href="#一、nuxt简介" class="headerlink" title="一、nuxt简介"></a>一、nuxt简介</h3><h4 id="1-那服务器端渲染的益处"><a href="#1-那服务器端渲染的益处" class="headerlink" title="1.那服务器端渲染的益处"></a>1.那服务器端渲染的益处</h4><p>nuxt.js简单的说是Vue.js的通用框架，最常用的就是用来作SSR（服务器端渲染）.Vue.js是开发SPA（单页应用）的,Nuxt.js这个框架，用Vue开发多页应用，并在服务端完成渲染，可以直接用命令把我们制作的vue项目生成为静态html。</p>
+<p>主要的原因时SPA（单页应用）不利于搜索引擎的SEO操作，Nuxt.js适合作新闻、博客、电影、咨询这样的需要搜索引擎提供流量的项目。如果你要作移动端的项目，就没必要使用这个框架了。</p>
+<h4 id="2-什么是SSR？"><a href="#2-什么是SSR？" class="headerlink" title="2.什么是SSR？"></a>2.什么是SSR？</h4><p><code>SSR</code> 就是 <code>服务器渲染</code>，什么是 <code>服务器渲染</code>？由 <code>服务器</code> 组装好 <code>DOM</code> 元素，生成 <code>HTML</code> 字符串给到浏览器，也就是在浏览器里面是可以看到整个页面的 <code>DOM</code> 源码的。</p>
+<p><code>SSR</code> 解决的问题:</p>
+<p><code>SEO</code>：搜索引擎的优先爬取级别是页面的 <code>HTML</code> 结构，当我们使用 <code>SSR</code> 的时候，服务端已经生成了与业务相关联的 <code>HTML</code>，这样的信息对于 <code>SEO</code> 是很友好的。</p>
+<p><code>内容呈现</code>：客户端无需等待所有的 <code>JS</code> 文件加载完成即可看见渲染的业务相关视图（压力来到了服务端这边，这也是需要做权衡的地方，需要区分哪些由服务端渲染，哪些可以交给客户端）。</p>
+<p><code>SSR</code> 相关的弊端:</p>
+<p><code>代码兼容</code>：对于开发人员来讲，需要去兼容代码在不同环境的运行 <code>Vue SSR</code> 所需要的服务端环境是 <code>Node</code>，有一些客户端的对象，比如 <code>dom</code>、<code>windows</code> 之类的则无法使用。</p>
+<p><code>服务器负载</code>：相对于前后端分离模式下服务器只需要提供静态资源来说，<code>SSR</code> 需要的服务器负载更大，所以在项目中使用 <code>SSR</code> 模式要慎重，比如一整套图表页面，相对于服务端渲染，可能用户不会在乎初始加载的前几秒，可以交由客户端使用类似于骨架屏，或者懒加载之类的提升用户体验。</p>
+<p><code>Vue</code> 与 <code>Vue SSR</code> 与 <code>原生HTML</code> 页面源码区别对比，在网页上右键查看源码：</p>
+<p><code>Vue SSR</code> 与 <code>原生HTML</code> 是可以看到源码标签的</p>
+<p>在认识<code>SSR</code>之前，首先对<code>CSR</code>与<code>SSR</code>之间做个对比。</p>
+<p>首先看一下传统的web开发，传统的web开发是，客户端向服务端发送请求，服务端查询数据库，拼接<code>HTML</code>字符串（模板），通过一系列的数据处理之后，把整理好的<code>HTML</code>返回给客户端,浏览器相当于打开了一个页面。这种比如我们经常听说过的<code>jsp</code>,<code>PHP</code>,<code>aspx</code>也就是传统的<code>MVC</code>的开发。</p>
+<p><code>SPA</code>应用，到了<code>Vue</code>、<code>React</code>，单页面应用优秀的用户体验，逐渐成为了主流，页面整体式<code>javaScript</code>渲染出来的，称之为客户端渲染<code>CSR</code>。<code>SPA</code>渲染过程。由客户端访问<code>URL</code>发送请求到服务端，返回<code>HTML</code>结构（但是<code>SPA</code>的返回的<code>HTML</code>结构是非常的小的，只有一个基本的结构，如第一段代码所示）。客户端接收到返回结果之后，在客户端开始渲染<code>HTML</code>，渲染时执行对应<code>javaScript</code>，最后渲染<code>template</code>，渲染完成之后，再次向服务端发送数据请求，注意这里时数据请求，服务端返回<code>json</code>格式数据。客户端接收数据，然后完成最终渲染。（请求两次，百度搜索引擎不能抓取SPA页面的数据）</p>
+<p><code>SPA</code>虽然给服务器减轻了压力，但是也是有缺点的：</p>
+<ol>
+<li>首屏渲染时间比较长：必须等待<code>JavaScript</code>加载完毕，并且执行完毕，才能渲染出首屏。</li>
+<li><code>SEO</code>不友好：爬虫只能拿到一个<code>div</code>元素，认为页面是空的，不利于<code>SEO</code>。</li>
+</ol>
+<p>为了解决如上两个问题，出现了<code>SSR</code>解决方案，后端渲染出首屏的<code>DOM</code>结构返回，前端拿到内容带上首屏，后续的页面操作，再用单页面路由和渲染，称之为服务端渲染(<code>SSR</code>)。</p>
+<p><code>SSR</code>渲染流程是这样的，客户端发送<code>URL</code>请求到服务端，服务端读取对应的<code>url</code>的模板信息，在服务端做出<code>html</code>和<code>数据</code>的渲染，渲染完成之后返回<code>html</code>结构，客户端这时拿到的之后首屏页面的<code>html</code>结构。所以用户在浏览首屏的时候速度会很快，因为客户端不需要再次发送<code>ajax</code>请求。并不是做了<code>SSR</code>我们的页面就不属于<code>SPA</code>应用了，它仍然是一个独立的<code>spa</code>应用。</p>
+<p><code>SSR</code>是处于<code>CSR</code>与<code>SPA</code>应用之间的一个折中的方案，在渲染首屏的时候在服务端做出了渲染，注意仅仅是首屏，其他页面还是需要在客户端渲染的，在<code>服务端</code>接收到请求之后并且渲染出首屏页面，会携带着剩余的路由信息预留给<code>客户端</code>去渲染其他路由的页面。</p>
+<p>Nuxt.js是特点（优点）：</p>
+<ul>
+<li>基于<code>Vue</code></li>
+<li>自动代码分层</li>
+<li>服务端渲染</li>
+<li>强大的路由功能，支持异步数据</li>
+<li>静态文件服务</li>
+<li><code>EcmaScript6</code>和<code>EcmaScript7</code>的语法支持</li>
+<li>打包和压缩<code>JavaScript</code>和<code>Css</code></li>
+<li><code>HTML</code>头部标签管理</li>
+<li>本地开发支持热加载</li>
+<li>集成<code>ESLint</code></li>
+<li>支持各种样式预编译器<code>SASS</code>、<code>LESS</code>等等</li>
+<li>支持<code>HTTP/2</code>推送</li>
+</ul>
+<h3 id="二、nuxt安装"><a href="#二、nuxt安装" class="headerlink" title="二、nuxt安装"></a>二、nuxt安装</h3><h4 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h4><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig">// 全局安装<span class="hljs-string">npx</span><br>// <span class="hljs-string">npx</span> 想要解决的主要问题，就是调用项目内部安装的模块<br><span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-string">npx</span> -<span class="hljs-string">g</span><br><br>// 使用<span class="hljs-string">npx</span>创建<span class="hljs-string">nuxt</span>项目，除了调用项目内部模块，<span class="hljs-string">npx</span> 还能避免全局安装的模块。比如，<span class="hljs-built_in">create-react-app这个模块是全局安装，npx</span> 可以运行它，而且不进行全局安装。下面代码运行时，<span class="hljs-string">npx</span> 将<span class="hljs-built_in">create-react-app下载到一个临时目录，使用以后再删除。所以，以后再次执行上面的命令，会重新下载create-react-app</span><br><span class="hljs-string">npx</span> <span class="hljs-built_in">create-nuxt-app</span> 项目名<br><br><span class="hljs-string">Project</span> <span class="hljs-string">name</span>                                //  项目名称<br><span class="hljs-string">Project</span> <span class="hljs-string">description</span>                         //  项目描述<br><span class="hljs-string">Use</span> <span class="hljs-string">a</span> <span class="hljs-string">custom</span> <span class="hljs-string">server</span> <span class="hljs-string">framework</span>               //  选择服务器框架<br><span class="hljs-string">Choose</span> <span class="hljs-string">features</span> <span class="hljs-string">to</span> <span class="hljs-string">install</span>                  //  选择安装的特性<br><span class="hljs-string">Use</span> <span class="hljs-string">a</span> <span class="hljs-string">custom</span> <span class="hljs-string">UI</span> <span class="hljs-string">framework</span>                   //  选择<span class="hljs-string">UI</span>框架<br><span class="hljs-string">Use</span> <span class="hljs-string">a</span> <span class="hljs-string">custom</span> <span class="hljs-string">test</span> <span class="hljs-string">framework</span>                 //  测试框架<br><span class="hljs-string">Choose</span> <span class="hljs-string">rendering</span> <span class="hljs-string">mode</span>                       //  渲染模式<br><span class="hljs-string">Universal</span>                                   //  渲染所有连接页面<br><span class="hljs-string">Single</span> <span class="hljs-string">Page</span> <span class="hljs-string">App</span>                             //  只渲染当前页面<br></code></pre></td></tr></table></figure>
+
+<p>​        当一个客户端请求进入的时候，服务端有通过<code>nuxtServerInit</code>这个命令执行在<code>Store</code>的<code>action</code>中，在这里接收到客户端请求的时候，可以将一些客户端信息存储到<code>Store</code>中，也就是说可以把在服务端存储的一些客户端的一些登录信息存储到<code>Store</code>中。之后使用了<code>中间件</code>机制，中间件其实就是一个函数，会在每个路由执行之前去执行，在这里可以做很多事情，或者说可以理解为是路由器的拦截器的作用。然后再<code>validate</code>执行的时候对客户端携带的参数进行校验，在<code>asyncData</code>与<code>fetch</code>进入正式的渲染周期，<code>asyncData</code>向服务端获取数据，把请求到的数据合并到<code>Vue</code>中的<code>data</code>中，</p>
+<h4 id="二、目录结构介绍"><a href="#二、目录结构介绍" class="headerlink" title="二、目录结构介绍"></a>二、目录结构介绍</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs awk">└─my-nuxt-demo<br>  ├─.nuxt               <span class="hljs-regexp">//</span> Nuxt自动生成，临时的用于编辑的文件，build<br>  ├─assets              <span class="hljs-regexp">//</span> 用于组织未编译的静态资源如LESS、SASS或JavaScript,对于不需要通过 Webpack 处理的静态资源文件，可以放置在 static 目录中<br>  ├─components          <span class="hljs-regexp">//</span> 用于自己编写的Vue组件，比如日历组件、分页组件<br>  ├─layouts             <span class="hljs-regexp">//</span> 布局目录，用于组织应用的布局组件，不可更改<br>  ├─middleware          <span class="hljs-regexp">//</span> 用于存放中间件<br>  ├─node_modules<br>  ├─pages               <span class="hljs-regexp">//</span> 用于组织应用的路由及视图,Nuxt.js根据该目录结构自动生成对应的路由配置，文件名不可更改<br>  ├─plugins             <span class="hljs-regexp">//</span> 用于组织那些需要在 根vue.js应用 实例化之前需要运行的 Javascript 插件。<br>  ├─static              <span class="hljs-regexp">//</span> 用于存放应用的静态文件，此类文件不会被 Nuxt.js 调用 Webpack 进行构建编译处理。 服务器启动的时                            候，该目录下的文件会映射至应用的根路径 / 下。文件夹名不可更改。<br>  └─store               <span class="hljs-regexp">//</span> 用于组织应用的Vuex 状态管理。文件夹名不可更改。<br>  ├─.editorconfig       <span class="hljs-regexp">//</span> 开发工具格式配置<br>  ├─.eslintrc.js        <span class="hljs-regexp">//</span> ESLint的配置文件，用于检查代码格式<br>  ├─.gitignore          <span class="hljs-regexp">//</span> 配置git忽略文件<br>  ├─nuxt.config.js      <span class="hljs-regexp">//</span> 用于组织Nuxt.js 应用的个性化配置，以便覆盖默认配置。文件名不可更改。<br>  ├─package-lock.json   <span class="hljs-regexp">//</span> npm自动生成，用于帮助package的统一设置的，yarn也有相同的操作<br>  ├─package.json        <span class="hljs-regexp">//</span> npm 包管理配置文件<br>  ├─README.md<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="三、配置文件nuxt-config-js"><a href="#三、配置文件nuxt-config-js" class="headerlink" title="三、配置文件nuxt.config.js"></a>三、配置文件nuxt.config.js</h4><p><strong>注意：</strong></p>
+<ul>
+<li><em>export default在一个模块中只能有一个，当然也可以没有。export在一个模块中可以有多个。</em></li>
+<li><em>export default的对象、变量、函数、类，可以没有名字。export的必须有名字。</em></li>
+<li><em>export default对应的import和export有所区别</em></li>
+<li><em>module变量代表当前模块。这个变量是一个对象，module对象会创建一个叫exports的属性，这个属性的默认值是一个空的对象</em></li>
+</ul>
+<p><em>Node为每个模块提供一个exports变量，指向module.exports，两个是相等的关系，但又不是绝对相当的关系，module.exports可以直接导出一个匿名函数或者一个值，但是export的必须有名字，故不行，export default或export 名字可以</em></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs awk">const pkg = require(<span class="hljs-string">&#x27;./package&#x27;</span>)<br>module.exports = &#123;<br>  mode: <span class="hljs-string">&#x27;universal&#x27;</span>,    <span class="hljs-regexp">//</span>  当前渲染使用模式，分为universal和spa，既然是nuxt开发，那就是universal<br>  <span class="hljs-regexp">//</span> 全局页头配置 (https:<span class="hljs-regexp">//g</span>o.nuxtjs.dev/config-head)<br>  head: &#123;       <span class="hljs-regexp">//</span>  页面head配置信息<br>    title: pkg.name,        <span class="hljs-regexp">//</span>  title<br>    meta: [         <span class="hljs-regexp">//</span>  meat<br>      &#123; charset: <span class="hljs-string">&#x27;utf-8&#x27;</span> &#125;,<br>      &#123; name: <span class="hljs-string">&#x27;viewport&#x27;</span>, content: <span class="hljs-string">&#x27;width=device-width, initial-scale=1&#x27;</span> &#125;,<br>      &#123; hid: <span class="hljs-string">&#x27;description&#x27;</span>, name: <span class="hljs-string">&#x27;description&#x27;</span>, content: pkg.description &#125;<br>      <span class="hljs-regexp">//</span> 这里可以添加网站验证码信息<br>      <span class="hljs-regexp">//</span>  &#123; name: <span class="hljs-string">&#x27;google-site-verification&#x27;</span>, content: <span class="hljs-string">&#x27;xxx&#x27;</span> &#125;,<br>      <span class="hljs-regexp">//</span> 实测百度无法通过验证，此问题还没解决<br>      <span class="hljs-regexp">//</span> &#123; name: <span class="hljs-string">&#x27;baidu-site-verification&#x27;</span>, content: <span class="hljs-string">&#x27;code-xxx&#x27;</span> &#125;,<br>    ],<br>    link: [     <span class="hljs-regexp">//</span>  favicon，若引用css不会进行打包处理<br>      &#123; rel: <span class="hljs-string">&#x27;icon&#x27;</span>, type: <span class="hljs-string">&#x27;image/x-icon&#x27;</span>, href: <span class="hljs-string">&#x27;/favicon.ico&#x27;</span> &#125;<br>    ]<br>  &#125;,<br>  <span class="hljs-regexp">//</span> nuxt 加载进度条配置 (https:<span class="hljs-regexp">//</span>zh.nuxtjs.org<span class="hljs-regexp">/api/</span>configuration-loading)<br>  loading: &#123; color: <span class="hljs-string">&#x27;#fff&#x27;</span> &#125;,   <span class="hljs-regexp">//</span>  页面进度条<br>  <span class="hljs-regexp">//</span> 全局css (https:<span class="hljs-regexp">//g</span>o.nuxtjs.dev/config-css)<br>  css: [    <span class="hljs-regexp">//</span>  全局css（会进行webpack打包处理）<br>    <span class="hljs-string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span>  <br>  ],<br>   <span class="hljs-regexp">//</span> 配置后，会在页面渲染之前加载 (https:<span class="hljs-regexp">//g</span>o.nuxtjs.dev/config-plugins)<br>  plugins: [        <span class="hljs-regexp">//</span>  插件<br>    <span class="hljs-string">&#x27;@/plugins/element-ui&#x27;</span><br>  ],<br>  <span class="hljs-regexp">//</span> 工具module (https:<span class="hljs-regexp">//g</span>o.nuxtjs.dev/config-modules)<br>  modules: [        <span class="hljs-regexp">//</span>  模块<br>    <span class="hljs-string">&#x27;@nuxtjs/axios&#x27;</span>,<br>  ],<br> <span class="hljs-regexp">//</span> 如果添加了@nuxt<span class="hljs-regexp">/axios则会需要此配置来覆盖默认的一些配置 (https:/</span><span class="hljs-regexp">/go.nuxtjs.dev/</span>config-axios)<br>  axios: &#123;<br>    https: true, <br>    progress: true, <span class="hljs-regexp">//</span> 是否显示加载进度条<br>    credentials: true, <span class="hljs-regexp">//</span> 请求携带cookie<br>    baseURL: <span class="hljs-string">&#x27;https://www.abeille.top/api&#x27;</span>,<br>    proxy: true <span class="hljs-regexp">//</span> 请求代理，开发中跨域问题解决方法<br>  &#125;,<br>  <span class="hljs-regexp">//</span> 打包配置 (https:<span class="hljs-regexp">//g</span>o.nuxtjs.dev/config-build)<br>  build: &#123;      <span class="hljs-regexp">//</span>  打包<br>    transpile: [<span class="hljs-regexp">/^element-ui/</span>],<br>    extend(config, ctx) &#123;       <span class="hljs-regexp">//</span>  webpack自定义配置<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="四、Nuxt运行命令"><a href="#四、Nuxt运行命令" class="headerlink" title="四、Nuxt运行命令"></a>四、Nuxt运行命令</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk">&#123;<br>  <span class="hljs-string">&quot;scripts&quot;</span>: &#123;<br>    <span class="hljs-regexp">//</span>  开发环境<br>    <span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;cross-env NODE_ENV=development nodemon server/index.js --watch server&quot;</span>,<br>    <span class="hljs-regexp">//</span>  打包<br>    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;nuxt build&quot;</span>,<br>    <span class="hljs-regexp">//</span>  在服务端运行<br>    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;cross-env NODE_ENV=production node server/index.js&quot;</span>,<br>    <span class="hljs-regexp">//</span>  生成静态页面<br>    <span class="hljs-string">&quot;generate&quot;</span>: <span class="hljs-string">&quot;nuxt generate&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、nuxt常用配置"><a href="#二、nuxt常用配置" class="headerlink" title="二、nuxt常用配置"></a>二、nuxt常用配置</h2><h3 id="一、配置IP和端口"><a href="#一、配置IP和端口" class="headerlink" title="一、配置IP和端口"></a>一、配置IP和端口</h3><p>第一种 <code>nuxt.config.js</code> :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;<br>  <span class="hljs-attr">server</span>: &#123;<br>    <span class="hljs-attr">port</span>: <span class="hljs-number">8000</span>,<br>    <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;127.0.0.1&#x27;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>第二种   <code>package.json</code> :</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;config&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;nuxt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;port&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;8000&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;host&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;127.0.0.1&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="二、配置全局CSS"><a href="#二、配置全局CSS" class="headerlink" title="二、配置全局CSS"></a>二、配置全局CSS</h3><p>在开发多页项目时，都会定义一个全局的CSS来初始化我们的页面渲染，比如把padding和margin设置成0，网上也有非常出名的开源css文件normailze.css。要定义这些配置，需要在nuxt.config.js里进行操作。</p>
+<p>比如现在我们要把页面字体设置为红色，就可以在assets&#x2F;css&#x2F;common.css文件，然后把字体设置为红色。</p>
+<p>&#x2F;assets&#x2F;css&#x2F;common.css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">html</span>&#123;<br>    <span class="hljs-attribute">color</span>:red;<br>&#125;<br><span class="hljs-selector-tag">body</span> &#123;<br>    <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>&#x2F;nuxt.config.js</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog">css:[<span class="hljs-string">&#x27;~assets/css/normailze.css&#x27;</span>],<br></code></pre></td></tr></table></figure>
+
+<p>设置好后，在终端输入npm run dev 。然后你会发现字体已经变成了红色。</p>
+<h2 id="三、Nuxt的路由配置和参数传递"><a href="#三、Nuxt的路由配置和参数传递" class="headerlink" title="三、Nuxt的路由配置和参数传递"></a>三、Nuxt的路由配置和参数传递</h2><h3 id="一、基本路由"><a href="#一、基本路由" class="headerlink" title="一、基本路由"></a>一、基本路由</h3><p>Nuxt.js的路由并不复杂，它给我们进行了封装，让我们节省了很多配置环节。</p>
+<p>Nuxt会自动生成路由，故而只需使用<code>&lt;nuxt-link :to=&quot;&quot;&gt; &lt;/nuxt-link&gt;</code>,而非<code>&lt;router-link :to=&quot;&quot;&gt; &lt;/router-link&gt;</code></p>
+<p>页面跳转方式：</p>
+<ol>
+<li>不要写成a标签，因为是重新获取一个新的页面，并不是SPA</li>
+<li><code>&lt;nuxt-link to=&quot;/users&quot;&gt;&lt;/nuxt-link&gt;</code></li>
+<li>this.$router.push(‘&#x2F;users’)</li>
+</ol>
+<p>动态路由：</p>
+<ul>
+<li>在 Nuxt.js 里面定义带参数的动态路由，需要创建对应的<strong>以下划线作为前缀</strong>的 Vue 文件 或 目录。</li>
+<li>获取动态参数</li>
+</ul>
+<h3 id="二、路由传参"><a href="#二、路由传参" class="headerlink" title="二、路由传参"></a>二、路由传参</h3><p>this.$route.query.key的方式参数显示在地址栏上, 但是并不是我们想要的, :id?id&#x3D;&#96;&#96;?所以建议还是尽量使用router-link来实现跳转来解决地址栏的变化,更方便网站的优化</p>
+<h4 id="一-nuxt-link中传递参数"><a href="#一-nuxt-link中传递参数" class="headerlink" title="一. nuxt-link中传递参数"></a>一. nuxt-link中传递参数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs 方式一">方式一<br>传参：<br>&lt;nuxt-link :to=&quot;&#123;path:&#x27;/about&#x27;,query:&#123;index:id&#125;&#125;&quot; target=&quot;_blank&quot; &gt;&lt;nuxt-link&gt;<br>地址栏显示：<br>loaclhost:3000/about/id<br>接收地址栏参数：<br>this.$route.query.index<br> <br>方式二<br>传参： <br>&lt;nuxt-link target=&quot;_blank&quot; :to=&quot;&#123;name: &#x27;log-id&#x27;, params:&#123;id: n.id,key:value&#125;&#125;&quot;&gt;&lt;/nuxt-link&gt;<br>地址栏显示：<br>loaclhost:3000/about/id<br>接收：<br>async asyncData (&#123; params &#125;) &#123; //  params.id 就是我们传进来的值&#125;// 或者 created () &#123; this.$route.params.xxx&#125;`<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="二-在方法中传递"><a href="#二-在方法中传递" class="headerlink" title="二. 在方法中传递"></a>二. 在方法中传递</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs 跳转">方式一<br>跳转：<br>getDescribe(id) &#123;<br>    // 直接调用$router.push 实现携带参数的跳转<br>    this.$router.push(&#123;<br>      path: `/describe/$&#123;id&#125;`,<br>    &#125;)   <br>接收：<br>$route.params.id<br><br>方式 二<br>注意：<br>页面之间的跳转使用query 不然的话刷新页面后会找不到参数<br>跳转：<br> this.$router.push(&#123;<br>          path: &#x27;/describe&#x27;,<br>          query: &#123;<br>            id: id<br>          &#125;<br>&#125;)<br>接收：<br>$route.query.id<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、路由传参校验"><a href="#三、路由传参校验" class="headerlink" title="三、路由传参校验"></a>三、路由传参校验</h3><p>Nuxt.js 可以让你在动态路由对应的页面组件中配置一个<code>validate</code>方法用于校验动态路由参数的有效性。该函数有一个布尔类型的返回值，如果返回true则表示校验通过，如果返回false则表示校验未通过。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-comment">// nuxt中使用validate方法进行路由参数校验，这个方法必须返回一个布尔值，为true表示校验通过，为false表示校验失败。注意validate不能写到methods属性中。</span><br>  <span class="hljs-title function_">validate</span>(<span class="hljs-params">obj</span>) &#123;<br>    <span class="hljs-comment">// console.log(obj);</span><br>    <span class="hljs-comment">// return true</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^\d+$/</span>.<span class="hljs-title function_">test</span>(obj.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="四、路由嵌套"><a href="#四、路由嵌套" class="headerlink" title="四、路由嵌套"></a>四、路由嵌套</h3><p><strong>注意：</strong></p>
+<p><em>在nuxt框架中，在 <code>nuxt.config.js</code>中<code>components: true</code>已开启了组件自动导入，故而不需要在vue文件中通过import和components来导入组件，只需在template中写入相应组件的组件名即可</em></p>
+<ol>
+<li>添加一个Vue文件，作为父组件</li>
+<li>添加一个与父组件同名的文件夹来存放子视图组件</li>
+<li>在父文件中，添加组件，用于展示匹配到的子视图</li>
+</ol>
+<h3 id="五、Nuxt的路由动画效果"><a href="#五、Nuxt的路由动画效果" class="headerlink" title="五、Nuxt的路由动画效果"></a>五、Nuxt的路由动画效果</h3><p>路由的动画效果，也叫作页面的更换效果。Nuxt.js提供两种方法为路由提供动画效果，一种是全局的，一种是针对单独页面制作。</p>
+<h4 id="1-全局路由动画"><a href="#1-全局路由动画" class="headerlink" title="1.全局路由动画"></a>1.全局路由动画</h4><p>全局动画默认使用page来进行设置，例如现在我们为每个页面都设置一个进入和退出时的渐隐渐现的效果。我们可以先在根目录的assets&#x2F;css下建立一个normailze.css文件。</p>
+<p>（1）添加样式文件</p>
+<p>&#x2F;assets&#x2F;css&#x2F;normailze.css(没有请自行建立)</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs nsis">.<span class="hljs-keyword">page</span>-enter-active, .<span class="hljs-keyword">page</span>-<span class="hljs-literal">leave</span>-active &#123;<br>    transition: opacity <span class="hljs-number">2</span>s<span class="hljs-comment">;</span><br>&#125;<br><br>.<span class="hljs-keyword">page</span>-enter, .<span class="hljs-keyword">page</span>-<span class="hljs-literal">leave</span>-active &#123;<br>    opacity: <span class="hljs-number">0</span><span class="hljs-comment">;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（2）文件配置</p>
+<p>然后在nuxt.config.js里加入一个全局的css文件就可以了。</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs prolog">css:[<span class="hljs-string">&#x27;assets/css/main.css&#x27;</span>],<br></code></pre></td></tr></table></figure>
+
+<p>这时候在页面切换的时候就会有2秒钟的动画切换效果了，但是你会发现一些页面是没有效果的，这是因为你没有是<code>&lt;nuxt-link&gt;</code>组件来制作跳转链接。你需要进行更改。</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nuxt-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;name:&#x27;news-id&#x27;,params:&#123;id:123&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#125;&quot;</span>&gt;</span>News-1<span class="hljs-tag">&lt;/<span class="hljs-name">nuxt-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-单独设置页面动效"><a href="#2-单独设置页面动效" class="headerlink" title="2.单独设置页面动效"></a>2.单独设置页面动效</h4><p>想给一个页面单独设置特殊的效果时，我们只要在css里改变默认的page，然后在页面组件的配置中加入transition字段即可。例如，我们想给about页面加入一个字体放大然后缩小的效果，其他页面没有这个效果。</p>
+<p>（1）在全局样式assets&#x2F;main.css 中添加以下内容</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.test-enter-active</span>, <span class="hljs-selector-class">.test-leave-active</span> &#123;<br>    <span class="hljs-attribute">transition</span>: all <span class="hljs-number">2s</span>;<br>    <span class="hljs-attribute">font-size</span>:<span class="hljs-number">12px</span>;<br>&#125;<br><span class="hljs-selector-class">.test-enter</span>, <span class="hljs-selector-class">.test-leave-active</span> &#123;<br>    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">font-size</span>:<span class="hljs-number">40px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（2）然后在about&#x2F;index.vue组件中设置</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span><span class="hljs-built_in"> default </span>&#123;<br>  transition:<span class="hljs-string">&#x27;test&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这时候就有了页面的切换独特动效了。</p>
+<p>总结：在需要使用的页面导入即可。</p>
+<h2 id="四、Nuxt的默认模版和默认布局"><a href="#四、Nuxt的默认模版和默认布局" class="headerlink" title="四、Nuxt的默认模版和默认布局"></a>四、Nuxt的默认模版和默认布局</h2><p>在开发应用时，经常会用到一些公用的元素，比如网页的标题是一样的，每个页面都是一模一样的标题。这时候我们有两种方法，第一种方法是作一个公用的组件出来，第二种方法是修改默认模版。这两种方法各有利弊，比如公用组件更加灵活，但是每次都需要自己手动引入；模版比较方便，但是只能每个页面都引入。</p>
+<h3 id="1-默认模板"><a href="#1-默认模板" class="headerlink" title="1.默认模板"></a>1.默认模板</h3><p>Nuxt为我们提供了超简单的默认模版订制方法，只要在根目录下创建一个app.html就可以实现了。现在我们希望每个页面的最上边都加入“ 学习nuxt.js” 这几个字，我们就可以使用默认模版来完成。</p>
+<p>app.html中：</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="language-xml">   </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">HEAD</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>学习nuxt.js<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">APP</span> &#125;&#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>这里的读取的是nuxt.config.js里的信息， 就是我们写的pages文件夹下的主体页面了。需要注意的是HEAD和APP都需要大写，如果小写会报错的。</p>
+<p>注意：如果你建立了默认模板后，记得要重启服务器，否则显示不会成功；但是默认布局是不用重启服务器的。</p>
+<h3 id="2-默认布局"><a href="#2-默认布局" class="headerlink" title="2.默认布局"></a>2.默认布局</h3><p>默认模板类似的功能还有默认布局，但是从名字上你就可以看出来，默认布局主要针对于页面的统一布局使用。它在位置根目录下的layouts&#x2F;default.vue。需要注意的是在默认布局里不要加入头部信息，只是关于<code>&lt;template&gt;</code>标签下的内容统一订制。</p>
+<p>需求：我们在每个页面的最顶部放入“学习nuxt.js” 这几个字，看一下在默认布局里的实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;p&gt;学习nuxt.js&lt;/p&gt;<br>    &lt;nuxt/&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></table></figure>
+
+<p>这里的<code>&lt;nuxt/&gt;</code>就相当于我们每个页面的内容，你也可以把一些通用样式放入这个默认布局里，但会增加页面的复杂程度。</p>
+<p>总结：要区分默认模版和默认布局的区别，模版可以订制很多头部信息，包括IE版本的判断；模版只能定制<code>&lt;template&gt;</code>里的内容，跟布局有关系。在工作中修改时要看情况来编写代码。</p>
+<h2 id="五、Nuxt插件的使用"><a href="#五、Nuxt插件的使用" class="headerlink" title="五、Nuxt插件的使用"></a>五、Nuxt插件的使用</h2><h3 id="1-ElementUI使用"><a href="#1-ElementUI使用" class="headerlink" title="1.ElementUI使用"></a>1.ElementUI使用</h3><ol>
+<li><p>下载npm i element-ui -S</p>
+</li>
+<li><p>在plugins文件夹下面，创建ElementUI.js文件</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> ElementUI <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span><br>Vue.use(ElementUI)<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在nuxt.config.js中添加配置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css">css: [<br>  <span class="hljs-string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br>],<br>plugins: [<br>  &#123;<span class="hljs-attribute">src</span>: <span class="hljs-string">&#x27;~/plugins/ElementUI&#x27;</span>, ssr: true &#125;<br>],<br>build: &#123;<br>  vendor: [<span class="hljs-string">&#x27;element-ui&#x27;</span>]<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2-Element按需引入"><a href="#2-Element按需引入" class="headerlink" title="2.Element按需引入"></a>2.Element按需引入</h3><blockquote>
+<p>第一步，下载依赖：</p>
+</blockquote>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-comment"># 先下载element-ui</span><br><br>npm install <span class="hljs-keyword">element</span>-ui <span class="hljs-comment">--save</span><br><br><span class="hljs-comment"># 如果使用按需引入，必须安装babel-plugin-component(官网有需要下载说明，此插件根据官网规则不同，安装插件不同)</span><br><br>npm install babel-plugin-component <span class="hljs-comment">--save-dev</span><br></code></pre></td></tr></table></figure>
+
+<p>安装好以后，按照<code>nuxt.js</code>中的规则，你需要在 <code>plugins/</code> 目录下创建相应的插件文件</p>
+<p>在<strong>文件根目录</strong>创建(或已经存在)<code>plugins/</code>目录，创建名为：<code>element-ui.js</code>的文件，内容如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Button</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>    <span class="hljs-comment">//引入Button按钮</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> ()=&gt;&#123;<br>    <span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">Button</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第二步，引入插件</p>
+</blockquote>
+<p>在<code>nuxt.config.js</code>中，添加配置为：<code>plugins</code></p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs prolog">css:[<br><span class="hljs-string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br>],<br>plugins:[<br><span class="hljs-string">&#x27;~/plugins/element-ui&#x27;</span><br>]<br></code></pre></td></tr></table></figure>
+
+<p>默认为：开启SSR,采用服务端渲染，也可以<strong>手动配置关闭SSR</strong>，配置为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs css">css:[<br><span class="hljs-string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br>],<br>plugins:[<br>    &#123;<br>        <span class="hljs-attribute">src</span>:<span class="hljs-string">&#x27;~/plugins/element-ui&#x27;</span>,<br>        ssr:false    //关闭ssr<br>    &#125;<br>]<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第三步，配置<code>babel</code>选项</p>
+</blockquote>
+<p>在<code>nuxt.config.js</code>中，配置在<code>build</code>选项中，规则为官网规则：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs gradle">build: &#123;<br>      babel:&#123;        <span class="hljs-comment">//配置按需引入规则</span><br>          <span class="hljs-string">&quot;plugins&quot;</span>:[<br>              [<br>                  <span class="hljs-string">&quot;component&quot;</span>,<br>                  &#123;<br>                      <span class="hljs-string">&quot;libraryName&quot;</span>:<span class="hljs-string">&quot;element-ui&quot;</span>,<br>                      <span class="hljs-string">&quot;styleLibraryName&quot;</span>:<span class="hljs-string">&quot;theme-chalk&quot;</span><br>                  &#125;<br>              ]<br>          ]<br>      &#125;,<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">     ** Run ESLINT on save</span><br><span class="hljs-comment">     */</span><br>    extend (config, ctx) &#123;<br>      <span class="hljs-keyword">if</span> (ctx.isClient) &#123;<br>        config.module.rules.<span class="hljs-keyword">push</span>(&#123;<br>           enforce: <span class="hljs-string">&#x27;pre&#x27;</span>,<br>           test: <span class="hljs-regexp">/\.(js|vue)$/</span>,<br>           loader: <span class="hljs-string">&#x27;eslint-loader&#x27;</span>,<br>           <span class="hljs-keyword">exclude</span>: <span class="hljs-regexp">/(node_modules)/</span><br>        &#125;)<br>      &#125;<br>    &#125;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-axios的使用"><a href="#3-axios的使用" class="headerlink" title="3.axios的使用"></a>3.axios的使用</h3><ol>
+<li>安装<code>npm install --save axios</code></li>
+<li>使用</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><br><span class="hljs-title function_">asyncData</span>(<span class="hljs-params">context, callback</span>) &#123;<br>  axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;http://localhost:3301/in_theaters&#x27;</span>)<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);<br>      <span class="hljs-title function_">callback</span>(<span class="hljs-literal">null</span>, &#123;<span class="hljs-attr">list</span>: res.<span class="hljs-property">data</span>&#125;)<br>    &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>为防止重复打包，在nuxt.config.js中配置</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = &#123;<br>  build: &#123;<br>    vendor: [<span class="hljs-string">&#x27;axios&#x27;</span>]<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-vuex的使用"><a href="#4-vuex的使用" class="headerlink" title="4.vuex的使用"></a>4.vuex的使用</h3><p>Nuxt.js 内置引用了 <code>vuex</code> 模块，所以不需要额外安装。</p>
+<p>Nuxt.js 会找到应用根目录下的 <code>store</code> 目录，如果该目录存在，它将做以下的事情：</p>
+<ol>
+<li>引用 <code>vuex</code> 模块</li>
+<li>将 <code>vuex</code> 模块 加到 vendors 构建配置中去</li>
+<li>设置 <code>Vue</code> 根实例的 <code>store</code> 配置项</li>
+</ol>
+<p>Nuxt.js 支持两种使用 <code>store</code> 的方式，你可以择一使用：</p>
+<ul>
+<li>模块方式： <code>store</code> 目录下的每个 <code>.js</code> 文件会被转换成为状态树<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/guide/modules.html">指定命名的子模块</a> （当然，<code>index</code> 是根模块）</li>
+<li>普通方式： <code>store/index.js</code> 返回一个 Vuex.Store 实例（官方不推荐）</li>
+</ul>
+<p>模块方式</p>
+<p>状态树还可以拆分成为模块，<code>store</code> 目录下的每个 <code>.js</code> 文件会被转换成为状态树<a target="_blank" rel="noopener" href="https://vuex.vuejs.org/guide/modules.html">指定命名的子模块</a></p>
+<p>使用状态树模块化的方式，<code>store/index.js</code> 不需要返回 Vuex.Store 实例，而应该直接将 <code>state</code>、<code>mutations</code> 和 <code>actions</code> 暴露出来：</p>
+<p><code>index.js</code></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">state</span> = (<span class="hljs-params"></span>) =&gt; (&#123;<br>    <span class="hljs-attr">articleTitle</span>: [],<br>    <span class="hljs-attr">labelList</span>: []<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mutations = &#123;<br>    <span class="hljs-comment">// 设置热门文章标题</span><br>    <span class="hljs-title function_">updateArticleTitle</span>(<span class="hljs-params">state, action</span>) &#123;<br>        state.<span class="hljs-property">articleTitle</span> = action<br>    &#125;,<br>    <span class="hljs-comment">// 设置标签列表数据</span><br>    <span class="hljs-title function_">updateLabel</span>(<span class="hljs-params">state, action</span>)&#123;<br>        state.<span class="hljs-property">labelList</span> = action<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> actions = &#123;<br>    <span class="hljs-comment">// 获取热门文章标题</span><br>    <span class="hljs-title function_">fetchArticleTitle</span>(<span class="hljs-params">&#123; commit &#125;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$axios</span><br>            .$get(<span class="hljs-string">&#x27;http://localhost:3000/article/title&#x27;</span>)<br>            .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>                <span class="hljs-title function_">commit</span>(<span class="hljs-string">&#x27;updateArticleTitle&#x27;</span>, response.<span class="hljs-property">data</span>)<br>            &#125;)<br>    &#125;,<br>    <span class="hljs-comment">// 获取标签</span><br>    <span class="hljs-title function_">fetchLabel</span>(<span class="hljs-params">&#123; commit &#125;</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$axios</span><br>            .$get(<span class="hljs-string">&#x27;http://localhost:3000/label/list&#x27;</span>)<br>            .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;<br>                <span class="hljs-title function_">commit</span>(<span class="hljs-string">&#x27;updateLabel&#x27;</span>, response.<span class="hljs-property">data</span>)<br>            &#125;)<br>    &#125;,<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>index.vue</code><br> <code>fetch</code>方法中触发异步提交状态事件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">ArticleList</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;~/components/archive/list&#x27;</span></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Banner</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;~/components/archive/banner&#x27;</span></span><br><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="language-javascript">  <span class="hljs-attr">components</span>: &#123;</span><br><span class="language-javascript">    <span class="hljs-title class_">ArticleList</span>,</span><br><span class="language-javascript">    <span class="hljs-title class_">Banner</span>,</span><br><span class="language-javascript">  &#125;,</span><br><span class="language-javascript">  <span class="hljs-keyword">async</span> <span class="hljs-title function_">asyncData</span>(<span class="hljs-params">&#123; app &#125;</span>)&#123;</span><br><span class="language-javascript">    <span class="hljs-comment">//获取文章列表数据</span></span><br><span class="language-javascript">    <span class="hljs-keyword">let</span> article = <span class="hljs-keyword">await</span> app.<span class="hljs-property">$axios</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">`http://localhost:3000/article/list?pageNum=1&amp;pageSize=5`</span>)</span><br><span class="language-javascript">    <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">articleList</span>: article.<span class="hljs-property">data</span>.<span class="hljs-property">data</span>&#125;</span><br><span class="language-javascript">  &#125;,</span><br><span class="language-javascript">  <span class="hljs-keyword">async</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-params">&#123; store &#125;</span>) &#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>([</span><br><span class="language-javascript">          store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;common/fetchArticleTitle&#x27;</span>),</span><br><span class="language-javascript">          store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-string">&#x27;common/fetchLabel&#x27;</span>)</span><br><span class="language-javascript">      ])</span><br><span class="language-javascript">  &#125;,</span><br><span class="language-javascript">  <span class="hljs-attr">computed</span>: &#123;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  &#125;,</span><br><span class="language-javascript">  <span class="hljs-attr">methods</span>: &#123;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>对应组件中通过<code>computed</code> 方法获取状态数据</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs kotlin">computed: &#123;<br>      labelList()&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.$store.state.common.labelList<br>      &#125;<br>    &#125;,<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、Nuxt的错误页面和个性meta设置"><a href="#六、Nuxt的错误页面和个性meta设置" class="headerlink" title="六、Nuxt的错误页面和个性meta设置"></a>六、Nuxt的错误页面和个性meta设置</h2><p>当用户输入路由错误的时候，我们需要给他一个明确的指引，所以说在应用程序开发中404页面是必不可少的。Nuxt.js支持直接在默认布局文件夹里建立错误页面。</p>
+<h3 id="1-建立错误页面"><a href="#1-建立错误页面" class="headerlink" title="1.建立错误页面"></a>1.建立错误页面</h3><p>在根目录下的layouts文件夹下建立一个error.vue文件，它相当于一个显示应用错误的组件。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;error.statusCode==404&quot;</span>&gt;</span>404页面不存在<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">v-else</span>&gt;</span>500服务器错误<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nuxt-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>HOME<span class="hljs-tag">&lt;/<span class="hljs-name">nuxt-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="language-javascript">  <span class="hljs-attr">props</span>:[<span class="hljs-string">&#x27;error&#x27;</span>],</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>复制代码<br></code></pre></td></tr></table></figure>
+
+<p>代码用v-if进行判断错误类型，需要注意的是这个错误是你需要在<code>&lt;script&gt;</code>里进行声明的，如果不声明程序是找不到error.statusCode的。</p>
+<p>这里我也用了一个<code>&lt;nuxt-link&gt;</code>的简单写法直接跟上路径就可以了。</p>
+<h3 id="2-个性meta设置"><a href="#2-个性meta设置" class="headerlink" title="2.个性meta设置"></a>2.个性meta设置</h3><p>页面的Meta对于SEO的设置非常重要，比如你现在要作个新闻页面，那为了搜索引擎对新闻的收录，需要每个页面对新闻都有不同的title和meta设置。直接使用head方法来设置当前页面的头部信息就可以了。我们现在要把New-1这个页面设置成个性的meta和title。</p>
+<p>1.我们先把<code>pages/news/index.vue</code>页面的链接进行修改一下，传入一个title，目的是为了在新闻具体页面进行接收title，形成文章的标题。</p>
+<p>&#x2F;pages&#x2F;news&#x2F;index.vue</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nuxt-link</span> <span class="hljs-attr">:to</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;name:&#x27;news-id&#x27;,params:&#123;id:123,title:&#x27;nuxt.com&#x27;&#125;</span><span class="language-xml"><span class="hljs-tag"><span class="hljs-string">&#125;&quot;</span>&gt;</span>News-1<span class="hljs-tag">&lt;/<span class="hljs-name">nuxt-link</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>2.第一步完成后，我们修改&#x2F;pages&#x2F;news&#x2F;_id.vue，让它根据传递值变成独特的meta和title标签。</p>
+<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>News-Content [</span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">$route.params.id</span>&#125;&#125;</span><span class="language-xml">]<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  validate (&#123; params &#125;) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// Must be a number</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> <span class="hljs-regexp">/^\d+$/</span>.<span class="hljs-title function_">test</span>(params.<span class="hljs-property">id</span>)</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span>&#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">title</span>:<span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">params</span>.<span class="hljs-property">title</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-comment">//独立设置head信息</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">head</span>(<span class="hljs-params"></span>)&#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span>&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">title</span>:<span class="hljs-variable language_">this</span>.<span class="hljs-property">title</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">meta</span>:[</span></span><br><span class="language-javascript"><span class="language-xml">          &#123;<span class="hljs-attr">hid</span>:<span class="hljs-string">&#x27;description&#x27;</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;news&#x27;</span>,<span class="hljs-attr">content</span>:<span class="hljs-string">&#x27;This is news page&#x27;</span>&#125;</span></span><br><span class="language-javascript"><span class="language-xml">        ]</span></span><br><span class="language-javascript"><span class="language-xml">      &#125;</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>注意：为了避免子组件中的meta标签不能正确覆盖父组件中相同的标签而产生重复的现象，建议利用 hid 键为meta标签配一个唯一的标识编号。</p>
+<h2 id="七、asyncData方法获取数据"><a href="#七、asyncData方法获取数据" class="headerlink" title="七、asyncData方法获取数据"></a>七、asyncData方法获取数据</h2><p>Nuxt.js贴心的为我们扩展了Vue.js的方法，增加了anyncData，异步请求数据。</p>
+<h3 id="1-三种方式"><a href="#1-三种方式" class="headerlink" title="1.三种方式"></a>1.三种方式</h3><p>Nuxt.js 提供了几种不同的方法来使用 <code>asyncData</code> 方法，你可以选择自己熟悉的一种来用：</p>
+<ol>
+<li>返回一个 <code>Promise</code>, nuxt.js会等待该<code>Promise</code>被解析之后才会设置组件的数据，从而渲染组件.</li>
+<li>使用 <code>async</code> 或 <code>await</code></li>
+<li>使用回调函数</li>
+</ol>
+<p><strong>返回Promise</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">export default &#123;<br>  asyncData (&#123; params &#125;) &#123;<br>    return axios.get(`https://my-api/posts/$&#123;params.id&#125;`)<br>      .then((res) =&gt; &#123;<br>        return &#123; title: res.data.title &#125;<br>      &#125;)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>使用async或await</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vue">export default &#123;<br>  async asyncData (&#123; params &#125;) &#123;<br>    const &#123; data &#125; = await axios.get(`https://my-api/posts/$&#123;params.id&#125;`)<br>    return &#123; title: data.title &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>使用回调函数</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vue">export default &#123;<br>  asyncData (&#123; params &#125;, callback) &#123;<br>    axios.get(`https://my-api/posts/$&#123;params.id&#125;`)<br>      .then((res) =&gt; &#123;<br>        callback(null, &#123; title: res.data.title &#125;)<br>      &#125;)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>安装Axios</p>
+<p>Vue.js官方推荐使用的远程数据获取方式就Axios，所以我们安装官方推荐，来使用Axios。这里我们使用npm 来安装 axios。 直接在终端中输入下面的命令：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install axios <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-ansycData的promise方法"><a href="#2-ansycData的promise方法" class="headerlink" title="2.ansycData的promise方法"></a>2.ansycData的promise方法</h3><p>我们在pages下面新建一个文件，叫做ansyData.vue。然后写入下面的代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span></span><br><span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">     <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">         <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;hello World&#x27;</span>,</span><br><span class="language-javascript">     &#125;</span><br><span class="language-javascript">  &#125;,</span><br><span class="language-javascript">  <span class="hljs-title function_">asyncData</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">return</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;接口&#x27;</span>)</span><br><span class="language-javascript">      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>)=&gt;</span>&#123;</span><br><span class="language-javascript">          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)</span><br><span class="language-javascript">          <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">info</span>:res.<span class="hljs-property">data</span>&#125;</span><br><span class="language-javascript">      &#125;)</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>asyncData的方法会把值返回到data中。是组件创建（页面渲染）之前的动作，所以不能使用this.info,</p>
+<p><strong># return的重要性</strong></p>
+<p><em>一定要return出去获取到的对象，这样就可以在组件中使用，这里返回的数据会和组件中的data合并。这个函数不光在服务端会执行，在客户端同样也会执行。</em></p>
+<h3 id="3-ansycData的promise并发应用"><a href="#3-ansycData的promise并发应用" class="headerlink" title="3.ansycData的promise并发应用"></a>3.ansycData的promise并发应用</h3><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs haxe">async asyncData(context) &#123;<br>  let [<span class="hljs-keyword">new</span><span class="hljs-type">DetailRes</span>, hotInformationRes, correlationRes] = await Promise.all([<br>    axios.post(<span class="hljs-string">&#x27;http://www.huanjingwuyou.com/eia/news/detail&#x27;</span>, &#123;<br>      <span class="hljs-keyword">new</span><span class="hljs-type">sCode</span>: <span class="hljs-keyword">new</span><span class="hljs-type">sCode</span><br>    &#125;),<br>    axios.post(<span class="hljs-string">&#x27;http://www.huanjingwuyou.com/eia/news/select&#x27;</span>, &#123;<br>      <span class="hljs-keyword">new</span><span class="hljs-type">sType</span>: <span class="hljs-keyword">new</span><span class="hljs-type">sType</span>, <span class="hljs-comment">// 资讯类型： 3环评资讯 4环评知识</span><br>      start: <span class="hljs-type">0</span>, <span class="hljs-comment">// 从第0条开始</span><br>      pageSize: <span class="hljs-type">10</span>,<br>      <span class="hljs-keyword">new</span><span class="hljs-type">sRecommend</span>: <span class="hljs-literal">true</span><br>    &#125;),<br>    axios.post(<span class="hljs-string">&#x27;http://www.huanjingwuyou.com/eia/news/select&#x27;</span>, &#123;<br>      <span class="hljs-keyword">new</span><span class="hljs-type">sType</span>: <span class="hljs-keyword">new</span><span class="hljs-type">sType</span>, <span class="hljs-comment">// 资讯类型： 3环评资讯 4环评知识</span><br>      start: <span class="hljs-type">0</span>, <span class="hljs-comment">// 从第0条开始</span><br>      pageSize: <span class="hljs-type">3</span>,<br>      <span class="hljs-keyword">new</span><span class="hljs-type">sRecommend</span>: <span class="hljs-literal">false</span><br>    &#125;)<br>  ])<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-keyword">new</span><span class="hljs-type">DetailList</span>: <span class="hljs-keyword">new</span><span class="hljs-type">DetailRes</span>.data.result,<br>    hotNewList: <span class="hljs-type">hotInformationRes</span>.data.result.data,<br>    <span class="hljs-keyword">new</span><span class="hljs-type">sList</span>: correlationRes.data.result.data,<br>    <span class="hljs-keyword">new</span><span class="hljs-type">sCode</span>: <span class="hljs-keyword">new</span><span class="hljs-type">sCode</span>,<br>    <span class="hljs-keyword">new</span><span class="hljs-type">sType</span>: <span class="hljs-keyword">new</span><span class="hljs-type">sType</span><br>  &#125;<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-ansycData的await方法"><a href="#4-ansycData的await方法" class="headerlink" title="4.ansycData的await方法"></a>4.ansycData的await方法</h3><p>当然上面的方法稍显过时，现在都在用ansyc…await来解决异步,改写上面的代码。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span></span><br><span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="language-javascript">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">     <span class="hljs-keyword">return</span> &#123;</span><br><span class="language-javascript">         <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;hello World&#x27;</span>,</span><br><span class="language-javascript">     &#125;</span><br><span class="language-javascript">  &#125;,</span><br><span class="language-javascript">  <span class="hljs-keyword">async</span> <span class="hljs-title function_">asyncData</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">      <span class="hljs-keyword">let</span> &#123;data&#125;=<span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;接口&#x27;</span>)</span><br><span class="language-javascript">      <span class="hljs-keyword">return</span> &#123;<span class="hljs-attr">info</span>: data&#125;</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-注意事项-生命周期："><a href="#5-注意事项-生命周期：" class="headerlink" title="5.注意事项+生命周期："></a>5.注意事项+生命周期：</h3><ol>
+<li>asyncData 方法会在组件(限于页面组件)每次加载之前被调用</li>
+<li>asyncData 可以在服务端或路由更新之前被调用</li>
+<li>第一个参数被设定为当前页面的上下文对象</li>
+<li>Nuxt会将 asyncData 返回的数据融合到组件的data方法返回的数据一并返回给组件使用</li>
+<li>对于 asyncData 方式实在组件初始化前被调用的，所以在方法内饰没办法通过<code>this</code>来引用组件的实例对象</li>
+</ol>
+<h2 id="八、静态资源和打包"><a href="#八、静态资源和打包" class="headerlink" title="八、静态资源和打包"></a>八、静态资源和打包</h2><h3 id="1-静态资源"><a href="#1-静态资源" class="headerlink" title="1.静态资源"></a>1.静态资源</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gradle">（<span class="hljs-number">1</span>）直接引入图片<br>在网上任意下载一个图片，放到项目中的<span class="hljs-keyword">static</span>文件夹下面，然后可以使用下面的引入方法进行引用<br>&lt;<span class="hljs-keyword">div</span>&gt;&lt;img src=<span class="hljs-string">&quot;~static/logo.png&quot;</span> <span class="hljs-regexp">/&gt;&lt;/</span><span class="hljs-keyword">div</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<p>“~”就相当于定位到了项目根目录，这时候图片路径就不会出现错误，就算打包也是正常的。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml">（2）CSS引入图片<br>如果在CSS中引入图片，方法和html中直接引入是一样的，也是用“~”符号引入。<br>复制代码<br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css">  <span class="hljs-selector-class">.diss</span>&#123;</span><br><span class="language-css">    <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;</span><br><span class="language-css">    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="language-css">    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;~static/logo.png&#x27;</span>)</span><br><span class="language-css">  &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>这时候在npm run dev 下是完全正常的。</p>
+<h3 id="2-打包"><a href="#2-打包" class="headerlink" title="2.打包"></a>2.打包</h3><p>用Nuxt.js制作完成后，你可以打包成静态文件并放在服务器上，进行运行。</p>
+<p>在终端中输入：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">npm run <span class="hljs-keyword">generate</span><br></code></pre></td></tr></table></figure>
+
+<p>然后在dist文件夹下输入live-server就可以了。</p>
+<p>总结：Nuxt.js框架非常简单，因为大部分的事情他都为我们做好了，我们只要安装它的规则来编写代码。</p>
+<h2 id="九、nuxt的跨域解决-拦截器"><a href="#九、nuxt的跨域解决-拦截器" class="headerlink" title="九、nuxt的跨域解决+拦截器"></a>九、nuxt的跨域解决+拦截器</h2><h3 id="一、axios与-nuxtjs-x2F-axios"><a href="#一、axios与-nuxtjs-x2F-axios" class="headerlink" title="一、axios与@nuxtjs&#x2F;axios"></a>一、axios与@nuxtjs&#x2F;axios</h3><h4 id="一、了解"><a href="#一、了解" class="headerlink" title="一、了解"></a>一、了解</h4><p>nuxt.js 在创建项目的时候可以选择安装 axios。<br><strong><u>axios 与 @nuxtjs&#x2F;axios 可以共用 nuxt.config.js 中代理配置。</u></strong></p>
+<p>使用的时候需要注意 asyncData() 中需要请求全链接或者服务器有配代理的接口，也就是在服务器渲染的时候需要拿到组装的数据，等到了浏览器本地之后，需要走代理请求，否则会出现跨域，支持加载更多跟其他接口请求操作，更换数据也是没问题的，但是到浏览器之后必须走代理请求，在服务器渲染的时候必须走全链接请求或者走服务器配置了代理的请求，没配置代理就走全链接请求，在服务器不存在跨域</p>
+<h4 id="二、使用-nuxtjs-x2F-axios和"><a href="#二、使用-nuxtjs-x2F-axios和" class="headerlink" title="二、使用 @nuxtjs&#x2F;axios和"></a>二、使用 @nuxtjs&#x2F;axios和</h4><p>在创建项目的时候，就可以选择导入 @nuxtjs&#x2F;axios，它是对 axios 包装，更好在 nuxt.js 中使用，可以通过 this.$axios.get(url).then() 进行全局使用。</p>
+<p>检查 package.json 文件中 dependencies 有没有存在 @nuxtjs&#x2F;axios，没有命令行安装(建议创建项目的时候就通过脚手架安装上), @nuxtjs&#x2F;proxy代理</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> install --save @nuxtjs/axios @nuxtjs/proxy<br></code></pre></td></tr></table></figure>
+
+<p><code>nuxt.config.js</code> 配置，代理配置</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs awk">export default &#123;<br>  head: &#123; ... &#125;,<br>  css: [],<br><br>  modules: [<br>    <span class="hljs-string">&#x27;@nuxtjs/axios&#x27;</span>,<br>    <span class="hljs-string">&#x27;@nuxtjs/proxy&#x27;</span><br>  ],<br><br>  axios: &#123;<br>    <span class="hljs-regexp">//</span> 开启代理 (如果需要判断线上线下环境，可以通过 process.env.NODE_ENV !== <span class="hljs-string">&#x27;production&#x27;</span> 来判断)<br>    proxy: true,<br>    <span class="hljs-regexp">//</span> 给请求 url 加个前缀 /api，如果这项不配置，则需要手动添加到请求链接前面<br>    <span class="hljs-regexp">//</span> 如果是多个代理的时候，则不需要配置，走手动添加代理前缀<br>    prefix: <span class="hljs-string">&#x27;/api&#x27;</span>,<br>    <span class="hljs-regexp">//</span> 跨域请求时是否需要使用凭证<br>    credentials: true<br>  &#125;,<br><br>  proxy: &#123;<br>  <span class="hljs-regexp">//</span>当代理多个时，只需添加如下格式的数组对象即可<br>    <span class="hljs-string">&#x27;/api&#x27;</span>: &#123;     <span class="hljs-regexp">//</span>  key(路由前缀)：value(target)(代理地址)<br>      <span class="hljs-regexp">//</span> 目标接口域   <br>      target: <span class="hljs-string">&#x27;http://test.dzm.com&#x27;</span>,<br>      <span class="hljs-regexp">//</span> 全局配置是否跨域<br>      changeOrigin: true,<br>      pathRewrite: &#123;<br>        <span class="hljs-regexp">//</span> 单个配置是否跨域<br>        <span class="hljs-regexp">//</span> changeOrigin: true<br>        <span class="hljs-regexp">//</span> 把 <span class="hljs-string">&#x27;/api&#x27;</span> 替换成 <span class="hljs-string">&#x27;/&#x27;</span>，具体需要替换为 <span class="hljs-string">&#x27;&#x27;</span> 还是 <span class="hljs-string">&#x27;/&#x27;</span> 看自己习惯<br>        <span class="hljs-string">&#x27;^/api&#x27;</span>: <span class="hljs-string">&#x27;/&#x27;</span><br>      &#125;<br>    &#125;<br>  &#125;,<br><br>  build: &#123;<br>    <span class="hljs-regexp">//</span> 防止重复打包<br>    vendor: [<span class="hljs-string">&#x27;axios&#x27;</span>]<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在组件中使用，这样就可以在服务器渲染到页面之后，通过请求进行更换数据，因为到页面之后需要走代理的方式才能获取到数据，否则会报错跨域。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vue">mounted() &#123;<br>    this.$axios.get(&quot;/index&quot;).then(res=&gt;&#123;<br>        console.log(res)<br>    &#125;)<br>    <br>    // axios 需要手动加上 &#x27;/api&#x27; 代理协议<br>    // @nuxtjs/axios 因为配置了 prefix: &#x27;/api&#x27; 会自动添加，否则也得手动添加<br>    // 访问的 url 地址为  http://x.x.x.x:3000/api/index<br>    // 然后根据上面代理转为 http://test.dzm.com/index<br>    // /api 会自动加到访问链接中<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="三、使用-axios"><a href="#三、使用-axios" class="headerlink" title="三、使用 axios"></a>三、使用 <code>axios</code></h4><p>安装命令，默认一般 <code>nuxt.js</code> 自带 <code>axios</code>，是不需要手动安装的，在 <code>package.json</code> 文件中 <code>dependencies</code> 中可能并不体现出来，可以通过 <code>node_modules</code> 文件夹找到 <code>axios</code>。</p>
+<p>安装<code>axios</code></p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> install @nuxtjs/axios --save-dev<br></code></pre></td></tr></table></figure>
+
+<p>如果找到了，就不要去安装了，直接使用即可，**<u>axios 与 @nuxtjs&#x2F;axios 可以共用 nuxt.config.js 中代理配置。</u>**可直接在vue组件中使用即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span></span><br><span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span><br><span class="language-javascript">    <span class="hljs-title function_">mounted</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">        axios.<span class="hljs-title function_">get</span>(<span class="hljs-string">&quot;/api/index&quot;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;</span><br><span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)</span><br><span class="language-javascript">        &#125;)</span><br><span class="language-javascript"></span><br><span class="language-javascript">        <span class="hljs-comment">// axios 需要手动加上 &#x27;/api&#x27; 代理协议</span></span><br><span class="language-javascript">        <span class="hljs-comment">// @nuxtjs/axios 因为配置了 prefix: &#x27;/api&#x27; 会自动添加，否则也得手动添加</span></span><br><span class="language-javascript">        <span class="hljs-comment">// 访问的 url 地址为  http://x.x.x.x:3000/api/index</span></span><br><span class="language-javascript">        <span class="hljs-comment">// 然后根据上面代理转为 http://test.dzm.com/index</span></span><br><span class="language-javascript">        <span class="hljs-comment">// /api 会自动加到访问链接中</span></span><br><span class="language-javascript">    &#125;</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong><code>axios</code> 可以进行封装使用，跟 <code>vue</code> 中一样</strong></p>
+<p><code>axios.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><br><span class="hljs-keyword">const</span> service = axios.<span class="hljs-title function_">create</span>(&#123;<br>  <span class="hljs-comment">// 请求地址，为空则请求的时候带上</span><br>  <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>  <span class="hljs-comment">// 请求超时时间</span><br>  <span class="hljs-attr">timeout</span>: <span class="hljs-number">90000</span><br>&#125;)<br><br><span class="hljs-keyword">export</span> &#123;<br>  service <span class="hljs-keyword">as</span> axios<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>request.js</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs php">import &#123; axios &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./axios&#x27;</span><br><span class="hljs-comment">// 请求地址</span><br><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">BASE_URL</span> = process.env.NODE_ENV === <span class="hljs-string">&#x27;production&#x27;</span> ? <span class="hljs-string">&#x27;http://dzm.com&#x27;</span> : <span class="hljs-string">&#x27;http://test.dzm.com&#x27;</span><br><br><span class="hljs-comment">// 这种带全链接用于放在 asyncData() 中进行 SEO 请求</span><br>export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getxxx</span> (<span class="hljs-params">parameter</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">axios</span>(&#123;<br>    <span class="hljs-attr">url</span>: BASE_URL + `/<span class="hljs-keyword">list</span>`,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,<br>    <span class="hljs-attr">params</span>: parameter<br>  &#125;)<br>&#125;<br><br><span class="hljs-comment">// 这种带全链接用于放在 asyncData() 中进行 SEO 请求</span><br>export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postxxx</span> (<span class="hljs-params">parameter</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">axios</span>(&#123;<br>    <span class="hljs-attr">url</span>: BASE_URL + `/reload`,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>    <span class="hljs-attr">data</span>: parameter<br>  &#125;)<br>&#125;<br><br><span class="hljs-comment">// 这种带全链接用于放在页面加载到浏览器之后，加载更多或者其他请求操作使用，不会出现跨域问题</span><br>export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getxxx</span> (<span class="hljs-params">parameter</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">axios</span>(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/api&#x27;</span> + `/<span class="hljs-keyword">list</span>`,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;get&#x27;</span>,<br>    <span class="hljs-attr">params</span>: parameter<br>  &#125;)<br>&#125;<br><br><span class="hljs-comment">// 这种带全链接用于放在页面加载到浏览器之后，加载更多或者其他请求操作使用，不会出现跨域问题</span><br>export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">postxxx</span> (<span class="hljs-params">parameter</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_ invoke__">axios</span>(&#123;<br>    <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/api&#x27;</span> + `/reload`,<br>    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;post&#x27;</span>,<br>    <span class="hljs-attr">data</span>: parameter<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="四、拦截器"><a href="#四、拦截器" class="headerlink" title="四、拦截器"></a>四、拦截器</h4><p>安装</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-built_in">npm</span> install @nuxtjs/axios @nuxtjs/proxy --save<br></code></pre></td></tr></table></figure>
+
+<p><code>nuxt.config.js</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk">module.expores&#123;<br>  plugins: [<br>    &#123;<br>      src: <span class="hljs-string">&quot;~/plugins/axios&quot;</span>,<br>      ssr: false<br>    &#125;,<br>  ],<br>  modules: [<br>    <span class="hljs-regexp">//</span> Doc: https:<span class="hljs-regexp">//</span>axios.nuxtjs.org/usage<br>    <span class="hljs-string">&#x27;@nuxtjs/axios&#x27;</span>,<br>  ],<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>plugins/axios.js</code></p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs arcade">export default (&#123; <span class="hljs-symbol">$a</span>xios, redirect &#125;) =&gt; &#123;<br>  <span class="hljs-symbol">$a</span>xios.onRequest(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;Making request to &#x27;</span> + config.url)<br>  &#125;)<br><br>  <span class="hljs-symbol">$a</span>xios.onError(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;<br>    const code = parseInt(error.response &amp;&amp; error.response.status)<br>    <span class="hljs-keyword">if</span> (code === <span class="hljs-number">400</span>) &#123;<br>      redirect(<span class="hljs-string">&#x27;/400&#x27;</span>)<br>    &#125;<br>  &#125;)<br>&#125;<br><br>export default <span class="hljs-keyword">function</span> (<span class="hljs-params">app</span>) &#123;<br>  let axios = app.<span class="hljs-symbol">$a</span>xios; <br> <span class="hljs-comment">// 基本配置</span><br>  axios.defaults.timeout = <span class="hljs-number">10000</span><br>  axios.defaults.headers.post[<span class="hljs-string">&#x27;Content-Type&#x27;</span>] = <span class="hljs-string">&#x27;application/x-www-form-urlencoded&#x27;</span><br><br>  <span class="hljs-comment">// 请求回调</span><br>  axios.onRequest(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;&#125;)<br><br>  <span class="hljs-comment">// 返回回调</span><br>  axios.onResponse(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;&#125;)<br><br>  <span class="hljs-comment">// 错误回调</span><br>  axios.onError(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;&#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="十、-nuxtjs-x2F-toast模块"><a href="#十、-nuxtjs-x2F-toast模块" class="headerlink" title="十、@nuxtjs&#x2F;toast模块"></a>十、@nuxtjs&#x2F;toast模块</h2><p>nuxt中toast组件可参考element中的message，共四个状态</p>
+<p>toast可以说是很常用的功能，一般的UI框架都会有这个功能。但如果你的站点没有使用UI框架，而alert又太丑，不妨引入该模块：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">npm install @nuxtjs/toast<br></code></pre></td></tr></table></figure>
+
+<p>然后在<code>nuxt.config.js</code>中引入</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">module.exports = &#123;<br>    modules: [<br>    &#x27;@nuxtjs/toast&#x27;,<br>    [&#x27;@nuxtjs/dotenv&#x27;, &#123; filename: &#x27;.env.prod&#x27; &#125;] // 指定打包时使用的dotenv<br>  ],<br>  toast: &#123;// toast模块的配置<br>    position: &#x27;top-center&#x27;, <br>    duration: 2000<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样，nuxt就会在全局注册<code>$toast</code>方法供你使用，非常方便：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">this.$toast.error(&#x27;服务器开小差啦~~&#x27;)<br>this.$toast.error(&#x27;请求成功~~&#x27;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="十一、生命周期延展"><a href="#十一、生命周期延展" class="headerlink" title="十一、生命周期延展"></a>十一、生命周期延展</h2><p>Nuxt扩展了Vue的生命周期，大概如下：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">export default &#123;<br>  middleware () &#123;&#125;, //服务端<br>  validate () &#123;&#125;, // 服务端<br>  asyncData () &#123;&#125;, //服务端<br>  fetch () &#123;&#125;, // store数据加载<br>  beforeCreate () &#123;  // 服务端和客户端都会执行&#125;,<br>  created () &#123; // 服务端和客户端都会执行 &#125;,<br>  beforeMount () &#123;&#125;, <br>  mounted () &#123;&#125; // 客户端<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="一、asyncData"><a href="#一、asyncData" class="headerlink" title="一、asyncData"></a>一、asyncData</h3><p>该方法是Nuxt最大的一个卖点，服务端渲染的能力就在这里，首次渲染时务必使用该方法。<br>asyncData会传进一个context参数，通过该参数可以获得一些信息，如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">export default &#123;<br>  asyncData (ctx) &#123;<br>    ctx.app // 根实例<br>    ctx.route // 路由实例<br>    ctx.params  //路由参数<br>    ctx.query  // 路由问号后面的参数<br>    ctx.error   // 错误处理方法<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="二、渲染出错和ajax请求出错的处理"><a href="#二、渲染出错和ajax请求出错的处理" class="headerlink" title="二、渲染出错和ajax请求出错的处理"></a>二、渲染出错和ajax请求出错的处理</h3><ul>
+<li>asyncData渲染出错</li>
+</ul>
+<p>使用<code>asyncData</code>钩子时可能会由于服务器错误或api错误导致无法渲染，此时页面还未渲染出来，需要针对这种情况做一些处理，当遇到asyncData错误时，跳转到错误页面，nuxt提供了<code>context.error</code>方法用于错误处理，在asyncData中调用该方法即可跳转到错误页面。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">export default &#123;<br>    async asyncData (ctx) &#123;<br>        // 尽量使用try catch的写法，将所有异常都捕捉到<br>        try &#123;<br>            throw new Error()<br>        &#125; catch &#123;<br>            ctx.error(&#123;statusCode: 500, message: &#x27;服务器开小差了~&#x27; &#125;)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样，当出现异常时会跳转到<a target="_blank" rel="noopener" href="https://nuxtjs.org/docs/concepts/views/#%E9%94%99%E8%AF%AF%E9%A1%B5%E9%9D%A2">默认的错误页</a>，错误页面可以通过<code>/layout/error.vue</code>自定义。</p>
+<p>这里会遇到一个问题，<code>context.error</code>的参数必须是类似<code>&#123; statusCode: 500, message: &#39;服务器开小差了~&#39; &#125;</code>，<code>statusCode</code>必须是http状态码，<br>而我们服务端返回的错误往往有一些其他的自定义代码，如<code>&#123;resultCode: 10005, resultInfo: &#39;服务器内部错误&#39; &#125;</code>，此时需要对返回的api错误进行转换一下。</p>
+<p>为了方便，我引入了<code>/plugins/ctx-inject.js</code>为context注册一个全局的错误处理方法： <code>context.$errorHandler(err)</code>。注入方法可以参考：<a target="_blank" rel="noopener" href="https://nuxtjs.org/docs/directory-structure/plugins/#%E6%B3%A8%E5%85%A5-vue-%E5%AE%9E%E4%BE%8B">注入 $root 和 context</a>，<code>ctx-inject.js</code>:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs text">// 为context注册全局的错误处理事件<br>export default (ctx, inject) =&gt; &#123;<br>  ctx.$errorHandler = err =&gt; &#123;<br>    try &#123;<br>      const res = err.data<br>      if (res) &#123;<br>        // 由于nuxt的错误页面只能识别http的状态码，因此statusCode统一传500，表示服务器异常。<br>        ctx.error(&#123; statusCode: 500, message: res.resultInfo &#125;)<br>      &#125; else &#123;<br>        ctx.error(&#123; statusCode: 500, message: &#x27;服务器开小差了~&#x27; &#125;)<br>      &#125;<br>    &#125; catch &#123;<br>      ctx.error(&#123; statusCode: 500, message: &#x27;服务器开小差了~&#x27; &#125;)<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后在<code>nuxt.config.js</code>使用该插件：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">export default &#123;<br>  plugins: [<br>    &#x27;~/plugins/ctx-inject.js&#x27;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注入完毕，我们就可以在<code>asyncData</code>介个样子使用了：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">export default &#123;<br>    async asyncData (ctx) &#123;<br>        // 尽量使用try catch的写法，将所有异常都捕捉到<br>        try &#123;<br>            throw new Error()<br>        &#125; catch(err) &#123;<br>            ctx.$errorHandler(err)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>ajax请求出错</li>
+</ul>
+<p>对于ajax的异常，此时页面已经渲染，出现错误时不必跳转到错误页，可以通过<code>this.$toast.error(res.message)</code> toast出来即可。</p>
+<h3 id="三、loading方法"><a href="#三、loading方法" class="headerlink" title="三、loading方法"></a>三、loading方法</h3><p>nuxt内置了页面顶部<a target="_blank" rel="noopener" href="https://nuxtjs.org/docs/configuration-glossary/configuration-loading/#loading-%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE">loading进度条的样式</a><br>推荐使用，提供页面跳转体验。<br>打开： <code>this.$nuxt.$loading.start()</code><br>完成： <code>this.$nuxt.$loading.finish()</code></p>
+<h2 id="十二、注意事项"><a href="#十二、注意事项" class="headerlink" title="十二、注意事项"></a>十二、注意事项</h2><h3 id="1-如何在-head-里面引入js文件"><a href="#1-如何在-head-里面引入js文件" class="headerlink" title="1. 如何在 head 里面引入js文件?"></a>1. 如何在 head 里面引入js文件?</h3><blockquote>
+<p>背景: 在<code>&lt;head&gt;</code>标签中，以inline的形式引入<code>flexible.js</code>文件。本项目主要为移动端项目，引入<code>flexible.js</code> 实现移动端适配问题。</p>
+</blockquote>
+<p>Nuxt.js 通过 <code>vue-meta</code> 实现头部标签管理，通过查看文档发现，可以按照如下方式配置：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">head: &#123;<br>  script: [&#123; innerHTML: <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./assets/js/flexible&#x27;</span>), type: <span class="hljs-string">&#x27;text/javascript&#x27;</span>, charset: <span class="hljs-string">&#x27;utf-8&#x27;</span>&#125;],<br>  __dangerouslyDisableSanitizers: [<span class="hljs-string">&#x27;script&#x27;</span>]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-nuxt使用less-sass等预处理器"><a href="#2-nuxt使用less-sass等预处理器" class="headerlink" title="2.nuxt使用less,sass等预处理器"></a>2.nuxt使用less,sass等预处理器</h3><blockquote>
+<p>背景：在组件中的<code>&lt;template&gt;</code>， <code>&lt;script&gt;</code> 或 <code>&lt;style&gt;</code> 上使用各种预处理器，加上处理器后，控制台报错。</p>
+</blockquote>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">npm install --save-dev <span class="hljs-keyword">node</span><span class="hljs-title">-sass</span> sass-loader<br></code></pre></td></tr></table></figure>
+
+<p>但是解决过程并不是很顺利的，在阅读中文文档时，忽略版本号，按照上面的提示进行操作，发现不能成功，后来各种debug，最后发现了该解决方案。后知后觉的发现了中文文档的版本号过低，如果需要查看文档，一定要看最新版本的英文文档！</p>
+<h3 id="3-如何使用px2rem"><a href="#3-如何使用px2rem" class="headerlink" title="3. 如何使用px2rem"></a>3. 如何使用px2rem</h3><blockquote>
+<p>背景：在css中，写入px，通过<code>px2rem loader</code>，将px转换成rem</p>
+</blockquote>
+<p>在以前的项目中，是通过 <code>px2rem loader</code>实现的，但是在Nuxt.js项目下，添加 css loader 还是很费力的，因为涉及到<code>vue-loader</code>。</p>
+<p>想到了一个其他方案，可以使用 <code>postcss</code> 处理。可以在 <code>nuxt.config.js</code> 文件中添加配置，也可以在<code>postcss.conf.js</code>文件中添加。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs css">build: &#123;<br>  postcss: [<br>    <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;postcss-px2rem&#x27;</span>)(&#123;<br>      remUnit: <span class="hljs-number">75</span> // 转换基本单位<br>    &#125;)<br>  ]<br>&#125;,<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-如何拓展-webpack-配置"><a href="#4-如何拓展-webpack-配置" class="headerlink" title="4. 如何拓展 webpack 配置"></a>4. 如何拓展 webpack 配置</h3><blockquote>
+<p>背景：给 utils 目录添加别名</p>
+</blockquote>
+<p>刚刚说到，Nuxt.js内置了 <code>webpack</code> 配置，如果想要拓展配置，可以在 <code>nuxt.config.js</code> 文件中添加。同时也可以在该文件中，将配置信息打印出来。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs stylus">extend (config, ctx) &#123;<br>  console<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&#x27;webpack config:&#x27;</span>, config)<br>  <span class="hljs-keyword">if</span> (ctx.isClient) &#123;<br>    <span class="hljs-comment">// 添加 alias 配置</span><br>    Object<span class="hljs-selector-class">.assign</span>(config<span class="hljs-selector-class">.resolve</span><span class="hljs-selector-class">.alias</span>, &#123;<br>      <span class="hljs-string">&#x27;utils&#x27;</span>: path<span class="hljs-selector-class">.resolve</span>(__dirname, <span class="hljs-string">&#x27;utils&#x27;</span>)<br>    &#125;)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-如何添加-vue-plugin"><a href="#5-如何添加-vue-plugin" class="headerlink" title="5. 如何添加 vue plugin"></a>5. 如何添加 vue plugin</h3><blockquote>
+<p>背景：自己封装了一个 toast vue plugin，由于 vue 实例化的过程没有暴露出来，不知道在哪个时机注入进去。</p>
+</blockquote>
+<p>可以在 <code>nuxt.config.js</code> 中添加 plugins 配置，这样插件就会在 Nuxt.js 应用初始化之前被加载导入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">module</span>.<span class="hljs-keyword">exports</span> = &#123;<br>  plugins: [<span class="hljs-string">&#x27;~plugins/toast&#x27;</span>]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>~plugins/toast.js</code> 文件：</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> toast <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../utils/toast&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;../assets/css/toast.css&#x27;</span><br><br>Vue.use(toast)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>​     <a target="_blank" rel="noopener" href="https://www.nuxtjs.cn/guide/installation">nuxt官网</a></p>
+<p>本文参考:</p>
+<p>​          <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903833840123912">Nuxt爬坑</a></p>
+<p>​         <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1654y1r7rM">B站nuxt入门视频</a></p>
+<p>​          <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904160324747278#heading-18">点亮你的Vue技术栈，万字Nuxt.js实践笔记来了</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Nuxt/" class="category-chain-item">Nuxt</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Nuxt/">#Nuxt</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Nuxt入门总结</div>
+      <div>https://github.com/hu-p.github.io/2023/03/08/Nuxt入门总结/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/08/Koa2%E3%80%81Vue3%E3%80%81Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/" title="Koa2、Vue3、Mysql服务器部署全流程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Koa2、Vue3、Mysql服务器部署全流程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/08/typeScript%E5%9F%BA%E7%A1%80%E4%B8%80/" title="TypeScript学习指南">
+                        <span class="hidden-mobile">TypeScript学习指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

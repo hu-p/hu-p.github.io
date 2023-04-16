@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Koa2、Vue3、Mysql服务器部署全流程在电脑上安装xshell7、xftp，个人使用有免费版本 连接服务器 12快捷连接指令 ssh root@服务器IP地址重启服务器 reboot  一、Mysql服务器端安装参考mysql安装、配置流程 &lt;u&gt;重点：使用服务端的服务时，在服务器防火墙中打开相应的端口，mysql对应的端口为3306&lt;&#x2F;u&gt; 1、首先获取rpm源由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Koa2、Vue3、Mysql服务器部署全流程">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/03/08/Koa2%E3%80%81Vue3%E3%80%81Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="Koa2、Vue3、Mysql服务器部署全流程在电脑上安装xshell7、xftp，个人使用有免费版本 连接服务器 12快捷连接指令 ssh root@服务器IP地址重启服务器 reboot  一、Mysql服务器端安装参考mysql安装、配置流程 &lt;u&gt;重点：使用服务端的服务时，在服务器防火墙中打开相应的端口，mysql对应的端口为3306&lt;&#x2F;u&gt; 1、首先获取rpm源由">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-08T01:44:05.874Z">
+<meta property="article:modified_time" content="2023-04-16T09:09:30.824Z">
+<meta property="article:author" content="渊不语">
+<meta property="article:tag" content="koa">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Koa2、Vue3、Mysql服务器部署全流程 - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Koa2、Vue3、Mysql服务器部署全流程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-08 09:44" pubdate>
+          2023年3月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Koa2、Vue3、Mysql服务器部署全流程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Koa2、Vue3、Mysql服务器部署全流程"><a href="#Koa2、Vue3、Mysql服务器部署全流程" class="headerlink" title="Koa2、Vue3、Mysql服务器部署全流程"></a>Koa2、Vue3、Mysql服务器部署全流程</h1><p>在电脑上安装<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/free-for-home-school/">xshell7、xftp</a>，个人使用有免费版本</p>
+<p>连接服务器</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">快捷连接指令 ssh <span class="hljs-symbol">root@</span>服务器IP地址<br>重启服务器 reboot<br></code></pre></td></tr></table></figure>
+
+<h2 id="一、Mysql服务器端安装"><a href="#一、Mysql服务器端安装" class="headerlink" title="一、Mysql服务器端安装"></a>一、Mysql服务器端安装</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wyg1973017714/article/details/106482176">参考mysql安装、配置流程</a></p>
+<p><code>&lt;u&gt;</code><strong>重点：使用服务端的服务时，在服务器防火墙中打开相应的端口，mysql对应的端口为3306</strong><code>&lt;/u&gt;</code></p>
+<h3 id="1、首先获取rpm源"><a href="#1、首先获取rpm源" class="headerlink" title="1、首先获取rpm源"></a>1、首先获取rpm源</h3><p>由于没有相应的源，故需要获取对应的mysql的rpm源文件<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">wget https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>然后通过以下命令安装rpm</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">rpm -ivh mysql80-community-release-el7-3.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>最后通过yum命令安装mysql，命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">yum install mysql-community-server<br></code></pre></td></tr></table></figure>
+
+<p>经过这些命令完成了MySQL的安装;</p>
+<p>注意：MySQL GPG 密钥已过期。有关案例的其他详细信息也可以在 MySQL 网站上找到： <a target="_blank" rel="noopener" href="https://bugs.mysql.com/bug.php?id=106188">https 😕&#x2F;bugs.mysql.com&#x2F;bug.php?id&#x3D;106188</a></p>
+<p>可以在运行安装程序之前导入密钥</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">rpm --<span class="hljs-keyword">import</span> https:<span class="hljs-comment">//repo.mysql.com/RPM-GPG-KEY-mysql-2022</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2、启动MySQL"><a href="#2、启动MySQL" class="headerlink" title="2、启动MySQL"></a>2、启动MySQL</h3><p>首先设置MySQL开机自启动，通过如下命令</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">systemctl <span class="hljs-built_in">enable</span> mysqld.service<br></code></pre></td></tr></table></figure>
+
+<p>然后可以通过如下命令开启服务</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">systemctl <span class="hljs-literal">start</span> mysqld.service<br></code></pre></td></tr></table></figure>
+
+<h3 id="3、登录MySQL"><a href="#3、登录MySQL" class="headerlink" title="3、登录MySQL"></a>3、登录MySQL</h3><p>初次登录时需要登录密码，通过以下命令查看初始密码</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">grep <span class="hljs-string">&#x27;temporary password&#x27;</span> /<span class="hljs-keyword">var</span>/<span class="hljs-built_in">log</span>/mysqld.<span class="hljs-built_in">log</span><br></code></pre></td></tr></table></figure>
+
+<p>然后通过以下命令登录，并输入初始密码</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">mysql -uroot -<span class="hljs-selector-tag">p</span><br></code></pre></td></tr></table></figure>
+
+<p>当通过初始密码首次登录MySQL以后，我们需要修改登录密码，不然无法进行数据库基本操作<br>修改密码通过如下命令：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> identified <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;密码&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>通过以上密码可将登录密码初始化为root，identified by 后面的引号中包含的字符就是设置的登陆密码</p>
+<p><code>&lt;u&gt;</code><strong>高版本mysql修改密码的坑、常见操作，如下：</strong><code>&lt;/u&gt;</code></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">若修改时出现错误，可能是版本过高，例如：将 validate_password_policy修改 validate_password.<span class="hljs-keyword">policy</span>，余者类似<br><br>mysql为了安全，有自己的策略要求，如果我们想将其设置为我们常用的root或者<span class="hljs-number">123456</span>这样的密码，需要修改策略要求，具体命令如下：<br>提示：初次登录必须重置密码，否则无法操作，但是规则未知；故提供示例(直接复制)：<br><span class="hljs-keyword">alter</span> <span class="hljs-keyword">user</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> identified <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;@#123qweQWE&#x27;</span>;<br><br><span class="hljs-number">1.</span>设置密码的验证强度等级，设置 validate_password_policy 的全局参数为 LOW 即可，<br>输入设值语句 “ <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password.<span class="hljs-keyword">policy</span>=LOW; ” 进行设值<br><br><span class="hljs-number">2.</span>当前密码长度为 <span class="hljs-number">8</span> ，如果不介意的话就不用修改了，按照通用的来讲，设置为 <span class="hljs-number">6</span> 位的密码，设置 validate_password_length 的全局参数为 <span class="hljs-number">6</span> 即可，<br>输入设值语句 “ <span class="hljs-keyword">set</span> <span class="hljs-keyword">global</span> validate_password.length=<span class="hljs-number">6</span>; ” 进行设值<br><br><span class="hljs-number">3.</span>现在可以为 mysql 设置简单密码了，只要满足六位的长度即可，<br>输入修改语句 “ <span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> ‘root’@‘localhost’ IDENTIFIED <span class="hljs-keyword">BY</span> ‘<span class="hljs-number">123456</span>’; ” 可以看到修改成功，表示密码策略修改成功了！！！<br><br>mysql基本指令<br><span class="hljs-keyword">show</span> databases 查看数据库<br>use testdb; 进入testdb数据库<br><span class="hljs-keyword">show</span> <span class="hljs-keyword">tables</span>; 查看数据库中的表<br>creat <span class="hljs-keyword">database</span> testdb 创建数据表<br><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> 表名 查看数据表中的数据<br><br>本地数据表上传至服务器端数据库<br><span class="hljs-number">1</span>、数据表表上传至服务器<br><span class="hljs-number">2</span>、打开服务器端的数据库<br><span class="hljs-number">3</span>、输入命令<br>//导入前需建立一个数据库名<br>source /root/probe.<span class="hljs-keyword">sql</span> (/root/probe.<span class="hljs-keyword">sql</span>即<span class="hljs-keyword">sql</span>文件在服务器上的位置)<br></code></pre></td></tr></table></figure>
+
+<h3 id="4、添加远程用户，赋予全部权限"><a href="#4、添加远程用户，赋予全部权限" class="headerlink" title="4、添加远程用户，赋予全部权限"></a>4、添加远程用户，赋予全部权限</h3><p>首先需要创建一个新的用户，使用如下命令：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">user</span> root identified <span class="hljs-keyword">by</span> <span class="hljs-string">&#x27;password&#x27;</span>; <span class="hljs-keyword">password</span>处输入你设置的密码<br></code></pre></td></tr></table></figure>
+
+<p>然后将数据库的全部权限赋予该用户</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">grant</span> <span class="hljs-keyword">all</span> <span class="hljs-keyword">privileges</span> <span class="hljs-keyword">on</span> *.* <span class="hljs-keyword">to</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> <span class="hljs-keyword">with</span> <span class="hljs-keyword">grant</span> <span class="hljs-keyword">option</span>;<br></code></pre></td></tr></table></figure>
+
+<p>最后刷新权限表即可</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">flush privileges<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong><code>&lt;u&gt;</code>注释：完成到此处时，其实navicat中就可以直接成功连接啦，但是由于mysql对于新旧版本密码算法不同，会出现步骤5中的错误，故而需要将密码重新修改或者在创建远程用户时就将以对应的形式设置好<code>&lt;/u&gt;</code></strong></p>
+<h3 id="5、navicat远程连接"><a href="#5、navicat远程连接" class="headerlink" title="5、navicat远程连接"></a>5、navicat远程连接</h3><p>Client does not support authentication protocol requested by server; conside 新旧版本密码算法不同引起的错误，只需要设置下密码方式为 mysql_native_password 就可。还是 navicat 做的好，新旧密码都支持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql -uroot -p<br>use mysql;<br>show tables;<br># 查看已经有的用户<br>select user, host from user;<br><br># 重新设置下密码，并使之生效(设置远程用户的密码)<br># 之前是 <br>alter user &#x27;xxx&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;xxxxxx&#x27;<br># 修改完后<br>alter user &#x27;xxx&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;xxxxxx&#x27;<br># 刷新权限表<br>flush privileges;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二、Node服务配置"><a href="#二、Node服务配置" class="headerlink" title="二、Node服务配置"></a>二、Node服务配置</h2><h3 id="1、获取最新的node包-node服务中包括node、npm"><a href="#1、获取最新的node包-node服务中包括node、npm" class="headerlink" title="1、获取最新的node包(node服务中包括node、npm)"></a>1、获取最新的node包(node服务中包括node、npm)</h3><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">node官网查看最新版本</a></p>
+<p>强烈建议：在下载安装包前，先执行：cd &#x2F;usr&#x2F;local，跳转至该路径，或者包解压的时候直接解压到&#x2F;usr&#x2F;local</p>
+<p>原因：</p>
+<ul>
+<li><code>/usr</code>：系统级的目录，可以理解为 <code>C:/Windows/</code></li>
+<li><code>/usr/lib</code>理解为 <code>C:/Windows/System32</code></li>
+<li><code>                        /usr/local</code>：用户级的程序目录，可以理解为 <code>C:/Progrem Files/</code>。用户自己编译的软件默认会安装到这个目录下。</li>
+<li><code>/opt</code>：用户级的程序目录，可以理解为 <code>D:/Software</code>，opt有可选的意思，这里可以用于放置第三方大型软件（或游    戏），当你不需要时，直接 <code>rm -rf</code>掉即可。在硬盘容量不够时，也可将&#x2F;opt单独挂载到其他磁盘上使用。</li>
+</ul>
+<p>源码放哪里？</p>
+<ul>
+<li><code>/usr/src</code>：系统级的源码目录。</li>
+<li><code>/usr/local/src</code>：用户级的源码目录</li>
+</ul>
+<h4 id="1、在liunx上从node官网下载node的压缩包"><a href="#1、在liunx上从node官网下载node的压缩包" class="headerlink" title="1、在liunx上从node官网下载node的压缩包"></a>1、在liunx上从node官网下载node的压缩包</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">wget</span> https://nodejs.org/dist/v14.<span class="hljs-number">17</span>.<span class="hljs-number">6</span>/node-v14.<span class="hljs-number">17</span>.<span class="hljs-number">6</span>-linux-x64.tar.xz<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、将压缩包解压"><a href="#2、将压缩包解压" class="headerlink" title="2、将压缩包解压:"></a>2、将压缩包解压:</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">(解压到当前目录)tar -xvf <span class="hljs-keyword">node</span><span class="hljs-title">-v14</span>.<span class="hljs-number">17.6</span>-linux-x64.tar.xz<br>或者<br>(解压到指定目录) (tar -xvf <span class="hljs-keyword">node</span><span class="hljs-title">-v14</span>.<span class="hljs-number">17.6</span>-linux-x64.tar.xz -C /usr/local)<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、改目录名："><a href="#3、改目录名：" class="headerlink" title="3、改目录名："></a>3、改目录名：</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mv <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/node-v14.17.6-linux-x64 /u</span>sr<span class="hljs-regexp">/local/</span>node<br>mv命令用来修改名字或移动文件的<br></code></pre></td></tr></table></figure>
+
+<h4 id="4、配环境变量（极度重要，此处将服务真正的运行起来）"><a href="#4、配环境变量（极度重要，此处将服务真正的运行起来）" class="headerlink" title="4、配环境变量（极度重要，此处将服务真正的运行起来）"></a>4、配环境变量（极度重要，此处将服务真正的运行起来）</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">vi <span class="hljs-regexp">/etc/</span>profile<br>最后加上这句话：export PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/node/</span>bin<br>让新加的配置生效：source <span class="hljs-regexp">/etc/</span>profile<br><br>(此处的路径就是node、npm服务所在的路径)<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、软连接"><a href="#5、软连接" class="headerlink" title="5、软连接"></a>5、软连接</h4><p>相当于全局变量，在任何文件夹都能查看版本信息</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">第一个路径为文件真正所在路径，虚拟出的路径<br>软链接：ln -s 源文件 目标文件,软链接可以理解成快捷方式。它和windows下的快捷方式的作用是一样的<br>(我目前以为在usr/local下软连接作用不明显)<br>ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/node/</span>bin<span class="hljs-regexp">/node /u</span>sr<span class="hljs-regexp">/local/</span>bin/node<br>ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/node/</span>bin<span class="hljs-regexp">/npm /u</span>sr<span class="hljs-regexp">/local/</span>bin/npm<br></code></pre></td></tr></table></figure>
+
+<h4 id="6、检验是否成功"><a href="#6、检验是否成功" class="headerlink" title="6、检验是否成功"></a>6、检验是否成功</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br>npm -v<br></code></pre></td></tr></table></figure>
+
+<h4 id="7、换成国内源"><a href="#7、换成国内源" class="headerlink" title="7、换成国内源"></a>7、换成国内源</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs awk">由于node服务在外网，故而npm下载会很慢，在国内使用需要换源<br>方法<span class="hljs-number">1</span>、<br><span class="hljs-regexp">//</span>查看源<br>npm config get registry<br><span class="hljs-regexp">//</span>更换源<br>npm config set registry https:<span class="hljs-regexp">//</span>registry.npmjs.org<br><span class="hljs-regexp">//</span>淘宝源<br>npm config set registry https:<span class="hljs-regexp">//</span>registry.npm.taobao.org<br><br>方法<span class="hljs-number">2</span>、(建议)<br><span class="hljs-regexp">//</span>可直接用源管理器nrm<br>npm install nrm -g<br><span class="hljs-regexp">//</span>源列表<br>nrm ls<br><span class="hljs-regexp">//</span>可先打开nrm ls查看，使用淘宝的源<br>npm use taobao<br><br>方法<span class="hljs-number">3</span>、<br>安装cnpm，其实与方法<span class="hljs-number">1</span>原理一样<br>npm install -g cnpm --registry=https:<span class="hljs-regexp">//</span>registry.npm.taobao.org<br></code></pre></td></tr></table></figure>
+
+<h2 id="三、Koa2项目上传"><a href="#三、Koa2项目上传" class="headerlink" title="三、Koa2项目上传"></a>三、Koa2项目上传</h2><p><strong><code>&lt;u&gt;</code>此处也要在防火墙中开启服务端端口<code>&lt;/u&gt;</code></strong></p>
+<p>在云端运行koa2项目与在本地运行时几乎没有差异，服务器端有node环境，可直接运行koa2项目，当navicat可以远程连接mysql数据库，而koa项目不行连接时，参看上文Mysql</p>
+<p><strong><code>&lt;u&gt;</code>在上传前可将node_modules先删除，然后通过xftp上传文档(上传后的路径可以任意选择，建议在&#x2F;root下)，然后进入koa2项目中，<code>&lt;/u&gt;</code></strong></p>
+<p><strong><code>&lt;u&gt;</code>使用 <code>npm install</code>下载node_modules,然后通过 <code>node app.js</code>运行项目即可<code>&lt;/u&gt;</code></strong></p>
+<p>缺点：打开后，该终端页面就无法继续操作，且退出终端后项目也停止运行</p>
+<p><code>&lt;u&gt;</code><strong>为解决node单一运行的缺点，故而安装pm2</strong><code>&lt;/u&gt;</code></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>安装<br>npm install pm2 -g<br><span class="hljs-regexp">//</span>简单的运行项目<br>pm2 start app.js<br><span class="hljs-regexp">//</span>结束项目<br>pm2 stop app.js<br><span class="hljs-regexp">//</span>停止进程：<br>pm2 stop app_name|app_id|all<br><span class="hljs-regexp">//</span>删除进程：<br>pm2 <span class="hljs-keyword">delete</span> app_name|app_id|all<br><span class="hljs-regexp">//</span>重启进程：<br>pm2 restart/reload app_name|app_id|all<br><span class="hljs-regexp">//</span>查看某一个进程的信息：<br>pm2 show app_name|app_id<br><span class="hljs-regexp">//</span>查看日志：<br>pm2 logs<br><span class="hljs-regexp">//</span>监控所有进程：<br>pm2 monit<br><br>建立软链接，使pm2能全局使用<br>　　ln -s 软件安装的路径 目标路径<br>例子: ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/node/</span>bin<span class="hljs-regexp">/pm2 /u</span>sr<span class="hljs-regexp">/bin/</span>pm2<br><br>启动命令（start）还可以带参数<br>--name<br>给进程命名<br>--watch<br>是否开启自动重启--max-memory-restart<br>最大重启内存<br>--log<br>指定日志文件路径<br>-- arg1 arg2 arg3<br>其他参数<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、Nginx安装"><a href="#四、Nginx安装" class="headerlink" title="四、Nginx安装"></a>四、Nginx安装</h2><p>从<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">Nginx官网</a>获取nginx包，其中Stable version是稳定版本，Mainline version是最新版本，版本中间的为liunx版本，建议下载稳定版本</p>
+<p><a target="_blank" rel="noopener" href="http://nginx.org/en/linux_packages.html#RHEL-CentOS">官网安装方式</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nginx.cn/install">参考nginx安装，很复杂，但详细，源码安装</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/l-hh/p/10594415.html">参考链接</a></p>
+<p>在安装nginx前首先要确认系统中安装了<strong>gcc、pcre-devel、zlib-devel、openssl-devel</strong>等库</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>、rpm包安装的，可以用 rpm -qa 看到，如果要查找某软件包是否安装，用 rpm -qa | grep <span class="hljs-string">&quot;软件或者包的名字&quot;</span><br><span class="hljs-number">2</span>、以deb包安装的，可以用 dpkg -l 看到。如果是查找指定软件包，用 dpkg -l | grep <span class="hljs-string">&quot;软件或者包的名字&quot;</span><br><span class="hljs-number">3</span>、yum方法安装的，可以用 yum list installed 查找，如果是查找指定包，用 yum list installed | grep <span class="hljs-string">&quot;软件名或者包名&quot;</span><br><br><span class="hljs-regexp">//</span>安装库<br>yum -y install gcc pcre-devel zlib-devel openssl openssl-devel gcc-c++ make zlib libtool <br><br><span class="hljs-regexp">//</span>跳转路径<br>cd <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/src/</span><br><br><span class="hljs-regexp">//</span>获取nginx包<br>wget http:<span class="hljs-regexp">//</span>nginx.org<span class="hljs-regexp">/download/</span>nginx-<span class="hljs-number">1.20</span>.<span class="hljs-number">1</span>.tar.gz<br><br>(解压到当前目录)tar -xvf nginx-<span class="hljs-number">1.20</span>.<span class="hljs-number">1</span>.tar.gz<br><br><span class="hljs-regexp">//</span>数字是相应的版本，需要根据版本看，此处参考复杂的安装方式的链接<br>.<span class="hljs-regexp">/configure --sbin-path=/u</span>sr<span class="hljs-regexp">/local/</span>nginx/nginx <br>--conf-path=<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/nginx/</span>nginx.conf <br>--with-http_stub_status_module<br>--with-http_ssl_module<br>--with-pcre=<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/src/</span>pcre-<span class="hljs-number">8.44</span><br><br>make -j2<br>make install<br><br><span class="hljs-regexp">//</span>启动nginx<br><span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/nginx/</span>nginx<br><br>浏览器中打开网页会出现welcome nginx<br><br><span class="hljs-regexp">//</span>查看占用的端口<br>ps -ef|grep nginx<br><br><span class="hljs-regexp">//</span>或者直接关闭<br>./nginx -s stop<br><br><span class="hljs-regexp">//</span>开启<br>./nginx<br><br><span class="hljs-regexp">//</span>修改对应的文件指令<br>vim nginx.conf<br></code></pre></td></tr></table></figure>
+
+<h2 id="五、Vue3项目上传"><a href="#五、Vue3项目上传" class="headerlink" title="五、Vue3项目上传"></a>五、Vue3项目上传</h2><h3 id="1、项目打包"><a href="#1、项目打包" class="headerlink" title="1、项目打包"></a>1、项目打包</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">npm <span class="hljs-built_in">run</span> build      生成dist文件夹<br></code></pre></td></tr></table></figure>
+
+<p>将dist文件夹上传至服务器</p>
+<h3 id="2、dist文件夹的位置"><a href="#2、dist文件夹的位置" class="headerlink" title="2、dist文件夹的位置"></a>2、dist文件夹的位置</h3><p><strong><code>&lt;u&gt;</code>dist文件夹可以有两种方式<code>&lt;/u&gt;</code></strong></p>
+<ol>
+<li>将dist文件夹导入&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;下，与原本的nginx中的html文件夹同级 (目前使用的)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">将nginx.conf中的localhost / 下的root 对应的 html 改成 dist 即可<br>不要更改端口，否则会链接不上，原因未知<br><br>修改完后执行指令<br>./nginx -s stop<br>./nginx<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>无论dist文件夹放置在那个位置，直接修改nginx.conf中root对应的 路径即可，但是目前不知道路径能不能使用绝对路径</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">假如server 中声明root    <span class="hljs-regexp">/usr/</span>share;<br>   那么此时声明 location /&#123;<br>        root <span class="hljs-regexp">/usr/</span>html/www<br>&#125;<br>  此时就会覆盖掉server root 中的路径<br>假如此时声明 location /app &#123;<br><br>&#125;<br>那么此时所有的操作就是基于路径<span class="hljs-regexp">/usr/</span>share/app<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="3、页面部署完后，可以使用，但是刷新后会报错"><a href="#3、页面部署完后，可以使用，但是刷新后会报错" class="headerlink" title="3、页面部署完后，可以使用，但是刷新后会报错"></a>3、页面部署完后，可以使用，但是刷新后会报错</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim">可能原因：<br><span class="hljs-keyword">mode</span>类型引起的错误<br>前端修改方式：将<span class="hljs-keyword">mode</span>类型由<span class="hljs-keyword">history</span>改成hash；<br>后端修改方式：<span class="hljs-keyword">mode</span>还是<span class="hljs-keyword">history</span>，后端配置nginx，设置映射关系<br></code></pre></td></tr></table></figure>
+
+<p>我的解决方式</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs perl">location / &#123;<br>                root  dist<br>                try_files $uri $uri/ @router;<br>                <span class="hljs-keyword">index</span> index.html index.htm;<br>        &#125;<br><br>        location @router &#123;<br>                rewrite ^.*$ /index.html <span class="hljs-keyword">last</span>;<br>        &#125;<br> 完美解决刷新报错的问题<br> <br> <br> 以下为注释：<br>   server &#123;<br>        <span class="hljs-keyword">listen</span>       <span class="hljs-number">8081</span>;<span class="hljs-comment">#默认端口是80，如果端口没被占用可以不用修改</span><br>        server_name  myapp.com;<br>        root        D:<span class="hljs-regexp">/vue/m</span>y_app/dist;<span class="hljs-comment">#vue项目的打包后的dist</span><br>        location / &#123;<br>            try_files $uri $uri/ @router;<span class="hljs-comment">#需要指向下面的@router否则会出现vue的路由在nginx中刷新出现404</span><br>            <span class="hljs-keyword">index</span>  index.html index.htm;<br>        &#125;<br>        <span class="hljs-comment">#对应上面的@router，主要原因是路由的路径资源并不是一个真实的路径，所以无法找到具体的文件</span><br>        <span class="hljs-comment">#因此需要rewrite到index.html中，然后交给路由在处理请求资源</span><br>        location @router &#123;<br>            rewrite ^.*$ /index.html <span class="hljs-keyword">last</span>;<br>        &#125;<br>        <span class="hljs-comment">#.......其他部分省略</span><br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="注意：上传服务器时，需要将ip与域名更改成服务器的域名，可能一个空格和-x2F-就会报错"><a href="#注意：上传服务器时，需要将ip与域名更改成服务器的域名，可能一个空格和-x2F-就会报错" class="headerlink" title="注意：上传服务器时，需要将ip与域名更改成服务器的域名，可能一个空格和&#x2F;就会报错"></a>注意：上传服务器时，需要将ip与域名更改成服务器的域名，可能一个空格和&#x2F;就会报错</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/koa/" class="category-chain-item">koa</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/koa/">#koa</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Koa2、Vue3、Mysql服务器部署全流程</div>
+      <div>https://github.com/hu-p.github.io/2023/03/08/Koa2、Vue3、Mysql服务器部署全流程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/08/HTML%E7%9F%A5%E8%AF%86%E7%82%B9/" title="静态网页技术———HTML5知识点汇总">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">静态网页技术———HTML5知识点汇总</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/08/Nuxt%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/" title="Nuxt入门总结">
+                        <span class="hidden-mobile">Nuxt入门总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

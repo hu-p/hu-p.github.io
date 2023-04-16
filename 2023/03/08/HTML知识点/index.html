@@ -1,0 +1,704 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/buYu1.png">
+  <link rel="icon" href="/img/buYu1.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="渊不语">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="静态网页技术———HTML5知识点汇总1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495">
+<meta property="og:type" content="article">
+<meta property="og:title" content="静态网页技术———HTML5知识点汇总">
+<meta property="og:url" content="https://github.com/hu-p.github.io/2023/03/08/HTML%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="静态网页技术———HTML5知识点汇总1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-08T01:44:05.878Z">
+<meta property="article:modified_time" content="2023-04-16T08:42:04.552Z">
+<meta property="article:author" content="渊不语">
+<meta property="article:tag" content="HTML5">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>静态网页技术———HTML5知识点汇总 - 笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/**.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"github.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>随记</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tools/">
+                <i class="iconfont icon-books"></i>
+                <span>工具箱</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="静态网页技术———HTML5知识点汇总"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-08 09:44" pubdate>
+          2023年3月8日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          92 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">静态网页技术———HTML5知识点汇总</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="静态网页技术———HTML5知识点汇总"><a href="#静态网页技术———HTML5知识点汇总" class="headerlink" title="静态网页技术———HTML5知识点汇总"></a>静态网页技术———HTML5知识点汇总</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>标题<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-comment">&lt;!--水平线标记--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:982px;&quot;</span>/&gt;</span><br><span class="hljs-comment">&lt;!--标题文字标记，n表示数字--&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">hn</span>&gt;</span>   <span class="hljs-tag">&lt;/<span class="hljs-name">hn</span>&gt;</span><br><span class="hljs-comment">&lt;!--//段落标记--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>   <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-comment">&lt;!--//换行标记--&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">br</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-comment">&lt;!--    //块标记，默认状态是占据一行--&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><br><span class="hljs-comment">&lt;!--   //块标记，默认状态是行间的一部分--&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //有序列表标记&lt;ol&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--    //type=&quot;1&quot;表示是数字1、2...有序标记，（默认）--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>数字有序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //type=&quot;a&quot;表示是小写字母a、b...有序标记--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>小写字母有序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //type=&quot;A&quot;表示是大写字母A、B...有序标记--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;A&quot;</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大写字母有序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //type=&quot;i&quot;表示是小写罗马数字i、ii...有序标记--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;i&quot;</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>小写罗马数字有序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //type=&quot;I&quot;表示是大写罗马数字I、II...有序标记--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;I&quot;</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大写罗马数字有序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span><br><br><br><span class="hljs-comment">&lt;!--    //无序列表标记&lt;ul&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--    //type=&quot;disc&quot;表示是实心圆点无序标记，（默认）--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;disc&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>实心圆点无序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //type=&quot;circle&quot;表示是空心圆圈无序标记，（默认）--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;circle&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>空心圆圈无序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //type=&quot;Square&quot;表示是方形无序标记，（默认）--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;Square&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>方形无序标记<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //自定义列表--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>名称<span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>说明<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>用户名<span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>6~18个字符，需以字母开头<br>        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>密码<span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>6~18个字符，区分大小写<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">article</span>&gt;</span><br><span class="hljs-comment">&lt;!--        // articl元素代表文档，页面或应用程序独立的、完整的、可以独立被外部引用的内容--&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span><br><span class="hljs-comment">&lt;!--        // section元素中的内容可以单独存储到数据库中或输出到Word文档中--&gt;</span><br><span class="hljs-comment">&lt;!--        // 在HTML5中，article元素可以看成是一种特殊类型的section元素--&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //nav元素是一个可以用作页面导航的链接组--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;链接地址&quot;</span>&gt;</span>这是超链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;链接地址&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span><br><span class="hljs-comment">&lt;!--        // aside元素用来表示当前页面或文章的附属信息部分--&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-comment">&lt;!--        页面标题--&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    //footer元素一般作为其上层容器元素的注脚--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>版权信息<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>联系方式<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--    图像标记&lt;img/&gt;--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width:200px; height:200px; border:10px solid #0000ff;&quot;</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;middle&quot;</span>/&gt;</span><br><br><span class="hljs-comment">&lt;!--    boder属性表示边框--&gt;</span><br><span class="hljs-comment">&lt;!--    align属性设置图像对齐方式--&gt;</span><br><span class="hljs-comment">&lt;!--    align属性值 ：--&gt;</span><br><span class="hljs-comment">&lt;!--    top图像顶部与同行文字或图片顶部对齐--&gt;</span><br><span class="hljs-comment">&lt;!--    middle图像中部与同行文字或图片中部对齐--&gt;</span><br><span class="hljs-comment">&lt;!--    bottom图像底部与同行文字或图片底部对齐--&gt;</span><br><span class="hljs-comment">&lt;!--    left图像在文字左侧--&gt;</span><br><span class="hljs-comment">&lt;!--    right图像在文字右侧--&gt;</span><br><span class="hljs-comment">&lt;!--    absbottom图像底部与同行最低项的底部对齐，常用于netscape--&gt;</span><br><span class="hljs-comment">&lt;!--    absmiddle图像中部与同行最大项的中部对齐，常用于netscape--&gt;</span><br><span class="hljs-comment">&lt;!--    baseline图像底部与文本基准线对齐，常用于netscape--&gt;</span><br><span class="hljs-comment">&lt;!--    texttop图像顶部与同行最高项的顶部对齐，常用于netscape--&gt;</span><br><br><br><span class="hljs-comment">&lt;!--    //多媒体文件标记&lt;embed&gt;--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">embed</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">autostart</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">loop</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">embed</span>&gt;</span><br><span class="hljs-comment">&lt;!--    //src属性用来指定插入的多媒体文件的地址或多媒体文件名--&gt;</span><br><span class="hljs-comment">&lt;!--    //autostart属性用来设置多媒体文件是否自动播放true/false--&gt;</span><br><span class="hljs-comment">&lt;!--    //loop属性用来设置多媒体文件是否循环播放true/false--&gt;</span><br><br><span class="hljs-comment">&lt;!--    //视频标记&lt;video&gt;--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">&quot;controls&quot;</span>&gt;</span>替代文字<span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br><span class="hljs-comment">&lt;!--    属性        值            说明--&gt;</span><br><span class="hljs-comment">&lt;!--    src        url           要播放视频的URL--&gt;</span><br><span class="hljs-comment">&lt;!--    autoplay   autoplay      视屏就绪后马上播放--&gt;</span><br><span class="hljs-comment">&lt;!--    controls   controls      添加播放、暂停和音量等控件--&gt;</span><br><span class="hljs-comment">&lt;!--    width      像素           设置时评播放器的宽度--&gt;</span><br><span class="hljs-comment">&lt;!--    heigth     像素           设置视频播放器的高度--&gt;</span><br><span class="hljs-comment">&lt;!--    loop       loop           设置视频是否循环播放--&gt;</span><br><span class="hljs-comment">&lt;!--    preload    preload        视频在页面加载时进行加载，并预备播放--&gt;</span><br><br><br><br><span class="hljs-comment">&lt;!--音频标记&lt;audio&gt;--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">audio</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">&quot;controls&quot;</span>&gt;</span> 替代内容<span class="hljs-tag">&lt;/<span class="hljs-name">audio</span>&gt;</span><br><br><br><span class="hljs-comment">&lt;!--超链接标记&lt;a&gt;--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>链接标题<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br><span class="hljs-comment">&lt;!--超链接target的值及说明--&gt;</span><br><span class="hljs-comment">&lt;!--parent   当前窗口的上级窗口，一般在框架中使用--&gt;</span><br><span class="hljs-comment">&lt;!--blank    在新窗口中打开--&gt;</span><br><span class="hljs-comment">&lt;!--self     在同一窗口打开，和默认值一致--&gt;</span><br><span class="hljs-comment">&lt;!--top      在浏览器的整个窗口打开，忽略任何框架--&gt;</span><br><br><span class="hljs-comment">&lt;!--表单定义标记&lt;form&gt;--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;formname&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;表单传送方式post/get&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;表单编码方式encoding&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><span class="hljs-comment">&lt;!--在HTML5中增加formaction属性和formmethod属性--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;testform&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;test.html&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br>    第一个测试按钮：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;n1&quot;</span> <span class="hljs-attr">formaction</span>=<span class="hljs-string">&quot;h1.html&quot;</span> <span class="hljs-attr">formmethod</span>=<span class="hljs-string">&quot;post&quot;</span> /&gt;</span><br>    第二个测试按钮: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;n2&quot;</span> <span class="hljs-attr">formaction</span>=<span class="hljs-string">&quot;h2.html&quot;</span> <span class="hljs-attr">formmethod</span>=<span class="hljs-string">&quot;post&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><br><br><span class="hljs-comment">&lt;!--输入标记&lt;input&gt;--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;控件名称&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;控件类型&quot;</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;12 允许用户输入最大字符数&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;8 指定文本框的宽度&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;文本框默认值&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!--&lt;input&gt;标记的type属性值及说明--&gt;</span><br><span class="hljs-comment">&lt;!--属性值     说明--&gt;</span><br><span class="hljs-comment">&lt;!--text      文本框--&gt;</span><br><span class="hljs-comment">&lt;!--password  密码框--&gt;</span><br><span class="hljs-comment">&lt;!--file      文件域--&gt;</span><br><span class="hljs-comment">&lt;!--checkbox  复选框--&gt;</span><br><span class="hljs-comment">&lt;!--radio     单选按钮--&gt;</span><br><span class="hljs-comment">&lt;!--button    标准按钮--&gt;</span><br><span class="hljs-comment">&lt;!--submit    提交按钮--&gt;</span><br><span class="hljs-comment">&lt;!--reset     重置按钮--&gt;</span><br><span class="hljs-comment">&lt;!--image     图像域--&gt;</span><br><br><span class="hljs-comment">&lt;!--placehoder属性是指当文本框&lt;input type=&quot;text&quot;&gt;处于未输入状态时文本框中显示的输入提示--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;default text&quot;</span> /&gt;</span><br><br><span class="hljs-comment">&lt;!--autofocus属性，若给文本框、选择框或按钮等控制加上该属性，则当页面打开时，--&gt;</span><br><span class="hljs-comment">&lt;!--改控件将自动获得焦点，从而替代使用JavaScript代码，注意：一个页面内只能有一个控件具有该属性--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">autofocus</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--list属性，在HTNML5中，为单行文本框&lt;input type=&quot;text&quot;&gt;增加了一个list属性，--&gt;</span><br><span class="hljs-comment">&lt;!--该属性的值是莫格datalist元素的id，datalist也是HTML5中新增的元素，该元素类似于选择框（&lt;select&gt;),但是当--&gt;</span><br><span class="hljs-comment">&lt;!--用户想要设定的值不在选择列表之内时，允许其自行输入，datalist元素本身并不显示，而是当--&gt;</span><br><span class="hljs-comment">&lt;!--文本框获得焦点时以提示输入的方式显示--&gt;</span><br><br>请选择文本：<br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;greeting&quot;</span> <span class="hljs-attr">list</span>=<span class="hljs-string">&quot;greeting&quot;</span> /&gt;</span><br><span class="hljs-comment">&lt;!--使用style=&quot;display:none;&quot;将detalist元素设定为不显示--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">datalist</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;greeting&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;display: none;&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;选项1&quot;</span>&gt;</span>选项1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;选项2&quot;</span>&gt;</span>选项2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">datalist</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--autocomplete属性用于设置输入时是否自动完成，提供了十分方便辅助输入功能。对于autocomplete属性，--&gt;</span><br><span class="hljs-comment">&lt;!--可以指定其值为&quot;on&quot;、”off“、”“三类值。不指定时，使用浏览器的默认值（取决于个浏览器的设定）。该属性设置为on时，--&gt;</span><br><span class="hljs-comment">&lt;!--可以显示指定待输入的数据列表。如果使用datalist元素与list属性提供待输入的数据列表，自动完成时，可以将该datalist元素--&gt;</span><br><span class="hljs-comment">&lt;!--中的数据作为待输入的数据在文本框钟自动显示。--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;school&quot;</span> <span class="hljs-attr">autocomplete</span>=<span class="hljs-string">&quot;on&quot;</span> /&gt;</span><br><br><span class="hljs-comment">&lt;!--required属性，可以应用在大多数输入元素上（除了隐藏元素、图片元素按钮外）。在提交时，--&gt;</span><br><span class="hljs-comment">&lt;!--如果元素内容为空白，则不允许提交，同时在浏览器中显示提示信息，提示用户这个元素必须输入内容--&gt;</span><br><br><span class="hljs-comment">&lt;!--pattern属性，要求输入的内容符合一定的格式，若不符合时，则不允许提交且会有显示--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">&quot;[0-9] [A-Z] &#123;3&#125;&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">part</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;输入内容：1个数字与三个大写字母。&quot;</span> /&gt;</span><br><br><span class="hljs-comment">&lt;!--数值输入域number--&gt;</span><br><span class="hljs-comment">&lt;!--min和max属性是数值类型或日期类型的input元素的专用属性，它们限制了在input元素中输入的数值与日期的范围，--&gt;</span><br><span class="hljs-comment">&lt;!--step定义合法的数字间隔，例如step=3，则就是1、3、5...,value则是定义默认值--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;number&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br><br>滑动条range<br>将<span class="hljs-tag">&lt;<span class="hljs-name">input</span>&gt;</span>标记中的type属性设置为range，可以在表单中插入表示数值范围的滑动条，还可以限定可接受的数值范围<br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">min</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">max</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">step</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--日期选择器data pickers--&gt;</span><br><span class="hljs-comment">&lt;!--HTML5拥有多个供选取日期的和时间的新输入类型，秩序将&lt;input&gt;标记中的type属性设置为一下几种类型之一即可--&gt;</span><br><span class="hljs-comment">&lt;!--date   选取日、月、年--&gt;</span><br><span class="hljs-comment">&lt;!--month   选取月、年--&gt;</span><br><span class="hljs-comment">&lt;!--week   选取周、年--&gt;</span><br><span class="hljs-comment">&lt;!--time   选取时间（小时和分钟）--&gt;</span><br><span class="hljs-comment">&lt;!--datetime  选取时间、日、月、年（世界标准时间UTC）--&gt;</span><br><span class="hljs-comment">&lt;!--datetme-local   选取时间、日、月、年（本地时间）--&gt;</span><br><br><span class="hljs-comment">&lt;!--url类型是input元素专门用来输入url地址的文本框，提交时如果该文本框中的内容不是url地址格式的文字，则不允许提交--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;urll&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;http://www.icourses.cn&quot;</span> /&gt;</span><br><br><span class="hljs-comment">&lt;!--email类型的input元素是一种专门用来输入email地址的文本框，提交时如果该文本框内不是email地址格式--&gt;</span><br><span class="hljs-comment">&lt;!--的文字则不允许提交，但是却不会检查email地址是否存在，email类型的文本框具有一个multiple属性，它允许在该文本框--&gt;</span><br><span class="hljs-comment">&lt;!--中输入一串以逗号分隔的email地址--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;email&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;testemail@163.com&quot;</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--列表框标记&lt;select&gt;--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;列表框民名称&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;选项值&quot;</span> /&gt;</span>选项显示内容<br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;选项值&quot;</span> /&gt;</span>选项显示内容<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--文本域输入标记&lt;textarea&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--    在表单中，只要插入成对的&lt;textarea&gt;&lt;/textarea&gt;就可以插入文本域--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">form</span> &gt;</span><br>    用户:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;login&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;文本域name&quot;</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">&quot;行数5&quot;</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">&quot;列数100&quot;</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br><span class="hljs-comment">&lt;!--也可以应用form属性标识id--&gt;</span><br><span class="hljs-comment">&lt;!--&lt;form  id=&quot;myform&quot;&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--    用户:&lt;input type=&quot;text&quot; value=&quot;login&quot;&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--&lt;/form&gt;&lt;br/&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--&lt;textarea form=&quot;myform&quot; name=&quot;文本域name&quot; rows=&quot;行数5&quot; cols=&quot;列数100&quot;&gt; &lt;/textarea&gt;--&gt;</span><br><br><span class="hljs-comment">&lt;!--使用成对的&lt;table&gt;&lt;/table&gt;标记就可以定义一个表格--&gt;</span><br><span class="hljs-comment">&lt;!--&lt;tr&gt;为行标记&lt;td&gt;为单元格标记&lt;th&gt;表头标记--&gt;</span><br><span class="hljs-comment">&lt;!--设置表格边框宽度border&lt;table border=&quot;2&quot;&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--设置单元格跨列colspan  &lt;td colspan=&quot;value&quot;&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--设置单元格跨行 rowspan &lt;td rowspan=&quot;value&quot;&gt;--&gt;</span><br><span class="hljs-comment">&lt;!--width  设置单元格宽度--&gt;</span><br><span class="hljs-comment">&lt;!--height  设置单元格高度--&gt;</span><br><span class="hljs-comment">&lt;!--bordercolor 设置表格边框颜色--&gt;</span><br><span class="hljs-comment">&lt;!--bgcolor   设置表格背景颜色--&gt;</span><br><span class="hljs-comment">&lt;!--background  设置表格背景图像--&gt;</span><br><span class="hljs-comment">&lt;!--align/valign   设置表格对齐方式--&gt;</span><br><span class="hljs-comment">&lt;!--cellspacing    设置单元格间距--&gt;</span><br><span class="hljs-comment">&lt;!--cellpadding    设置单元格边距--&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 400px;&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>  1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> 2 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>  3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span> 4 <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br><br><br><span class="hljs-comment">&lt;!--使用成对的&lt;iframe&gt;&lt;/iframe&gt;标记即可在网页中插入内嵌框架--&gt;</span><br><span class="hljs-comment">&lt;!--可内置进&lt;td&gt;中--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">iframe</span>&gt;</span>内嵌<span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br><span class="hljs-comment">&lt;!--内置框架属性--&gt;</span><br><br><span class="hljs-comment">&lt;!--src    设置源文件地址--&gt;</span><br><span class="hljs-comment">&lt;!--width   设置内嵌框架窗口宽度--&gt;</span><br><span class="hljs-comment">&lt;!--height  设置内置框架窗口高度--&gt;</span><br><span class="hljs-comment">&lt;!--bordercolor  设置边框颜色--&gt;</span><br><span class="hljs-comment">&lt;!--align    设置框架对齐方式 可选left、right、top、middle、bottom--&gt;</span><br><span class="hljs-comment">&lt;!--name   设置框架名称，是链接标记的target所需的参数--&gt;</span><br><span class="hljs-comment">&lt;!--scrolling 设置是否需要显示滚动条，默认为auto，表示根据需要自动出现，Yes/No--&gt;</span><br><span class="hljs-comment">&lt;!--frameborder  设置框架边框，1表示显示边框、0表示不显示--&gt;</span><br><span class="hljs-comment">&lt;!--framespacing   设置框架边框宽度--&gt;</span><br><span class="hljs-comment">&lt;!--marginheight    设置内容与窗口上下边缘的边距，默认为1--&gt;</span><br><span class="hljs-comment">&lt;!--marginwidth    设置内容与窗口左右边缘的距离，默认为1--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;url&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/HTML5/" class="category-chain-item">HTML5</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/HTML5/">#HTML5</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>静态网页技术———HTML5知识点汇总</div>
+      <div>https://github.com/hu-p.github.io/2023/03/08/HTML知识点/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>渊不语</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/08/git%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/" title="git常见操作">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">git常见操作</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/08/Koa2%E3%80%81Vue3%E3%80%81Mysql%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%85%A8%E6%B5%81%E7%A8%8B/" title="Koa2、Vue3、Mysql服务器部署全流程">
+                        <span class="hidden-mobile">Koa2、Vue3、Mysql服务器部署全流程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/**.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
